@@ -108,7 +108,16 @@ public class Billetautomat {
 	}
 
 	public void setBilletpris(int billetpris) {
-		this.billetpris = billetpris;
+                if (this.montørtilstand) { // Billetprisen kan kun sættes som montør
+                    if(billetpris >= 0){ // Billetprisen kan ikke være negativ
+			this.billetpris = billetpris;
+                    }else{
+                        System.out.println("Billetprisen kan ikke være negativ.");
+                    }
+		}else {
+			System.out.println("Afvist - log ind først");
+		}
+		
 	}
 
 	public void nulstil() {
