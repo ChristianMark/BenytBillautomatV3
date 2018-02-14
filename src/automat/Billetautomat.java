@@ -29,7 +29,11 @@ public class Billetautomat {
 	 * Modtag nogle penge (i kroner) fra en kunde.
 	 */
 	public void indsætPenge(int beløb) {
-		balance = balance + beløb;
+            if(beløb > 0){ // Tjek om der bliver indbetalt et gyldigt beløb
+                balance = balance + beløb;
+            }else{
+                System.out.println("Det indsatte beløb er ugyldigt.");
+            }
 	}
 
 	/**
