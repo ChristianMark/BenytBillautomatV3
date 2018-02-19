@@ -28,7 +28,7 @@ public class Billetautomat {
 		antalBilletterSolgt = 0;
                 Log_liste = new ArrayList<String>(); // opret liste-objekt
                 netopNu = new Date();
-                Log_liste.add("Opsætning af automat gennemført.\nTimestamp: "+netopNu.toString());
+                Log_liste.add(netopNu.toString()+" Opsætning af automat gennemført.");
                 if(debug){
                     System.out.println(Log_liste.get(0));
                 }
@@ -48,6 +48,7 @@ public class Billetautomat {
 	 * Modtag nogle penge (i kroner) fra en kunde.
 	 */
 	public void indsætPenge(int beløb) {
+            netopNu = new Date(); // Hent et nyt Date objekt
             if(beløb > 0){ // Tjek om der bliver indbetalt et gyldigt beløb
                 balance = balance + beløb;
                 Log_liste.add(netopNu.toString()+" Der blev indsat beløb: '"+beløb+"'");
@@ -79,6 +80,7 @@ public class Billetautomat {
 			System.out.println("Du mangler at indbetale nogle penge");
                         return;
 		}
+                netopNu = new Date(); // Hent et nyt Date objekt
                 Log_liste.add(netopNu.toString()+" Der blev udskrevet en billet");
                 if(debug){
                     System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
@@ -112,6 +114,7 @@ public class Billetautomat {
             balance = 0;
             System.out.println("Du får "+returbeløb+" kr retur");
             
+            netopNu = new Date(); // Hent et nyt Date objekt
             Log_liste.add(netopNu.toString()+" Kunden fik "+returbeløb+" retur.");
             if(debug){
                 System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
@@ -121,22 +124,31 @@ public class Billetautomat {
 
 	
 	void montørLogin(String adgangskode) {
-		if ("1234".equals(adgangskode)) {
-			montørtilstand = true;
-			System.out.println("Montørtilstand aktiveret");
-			System.out.println("Du kan nu angive billetpris");
-                        Log_liste.add(netopNu.toString()+" Succesfuld montørLogin registeret");
+            netopNu = new Date(); // Hent et nyt Date objekt
+            if ("1234".equals(adgangskode)) {
+                    montørtilstand = true;
+                    System.out.println("Montørtilstand aktiveret");
+                    System.out.println("Du kan nu angive billetpris");
+                    Log_liste.add(netopNu.toString()+" Succesfuld montørLogin registeret");
+                    if(debug){
+                        System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                    }
+            } else {
+                    if(montørtilstand = true){ // Hvis montøren bare logger ud
+                        System.out.println("Montørtilstand deaktiveret");
+                        Log_liste.add(netopNu.toString()+" Montøren har logget ud.");
                         if(debug){
                             System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
-                        }
-		} else {
-			montørtilstand = false;
-			System.out.println("Montørtilstand deaktiveret");
+                        }                           
+                    }else{
+                        montørtilstand = false;
+                        System.out.println("Montørtilstand deaktiveret");
                         Log_liste.add(netopNu.toString()+" Ugyldigt montørLogin registeret med adgangskoden: '"+adgangskode+"'");
                         if(debug){
                             System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
                         }
-		}
+                    }
+            }
                 
 	}
 
@@ -160,6 +172,7 @@ public class Billetautomat {
 	}
 
 	public void setBilletpris(int billetpris) {
+            netopNu = new Date(); // Hent et nyt Date objekt
             int billetpris_old = this.billetpris;
             if (this.montørtilstand) { // Billetprisen kan kun sættes som montør
                 if(billetpris >= 0){ // Billetprisen kan ikke være negativ
@@ -182,19 +195,20 @@ public class Billetautomat {
 	}
 
 	public void nulstil() {
-		if (montørtilstand) {
-		    antalBilletterSolgt = 0;
-                    Log_liste.add(netopNu.toString()+" blev billetautomaten nulstillet af en montør");
+            netopNu = new Date(); // Hent et nyt Date objekt
+            if (montørtilstand) {
+                antalBilletterSolgt = 0;
+                Log_liste.add(netopNu.toString()+" blev billetautomaten nulstillet af en montør.");
+                if(debug){
+                    System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                }                        
+            } else {
+                    System.out.println("Afvist - log ind først");
+                    Log_liste.add(netopNu.toString()+" blev billetautomaten forsøgt nulstillet af en der ikke var logget ind som montør.");
                     if(debug){
                         System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
-                    }                        
-		} else {
-			System.out.println("Afvist - log ind først");
-                        Log_liste.add(netopNu.toString()+" blev billetautomaten forsøgt nulstillet af en der ikke var logget ind som montør");
-                        if(debug){
-                            System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
-                        }
-		}
+                    }
+            }
 	}
 
 	public void setAntalBilletterSolgt(int antalBilletterSolgt) {
@@ -212,7 +226,16 @@ public class Billetautomat {
         
         public void udskrivLog() {
             if (montørtilstand) {
-                    
+                netopNu = new Date(); // Hent et nyt Date objekt
+                System.out.println("============ Transaktioner pr. "+netopNu.toString());
+		for (String element : Log_liste) {  // gennemløb alle elementerne i loggen
+			System.out.println(element);
+		}      
+                System.out.println("============ Loggen er nu blevet clearet");
+                Log_liste.add(netopNu.toString()+" blev Loggen clearet.");
+                if(debug){
+                    System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                }                
             } else {
                     System.out.println("Afvist - log ind først");
             }
