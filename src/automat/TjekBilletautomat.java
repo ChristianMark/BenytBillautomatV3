@@ -15,7 +15,7 @@ public class TjekBilletautomat
 		}
 
 		System.out.println("*** Tjek af salg af en billet");
-		automat.indsætPenge(10);
+		automat.indsaetPenge(10);
 		automat.udskrivBillet();
 		retur = automat.returpenge();
 		if (retur != 0) {
@@ -24,7 +24,7 @@ public class TjekBilletautomat
 		}
 
 		System.out.println("*** Tjek af, at penge kan komme retur");
-		automat.indsætPenge(100);
+		automat.indsaetPenge(100);
 		automat.udskrivBillet();
 		retur = automat.returpenge();
 		if (retur != 90) {
@@ -32,23 +32,23 @@ public class TjekBilletautomat
 			antalFejl = antalFejl + 1;
 		}
 		
-		System.out.println("*** Tjek af, at brugere ikke kan bruge montørfunktionen");
+		System.out.println("*** Tjek af, at brugere ikke kan bruge montoerfunktionen");
 		retur = automat.getAntalBilletterSolgt();
 		if (retur != 0) {
 			System.out.println("FEJL, AntalBilletterSolgt() skulle give 0, men den gav: "+retur);
 			antalFejl = antalFejl + 1;
 		}
 		
-		System.out.println("*** Tjek af, at kun den korrekte montørkode fungerer");
-		automat.montørLogin("6789");	
+		System.out.println("*** Tjek af, at kun den korrekte montoerkode fungerer");
+		automat.montoerLogin("6789");	
 		retur = automat.getAntalBilletterSolgt();
 		if (retur != 0) {
 			System.out.println("FEJL, AntalBilletterSolgt() skulle give 0, men den gav: "+retur);
 			antalFejl = antalFejl + 1;
 		}
 
-		System.out.println("*** Tjek af, at montøren kan se hvor mange billetter der er solgt");
-		automat.montørLogin("1234");
+		System.out.println("*** Tjek af, at montoeren kan se hvor mange billetter der er solgt");
+		automat.montoerLogin("1234");
 		retur = automat.getAntalBilletterSolgt();
 		if (retur != 2) {
 			System.out.println("FEJL, AntalBilletterSolgt() skulle give 2, men den gav: "+retur);
@@ -57,7 +57,7 @@ public class TjekBilletautomat
 
 		System.out.println("*** Tjek af andre billetpriser");
 		automat.setBilletpris(20);
-		automat.indsætPenge(100);
+		automat.indsaetPenge(100);
 		automat.udskrivBillet();
 		retur = automat.returpenge();
 		if (retur != 80) {
@@ -77,7 +77,7 @@ public class TjekBilletautomat
 		if (antalFejl == 0) {
 			System.out.println("Automaten er fejlfri, HURRA!!!");
 		} else {
-			System.out.println("Automaten har fejl, ØV!!!");			
+			System.out.println("Automaten har fejl, oeV!!!");			
 		}
 	}
 }
