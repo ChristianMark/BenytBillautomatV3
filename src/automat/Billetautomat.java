@@ -1,4 +1,10 @@
 package automat;
+import java.util.ArrayList; 
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date; // Date-klassen er i pakken java.util
+
 /**
  * Model af en simpel billetautomat til enkeltbilletter med én fast pris.
  */
@@ -7,6 +13,11 @@ public class Billetautomat {
 	private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
 	private int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
 	private boolean montørtilstand;
+        private ArrayList<String> Log_liste;         // opret liste-variabel
+        private Date netopNu; // dato variabel
+        private boolean debug = true;
+	
+        
            
 	/**
 	 * Opret en billetautomat der sælger billetter til 10 kr.
@@ -15,6 +26,14 @@ public class Billetautomat {
 		billetpris = 10;
 		balance = 0;
 		antalBilletterSolgt = 0;
+                Log_liste = new ArrayList<String>(); // opret liste-objekt
+                netopNu = new Date();
+                Log_liste.add("Opsætning af automat gennemført.\nTimestamp: "+netopNu.toString());
+                if(debug){
+                    System.out.println(Log_liste.get(0));
+                }
+                
+                
 	}
 
 	/**
@@ -31,8 +50,16 @@ public class Billetautomat {
 	public void indsætPenge(int beløb) {
             if(beløb > 0){ // Tjek om der bliver indbetalt et gyldigt beløb
                 balance = balance + beløb;
+                Log_liste.add(netopNu.toString()+" Der blev indsat beløb: '"+beløb+"'");
+                if(debug){
+                    System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                }
             }else{
                 System.out.println("Det indsatte beløb er ugyldigt.");
+                Log_liste.add(netopNu.toString()+" Der blev forsøgt indbetalt beløb: '"+beløb+"' ,men det blev fanget af \"Tjek om gyldigt beløb\"");
+                if(debug){
+                    System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                }
             }
 	}
 
@@ -52,6 +79,11 @@ public class Billetautomat {
 			System.out.println("Du mangler at indbetale nogle penge");
                         return;
 		}
+                Log_liste.add(netopNu.toString()+" Der blev udskrevet en billet");
+                if(debug){
+                    System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                }
+                
                 balance = balance - billetpris; // Udregner den nye balance EN gang
 		System.out.println("##########B##T#########");
 		System.out.println("# BlueJ Trafikselskab #");
@@ -77,9 +109,14 @@ public class Billetautomat {
             }else{ // Hvis balancen er positiv eller 0
                 returbeløb = balance;
             }
-		balance = 0;
-		System.out.println("Du får "+returbeløb+" kr retur");
-		return returbeløb;
+            balance = 0;
+            System.out.println("Du får "+returbeløb+" kr retur");
+            
+            Log_liste.add(netopNu.toString()+" Kunden fik "+returbeløb+" retur.");
+            if(debug){
+                System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+            }
+            return returbeløb;
 	}
 
 	
@@ -88,10 +125,19 @@ public class Billetautomat {
 			montørtilstand = true;
 			System.out.println("Montørtilstand aktiveret");
 			System.out.println("Du kan nu angive billetpris");
+                        Log_liste.add(netopNu.toString()+" Succesfuld montørLogin registeret");
+                        if(debug){
+                            System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                        }
 		} else {
 			montørtilstand = false;
 			System.out.println("Montørtilstand deaktiveret");
+                        Log_liste.add(netopNu.toString()+" Ugyldigt montørLogin registeret med adgangskoden: '"+adgangskode+"'");
+                        if(debug){
+                            System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                        }
 		}
+                
 	}
 
 
@@ -114,23 +160,40 @@ public class Billetautomat {
 	}
 
 	public void setBilletpris(int billetpris) {
-                if (this.montørtilstand) { // Billetprisen kan kun sættes som montør
-                    if(billetpris >= 0){ // Billetprisen kan ikke være negativ
-			this.billetpris = billetpris;
-                    }else{
-                        System.out.println("Billetprisen kan ikke være negativ.");
+            int billetpris_old = this.billetpris;
+            if (this.montørtilstand) { // Billetprisen kan kun sættes som montør
+                if(billetpris >= 0){ // Billetprisen kan ikke være negativ
+                    this.billetpris = billetpris;
+                    Log_liste.add(netopNu.toString()+" blev billetprisen ændret fra; '"+billetpris_old+"' til '"+billetpris+"'");
+                    if(debug){
+                        System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
                     }
-		}else {
-			System.out.println("Afvist - log ind først");
-		}
+                }else{
+                    System.out.println("Billetprisen kan ikke være negativ.");
+                }
+            }else {
+                    System.out.println("Afvist - log ind først");
+                    Log_liste.add(netopNu.toString()+" blev billetprisen forsøgt ændre fra; '"+billetpris_old+"' til '"+billetpris+"' af en der ikke var logget ind som montør");
+                    if(debug){
+                        System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                    }
+            }
 		
 	}
 
 	public void nulstil() {
 		if (montørtilstand) {
-			antalBilletterSolgt = 0;
+		    antalBilletterSolgt = 0;
+                    Log_liste.add(netopNu.toString()+" blev billetautomaten nulstillet af en montør");
+                    if(debug){
+                        System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                    }                        
 		} else {
 			System.out.println("Afvist - log ind først");
+                        Log_liste.add(netopNu.toString()+" blev billetautomaten forsøgt nulstillet af en der ikke var logget ind som montør");
+                        if(debug){
+                            System.out.println(Log_liste.get(Log_liste.size()-1)); // Størrelsen af listen-1 er det nyeste element tilføjet til listen.
+                        }
 		}
 	}
 
@@ -144,5 +207,14 @@ public class Billetautomat {
 
 	public boolean erMontør() {
 		return montørtilstand;
+                // nice meme
+	}
+        
+        public void udskrivLog() {
+            if (montørtilstand) {
+                    
+            } else {
+                    System.out.println("Afvist - log ind først");
+            }
 	}
 }
