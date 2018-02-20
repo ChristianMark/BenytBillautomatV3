@@ -142,7 +142,7 @@ public class Billetautomat {
                             System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                         }                           
                     }else{
-                        montoertilstand = false;
+                        
                         System.out.println("Montoertilstand deaktiveret");
                         // Timestamp på hvornår et ugyldigt montørlogin er prøvet
                         Log_liste.add(netopNu.toString()+" Ugyldigt montoerLogin registeret med adgangskoden: '"+adgangskode+"'");
@@ -150,6 +150,7 @@ public class Billetautomat {
                             System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                         }
                     }
+                    montoertilstand = false;
             }
                 
 	}
