@@ -62,10 +62,11 @@ public class BenytBilletautomat
 				automat.setBilletpris(beloeb);
 			}
 			else if (valg==14) {
-				automat.udskrivLog();
+				//automat.udskrivLog();
+                                automat.udskrivLog_event_liste(); // Bruger den nye log
 			}
                         else if (valg==15) {
-				automat.montoerLogin("");;
+				automat.montoerLogin("");
 			}
 			else {
 				System.out.println("Ugyldigt valg, proev igen");
