@@ -33,7 +33,7 @@ public class Billetautomat {
                 netopNu = new Date();
                 
                 Log_liste.add(netopNu.toString()+" Opsaetning af automat gennemfoert."); // Timestamp på hvornår automaten er blevet sat op
-                event_liste.add(new Log_event("Opsaetning af automat gennemfoert",erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(1,erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 
                 
                 if(debug){
@@ -59,7 +59,7 @@ public class Billetautomat {
             if(beloeb > 0){ // Tjek om der bliver indbetalt et gyldigt beloeb
                 balance = balance + beloeb;
                 Log_liste.add(netopNu.toString()+" Der blev indsat beloeb: '"+beloeb+"'"); // Timestamp på hvornår der er blevet indsat 'beløb' antal penge
-                event_liste.add(new Log_event("Der blev indsat beloeb", beloeb, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(2, beloeb, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 if(debug){
                     System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                 }
@@ -67,7 +67,7 @@ public class Billetautomat {
                 System.out.println("Det indsatte beloeb er ugyldigt.");
                 // Timestamp på hvornår et ugyldigt beløb er forsøgt indkastet
                 Log_liste.add(netopNu.toString()+" Der blev forsoegt indbetalt beloeb: '"+beloeb+"' ,men det blev fanget af \"Tjek om gyldigt beloeb\"");
-                event_liste.add(new Log_event("Der blev forsoegt indbetalt et udgyldigt beloeb", beloeb, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(2, beloeb, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 if(debug){
                     System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                 }
@@ -92,7 +92,7 @@ public class Billetautomat {
 		}
                 netopNu = new Date(); // Hent et nyt Date objekt
                 Log_liste.add(netopNu.toString()+" Der blev udskrevet en billet");// Timestamp på hvornår automaten har udskrevet en billet
-                event_liste.add(new Log_event("Der blev udskrevet en billet", erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(3, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 
                 if(debug){
                     System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
@@ -117,21 +117,18 @@ public class Billetautomat {
 
 	public int returpenge() {
             int returbeloeb;
+            netopNu = new Date(); // Hent et nyt Date objekt
             
             if(balance < 0){ // Hvis balancen er negativ
                 returbeloeb = 0;
+                event_liste.add(new Log_event(4,balance,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
             }else{ // Hvis balancen er positiv eller 0
                 returbeloeb = balance;
+                event_liste.add(new Log_event(4,returbeloeb,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                Log_liste.add(netopNu.toString()+" Kunden fik "+returbeloeb+" retur."); // Timestamp på hvornår og hvor mange returnpenge der er blevet givet tilbage
             }
             balance = 0;
             System.out.println("Du faar "+returbeloeb+" kr retur");
-            
-            netopNu = new Date(); // Hent et nyt Date objekt
-            Log_liste.add(netopNu.toString()+" Kunden fik "+returbeloeb+" retur."); // Timestamp på hvornår og hvor mange returnpenge der er blevet givet tilbage
-            event_liste.add(new Log_event("Der er blevet tilbagebetalt beloeb: ", returbeloeb, erMontoer())); // Tilføj "Log_event" objekt til event_listen
-            if(debug){
-                System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
-            }
             return returbeloeb;
 	}
 
@@ -139,11 +136,11 @@ public class Billetautomat {
 	void montoerLogin(String adgangskode) {
             netopNu = new Date(); // Hent et nyt Date objekt
             if ("1234".equals(adgangskode)) {
+                    event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                     montoertilstand = true;
                     System.out.println("Montoertilstand aktiveret");
                     System.out.println("Du kan nu angive billetpris");
                     Log_liste.add(netopNu.toString()+" Succesfuld montoerLogin registeret"); // Timestamp på hvornår montøren har logget succesfuldt ind
-                    event_liste.add(new Log_event("Succesfuld montoerLogin registeret", erMontoer())); // Tilføj "Log_event" objekt til event_listen
                     if(debug){
                         System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                     }
@@ -151,16 +148,15 @@ public class Billetautomat {
                     if(montoertilstand = true){ // Hvis montoeren bare logger ud
                         System.out.println("Montoertilstand deaktiveret");
                         Log_liste.add(netopNu.toString()+" Montoeren har logget ud."); // Timestamp på hvornår Montøren har logget ud
-                        event_liste.add(new Log_event("Montoeren har logget ud ", erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                        event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                         if(debug){
                             System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                         }                           
                     }else{
-                        
                         System.out.println("Montoertilstand deaktiveret");
                         // Timestamp på hvornår et ugyldigt montørlogin er prøvet
                         Log_liste.add(netopNu.toString()+" Ugyldigt montoerLogin registeret med adgangskoden: '"+adgangskode+"'");
-                        event_liste.add(new Log_event("Ugyldigt montoerLogin registeret med adgangskoden '"+adgangskode+"'", erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                        event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                         if(debug){
                             System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                         }
@@ -197,18 +193,20 @@ public class Billetautomat {
                     this.billetpris = billetpris;
                     // Timestamp på hvornår billetprisen er blevet ændret og til hvad
                     Log_liste.add(netopNu.toString()+" blev billetprisen aendret fra; '"+billetpris_old+"' til '"+billetpris+"'");
-                    event_liste.add(new Log_event("Blev billetprisen aendret fra; '"+billetpris_old+"'",billetpris, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                    event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                     if(debug){
                         System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                     }
                 }else{
                     System.out.println("Billetprisen kan ikke vaere negativ.");
+                    Log_liste.add(netopNu.toString()+" blev billetprisen forsoget aendret fra; '"+billetpris_old+"' til '"+billetpris+"'");
+                    event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
                 }
             }else {
                     System.out.println("Afvist - log ind foerst");
                     // Timestamp på ugyldigt forsøg på ændring af billetpris
                     Log_liste.add(netopNu.toString()+" blev billetprisen forsoegt aendre fra; '"+billetpris_old+"' til '"+billetpris+"' af en der ikke var logget ind som montoer");
-                    event_liste.add(new Log_event("Blev billetprisen forsoegt aendret fra: '"+billetpris_old+"'",billetpris, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                    event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                     if(debug){
                         System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                     }
@@ -221,7 +219,7 @@ public class Billetautomat {
             if (montoertilstand) {
                 antalBilletterSolgt = 0;
                 Log_liste.add(netopNu.toString()+" blev billetautomaten nulstillet af en montoer."); // Timestamp på hvornår automaten er blevet nulstillet
-                event_liste.add(new Log_event("Blev billetautomaten nulstillet af en montoer", erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(9, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 if(debug){
                     System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                 }                        
@@ -229,7 +227,7 @@ public class Billetautomat {
                     System.out.println("Afvist - log ind foerst");
                     // Timestamp på hvornår automaten er forsøgt nulstillet
                     Log_liste.add(netopNu.toString()+" blev billetautomaten forsoegt nulstillet af en der ikke var logget ind som montoer.");
-                    event_liste.add(new Log_event("Blev billetautomaten forsoegt nulstillet", erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                    event_liste.add(new Log_event(9, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                     if(debug){
                         System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                     }
@@ -239,8 +237,12 @@ public class Billetautomat {
 	public void setAntalBilletterSolgt(int antalBilletterSolgt) {
 		if (montoertilstand) {
 			this.antalBilletterSolgt = antalBilletterSolgt;
+                        event_liste.add(new Log_event(7,antalBilletterSolgt,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen                        
 		} else {
 			System.out.println("Afvist - log ind foerst");
+                        Log_liste.add(netopNu.toString()+" blev antal billetter forsoegt indstillet til "+ antalBilletterSolgt+" af en der ikke var logget ind som montoer.");
+                        event_liste.add(new Log_event(7,antalBilletterSolgt,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                        
 		}
 	}
 
@@ -270,18 +272,18 @@ public class Billetautomat {
                 netopNu = new Date(); // Hent et nyt Date objekt
                 System.out.println("============ Transaktioner pr. "+netopNu.toString()); // Udskrivning af log
 		for (Log_event element : event_liste) {  // gennemloeb alle elementerne i loggen
-			System.out.println(element);
+                       System.out.println(element); 
 		}      
                 //System.out.println("============ Loggen er nu blevet clearet");
                 //Log_liste.add(netopNu.toString()+" blev Loggen clearet.");// Timestamp på hvornår loggen sidst er blevet læst og derfor clearet
-                event_liste.add(new Log_event("Loggen blev udskrevet",erMontoer()));
+                event_liste.add(new Log_event(8, true, erMontoer()));
                 
                 if(debug){
                     System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                 }                
-            } else {
+            }else {
                     System.out.println("Afvist - log ind foerst");
-                    event_liste.add(new Log_event("Logget blev forsøgt udskrevet",erMontoer()));
+                    event_liste.add(new Log_event(8,false,erMontoer()));
             }
 	}
 }
