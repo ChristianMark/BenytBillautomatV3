@@ -15,12 +15,9 @@ class Log_event {
 
     @Override
     public String toString() {
-       // return "Log_event{" + "tidspunkt=" + tidspunkt + ", handling=" + handling + ", paremetre=" + paremetre + ", montoer_tilstand=" + montoer_tilstand + '}';
-       if(paremetre != -1){
-           return tidspunkt+ "; "+ handling + "; Kaldet med paremeteren: "+paremetre+ "; Montoertilstand: "+montoer_tilstand;
-       }else{
-           return tidspunkt+ "; "+ handling + "; Montoertilstand: "+montoer_tilstand;
-       }
+        // returner string af handling i tekst
+        return tidspunkt+ "; "+ handling + "; Montoertilstand: "+montoer_tilstand;
+       
        
     }
     
@@ -78,6 +75,7 @@ class Log_event {
                break;
                
            case 5 :
+               //Loggen kan ikke kende forskel på koden "0123" og "123" da en sting konverteres til int
                if (this.sucess){
                    this.handling = "Der blev logget ind som montoer med koden"+this.paremetre;
                }else{
