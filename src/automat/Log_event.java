@@ -42,7 +42,8 @@ class Log_event {
         
         //switch statement som giver handlingen sin beskrivelse ud fra id_nr og sucess boolean
         switch(id_nr){
-           case 1 : //oprettelse af automaten
+           case 1 : 
+                //oprettelse af automaten
                 if (this.sucess){
                     this.handling = "Opsaetning af automat gennemfoert";
                 } else {
@@ -51,6 +52,7 @@ class Log_event {
                 break;
                 
            case 2 :
+               //insæt penge
                if (this.sucess){
                    this.handling = "Der blev indsat beloebet: " +this.paremetre;
                }else{
@@ -59,6 +61,7 @@ class Log_event {
                break;
                
            case 3 :
+               //udskrivning af billet
                if (this.sucess){
                    this.handling = "Der blev udskrevet en billet";
                }else{
@@ -67,6 +70,7 @@ class Log_event {
                break;
                
            case 4 :
+               //retunerer penge
                if (this.sucess){
                    this.handling = "Der blev tilbagebetalt beloebet: "+ this.paremetre;
                }else {
@@ -75,9 +79,10 @@ class Log_event {
                break;
                
            case 5 :
+               //montørloggin
                //Loggen kan ikke kende forskel på koden "0123" og "123" da en sting konverteres til int
                if (this.sucess){
-                   this.handling = "Der blev logget ind som montoer med koden"+this.paremetre;
+                   this.handling = "Der blev logget ind som montoer med koden: "+this.paremetre;
                }else{
                    if (this.montoer_tilstand){
                        this.handling = "Der blev logget ud af montoertilstanden, med koden: " + this.paremetre;
@@ -88,18 +93,20 @@ class Log_event {
                break;
                
            case 6:
+               //ændring af billetpris
                 if (this.sucess){
                    this.handling = "Billetprisen blev sucessfuldt ændret til: "+ this.paremetre;
                 } else {
                    if (this.montoer_tilstand){
                        this.handling = "Billetprisen blev forsoegt aendret af montoeren til: "+this.paremetre;
                    } else {
-                       this.handling = "Billetprisen blev forsoegt aendret af kunden til:"+this.paremetre;
+                       this.handling = "Billetprisen blev forsoegt aendret af kunden til: "+this.paremetre;
                    }//end if..else - montoer_tilstand
                 }//end if..else - sucess
                 break;
                
            case 7:
+               //Ændring i antal af biletter solgt
                 if (this.sucess){
                    this.handling = "Antallet af solgte billetter blev aendret til: "+ this.paremetre;
                 } else {
@@ -108,6 +115,7 @@ class Log_event {
                 break;
                 
            case 8:
+               //udskriv loggen
                if (this.sucess){
                    this.handling = "Loggen er blevet udskrevet af montoeren";
                } else {
@@ -116,6 +124,7 @@ class Log_event {
                break;
                
            case 9:
+               //nulstil maskinen
                if (this.sucess){
                    this.handling = "Automaten er blevet nulstillet af montoeren";
                } else {
