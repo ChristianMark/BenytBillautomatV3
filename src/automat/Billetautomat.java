@@ -332,4 +332,25 @@ public class Billetautomat {
                 } //end else if
             }//end for-loop
         }
+        
+        public void find_trans_over(int ID, int belob){
+            
+            if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
+                System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
+                return;
+            }
+            
+            for (Log_event element : event_liste) {
+                if (ID != 0 && element.getId_nr() == ID) {
+                    if (element.getParemetre() > belob){
+                        System.out.println(element);
+                    }
+                } else if (ID == 0) {
+                    if (element.getParemetre() > belob){
+                        System.out.println(element);
+                    }
+                } //end else if
+            }//end for-loop
+            
+}
 }
