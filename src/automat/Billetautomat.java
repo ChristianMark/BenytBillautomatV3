@@ -1,8 +1,6 @@
 package automat;
 import java.util.ArrayList; 
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date; // Date-klassen er i pakken java.util
 
 /**
@@ -344,24 +342,29 @@ public class Billetautomat {
             return tal;
         }
         
-        public void find_trans_over(int ID, int belob){
-            
+        public int find_trans_over(int ID, int belob){
+            int tal = 0;
             if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
                 System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
-                return;
+                return -1;
             }
             
             for (Log_event element : event_liste) {
                 if (ID != 0 && element.getId_nr() == ID) {
                     if (element.getParemetre() > belob){
                         System.out.println(element);
+                        tal++;
                     }
                 } else if (ID == 0) {
                     if (element.getParemetre() > belob){
                         System.out.println(element);
+                        tal++;
                     }
                 } //end else if
             }//end for-loop
-            
-}
+            if(tal == 0){
+                System.out.println("Der blev ikke fundet nogle log-elementer der svarede til søge kriteriet.");
+            }
+            return tal;
+        }
 }
