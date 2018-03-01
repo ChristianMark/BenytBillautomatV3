@@ -270,7 +270,7 @@ public class Billetautomat {
         public void udskrivLog_event_liste() {
             if (montoertilstand) {
                 netopNu = new Date(); // Hent et nyt Date objekt
-                System.out.println("============ Transaktioner pr. "+netopNu.toString()); // Udskrivning af log
+                System.out.println("============ Transaktioner pr. "+netopNu.toString()+"============"); // Udskrivning af log
 		for (Log_event element : event_liste) {  // gennemloeb alle elementerne i loggen
                        System.out.println(element); 
 		}      
@@ -286,4 +286,50 @@ public class Billetautomat {
                     event_liste.add(new Log_event(8,false,erMontoer()));
             }
 	}
+        
+        private void udskriver(int ID, int success_parameter){
+            
+            if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
+                System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
+                return;
+            }
+            
+            for (Log_event element : event_liste) {
+                if (ID != 0 && element.getId_nr() == ID) {
+                    switch (success_parameter) {
+                        case 0: // False
+                            if(!element.isSucess()){
+                                System.out.println(element);
+                            }   break;
+                        case 1: // True
+                            if(element.isSucess()){
+                                System.out.println(element);
+                            }   break;
+                        case 2: // Udskriv alt
+                            System.out.println(element);
+                            break;
+                        default:
+                            System.out.println("Fejl i udskriver med ID: "+ ID+ " og success_parameter: "+ success_parameter);
+                            break;
+                    }
+                } else if (ID == 0) {
+                    switch (success_parameter) {
+                        case 0: // False
+                            if(!element.isSucess()){
+                                System.out.println(element);
+                            }  break;
+                        case 1: // True
+                            if(element.isSucess()){
+                                System.out.println(element);
+                            }  break;
+                        case 2: // Udskriv alt
+                            System.out.println(element);
+                            break;
+                        default:
+                            System.out.println("Fejl i udskriver med ID: "+ ID+ " og success_parameter: "+ success_parameter);
+                            break;
+                    }//end switch
+                } //end else if
+            }//end for-loop
+        }
 }

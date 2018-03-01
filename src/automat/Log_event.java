@@ -28,11 +28,15 @@ class Log_event {
     public static int antal_events;
     private final boolean sucess;
     private final int id_nr;
+    public static int hojestID = 9;
     
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
      */
     public Log_event(int id, int paremetre, boolean sucess, boolean erMontoer) {
+        if(0 > id || id > hojestID){
+            System.err.println("Ugyldigt id: Mangler at blive talt med i hojestID");
+        }
         this.tidspunkt = new Date();
         this.id_nr = id;
         this.paremetre = paremetre;
