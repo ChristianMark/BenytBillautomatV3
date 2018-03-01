@@ -351,12 +351,12 @@ public class Billetautomat {
             
             for (Log_event element : event_liste) {
                 if (ID != 0 && element.getId_nr() == ID) {
-                    if (element.getParemetre() > belob){
+                    if (element.getParemetre() >= belob){
                         System.out.println(element);
                         tal++;
                     }
                 } else if (ID == 0) {
-                    if (element.getParemetre() > belob){
+                    if (element.getParemetre() >= belob){
                         System.out.println(element);
                         tal++;
                     }
