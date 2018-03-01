@@ -27,7 +27,8 @@ public class BenytBilletautomat
 				System.out.println("Tast 12 for at nulstille (montoer)");
 				System.out.println("Tast 13 for at saette billetpris (montoer)");
                                 System.out.println("Tast 14 for at faa udskrevet en log");
-				System.out.println("Tast 15 for at logge ud af montoertilstand");
+                                System.out.println("Tast 15 for at udskrive log med soegekriterier");
+				System.out.println("Tast 16 for at logge ud af montoertilstand");
 			}
                         int valg = tastatur.nextInt();
 			tastatur.nextLine();
@@ -66,6 +67,42 @@ public class BenytBilletautomat
                                 automat.udskrivLog_event_liste(); // Bruger den nye log
 			}
                         else if (valg==15) {
+				System.out.println("Tast et tal fra listen:");
+				System.out.println("1: Opsaettelse af maskinen");
+				System.out.println("2: Penge indsættelse");
+                                System.out.println("3: Udskrevne billetter");
+                                System.out.println("4: Penge returneret");
+                                System.out.println("5: Montoer logins");
+                                System.out.println("6: Aerndring af billetpriser");
+                                System.out.println("7: Aerndring i antal solgte billetter");
+                                System.out.println("8: Log udskrifter");
+                                System.out.println("9: Nulstilling af automaten");
+                                int valg2 = tastatur.nextInt();
+                                tastatur.nextLine();
+                                System.out.println("Skriv 0 for at soege på paremetre.\n1 for, at soege efter succesfulde handlinger.");
+                                System.out.println("2 for at soege efter fejlede handlinger. \n3 for alle handlinger.");
+                                int valg3 = tastatur.nextInt();
+                                tastatur.nextLine();
+                                
+                                if(valg3 == 0){
+                                    System.out.println("Indtast paremetre du vil soege over.");
+                                    int valg4 = tastatur.nextInt();
+                                    tastatur.nextLine();
+                                    automat.find_trans_over(valg2, valg4);
+                                }else{
+                                    switch(valg3){
+                                    case 1: automat.udskriver(valg2, 1);
+                                            break;
+                                    case 2: automat.udskriver(valg2, 0);
+                                            break;
+                                    case 3: automat.udskriver(valg2, 2);
+                                            break;
+                                    default: System.out.println("Du valgte et ugyldt svar: "+valg3);
+                                            break;
+                                    }                                    
+                                }
+			}                        
+                        else if (valg==16) {
 				automat.montoerLogin("");
 			}
 			else {
