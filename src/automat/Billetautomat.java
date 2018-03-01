@@ -88,6 +88,7 @@ public class Billetautomat {
 	public void udskrivBillet() {
 		if (balance<billetpris) {
 			System.out.println("Du mangler at indbetale nogle penge");
+                        event_liste.add(new Log_event(3, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                         return;
 		}
                 netopNu = new Date(); // Hent et nyt Date objekt
@@ -145,7 +146,7 @@ public class Billetautomat {
                         System.out.println(Log_liste.get(Log_liste.size()-1)); // Stoerrelsen af listen-1 er det nyeste element tilfoejet til listen.
                     }
             } else {
-                    if(montoertilstand = true){ // Hvis montoeren bare logger ud
+                    if(montoertilstand == true){ // Hvis montoeren bare logger ud
                         System.out.println("Montoertilstand deaktiveret");
                         Log_liste.add(netopNu.toString()+" Montoeren har logget ud."); // Timestamp på hvornår Montøren har logget ud
                         event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
@@ -287,11 +288,11 @@ public class Billetautomat {
             }
 	}
         
-        private void udskriver(int ID, int success_parameter){
-            
+        public int udskriver(int ID, int success_parameter){
+            int tal = 0; // Antal udskrifter
             if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
                 System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
-                return;
+                return -1;
             }
             
             for (Log_event element : event_liste) {
@@ -300,37 +301,47 @@ public class Billetautomat {
                         case 0: // False
                             if(!element.isSucess()){
                                 System.out.println(element);
+                                tal++;
                             }   break;
                         case 1: // True
                             if(element.isSucess()){
                                 System.out.println(element);
+                                tal++;
                             }   break;
                         case 2: // Udskriv alt
                             System.out.println(element);
+                            tal++;
                             break;
                         default:
                             System.out.println("Fejl i udskriver med ID: "+ ID+ " og success_parameter: "+ success_parameter);
-                            break;
+                            return -1;
                     }
                 } else if (ID == 0) {
                     switch (success_parameter) {
                         case 0: // False
                             if(!element.isSucess()){
                                 System.out.println(element);
+                                tal++;
                             }  break;
                         case 1: // True
                             if(element.isSucess()){
                                 System.out.println(element);
+                                tal++;
                             }  break;
                         case 2: // Udskriv alt
                             System.out.println(element);
+                            tal++;
                             break;
                         default:
                             System.out.println("Fejl i udskriver med ID: "+ ID+ " og success_parameter: "+ success_parameter);
-                            break;
+                            return -1;
                     }//end switch
                 } //end else if
             }//end for-loop
+            if(tal == 0){
+                System.out.println("Der blev ikke fundet nogle log-elementer der svarede til søge kriteriet.");
+            }
+            return tal;
         }
         
         public void find_trans_over(int ID, int belob){
