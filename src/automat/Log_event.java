@@ -26,8 +26,8 @@ class Log_event {
     private final int paremetre;
     private final boolean montoer_tilstand;
     public static int antal_events;
-    public final boolean sucess;
-    public final int id_nr;
+    private final boolean sucess;
+    private final int id_nr;
     
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
@@ -168,6 +168,12 @@ class Log_event {
     public static int getAntal_events() {
         return antal_events;
     }
+    public boolean isSucess() {
+        return sucess;
+    }
 
+    public int getId_nr() {
+        return id_nr;
+    }
     
 }
