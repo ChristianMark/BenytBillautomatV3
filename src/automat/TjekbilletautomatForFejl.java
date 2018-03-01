@@ -63,11 +63,12 @@ public class TjekbilletautomatForFejl {
         // Forsøg at nustille maskinen uden at være logget ind
         System.out.print("Forsøg at nustille maskinen uden at være logget ind - ");
         automat.nulstil();
-        
+               
+        System.out.println("--------------------------\n\n\n");
         // Udskrivning af Log_event listen
         automat.montoerLogin("1234");
-        automat.montoerLogin("1234");
-        automat.udskrivLog_event_liste();
+        automat.udskriver( 4, 1);
+        //automat.udskrivLog_event_liste();
         //Thread.sleep(10000);
 
         
