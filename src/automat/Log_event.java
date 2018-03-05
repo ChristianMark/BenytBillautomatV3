@@ -23,7 +23,7 @@ class Log_event {
     
     private final Date tidspunkt;
     private final String handling;
-    private final int paremetre;
+    private final int argument;
     private final boolean montoer_tilstand;
     public static int antal_events;
     private final boolean sucess;
@@ -33,13 +33,13 @@ class Log_event {
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
      */
-    public Log_event(int id, int paremetre, boolean sucess, boolean erMontoer) {
+    public Log_event(int id, int argument, boolean sucess, boolean erMontoer) {
         if(0 > id || id > hojestID){
             System.err.println("Ugyldigt id: Mangler at blive talt med i hojestID");
         }
         this.tidspunkt = new Date();
         this.id_nr = id;
-        this.paremetre = paremetre;
+        this.argument = argument;
         this.sucess = sucess;
         this.montoer_tilstand = erMontoer;
         antal_events++;
@@ -58,9 +58,9 @@ class Log_event {
            case 2 :
                //insæt penge
                if (this.sucess){
-                   this.handling = "Der blev indsat beloebet: " +this.paremetre;
+                   this.handling = "Der blev indsat beloebet: " +this.argument;
                }else{
-                   this.handling = "Der blev forsøgt indsat det ugyldige beloeb: " +this.paremetre;
+                   this.handling = "Der blev forsøgt indsat det ugyldige beloeb: " +this.argument;
                }
                break;
                
@@ -76,9 +76,9 @@ class Log_event {
            case 4 :
                //retunerer penge
                if (this.sucess){
-                   this.handling = "Der blev tilbagebetalt beloebet: "+ this.paremetre;
+                   this.handling = "Der blev tilbagebetalt beloebet: "+ this.argument;
                }else {
-                   this.handling = "Der blev forsøgt retuneret beløbet: "+this.paremetre;
+                   this.handling = "Der blev forsøgt retuneret beløbet: "+this.argument;
                }
                break;
                
@@ -86,12 +86,12 @@ class Log_event {
                //montørloggin
                //Loggen kan ikke kende forskel på koden "0123" og "123" da en sting konverteres til int
                if (this.sucess){
-                   this.handling = "Der blev logget ind som montoer med koden: "+this.paremetre;
+                   this.handling = "Der blev logget ind som montoer med koden: "+this.argument;
                }else{
                    if (this.montoer_tilstand){
-                       this.handling = "Der blev logget ud af montoertilstanden, med koden: " + this.paremetre;
+                       this.handling = "Der blev logget ud af montoertilstanden, med koden: " + this.argument;
                    }else{
-                       this.handling = "Ugyldigt montoerlogin registreret med adgangskoden: "+this.paremetre;
+                       this.handling = "Ugyldigt montoerlogin registreret med adgangskoden: "+this.argument;
                    }//end if..else - montoer_tilstand
                }//end if .. else sucess
                break;
@@ -99,12 +99,12 @@ class Log_event {
            case 6:
                //ændring af billetpris
                 if (this.sucess){
-                   this.handling = "Billetprisen blev sucessfuldt ændret til: "+ this.paremetre;
+                   this.handling = "Billetprisen blev sucessfuldt ændret til: "+ this.argument;
                 } else {
                    if (this.montoer_tilstand){
-                       this.handling = "Billetprisen blev forsoegt aendret af montoeren til: "+this.paremetre;
+                       this.handling = "Billetprisen blev forsoegt aendret af montoeren til: "+this.argument;
                    } else {
-                       this.handling = "Billetprisen blev forsoegt aendret af kunden til: "+this.paremetre;
+                       this.handling = "Billetprisen blev forsoegt aendret af kunden til: "+this.argument;
                    }//end if..else - montoer_tilstand
                 }//end if..else - sucess
                 break;
@@ -112,9 +112,9 @@ class Log_event {
            case 7:
                //Ændring i antal af biletter solgt
                 if (this.sucess){
-                   this.handling = "Antallet af solgte billetter blev aendret til: "+ this.paremetre;
+                   this.handling = "Antallet af solgte billetter blev aendret til: "+ this.argument;
                 } else {
-                    this.handling = "Antallet af solgte billetter blev forsoegt aendret af kunden til: "+this.paremetre;
+                    this.handling = "Antallet af solgte billetter blev forsoegt aendret af kunden til: "+this.argument;
                 }//end if..else - sucess
                 break;
                 
@@ -137,7 +137,7 @@ class Log_event {
                break;
                
            default : 
-               this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.paremetre;
+               this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument;
                break;
                
        }
@@ -161,8 +161,8 @@ class Log_event {
         return handling;
     }
 
-    public int getParemetre() {
-        return paremetre;
+    public int getArgument() {
+        return argument;
     }
 
     public boolean isMontoer_tilstand() {
