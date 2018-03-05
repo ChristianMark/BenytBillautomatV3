@@ -58,7 +58,7 @@ public class TjekbilletautomatForFejl {
         
         // Forsøg at få udskrevet loggen uden at være logget ind
         System.out.print("Forsøg at få udskrevet loggen uden at være logget ind - ");
-        automat.udskrivLog();
+        
         
         // Forsøg at nustille maskinen uden at være logget ind
         System.out.print("Forsøg at nustille maskinen uden at være logget ind - ");
