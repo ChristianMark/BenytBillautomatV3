@@ -128,24 +128,26 @@ public class Billet {
     }
     
     static void setBilletPris(int type, int value){
-        switch (type){
-            case 0 : //voksen billet
-                voksenPris = value;
-                
-            case 1 ://ungdoms billet
-                ungdomsPris = value;
-            
-            case 2 : //barne billet
-                barnePris = value;
-            
-            case 3 : //studenter billet
-                studenterPris = value;
-                                
-            case 4 : //cykel billet
-                cykelPris = value;
-               
-            default:
-                break;
+        if (value > 0){
+            switch (type){
+                case 0 : //voksen billet
+                    voksenPris = value;
+
+                case 1 ://ungdoms billet
+                    ungdomsPris = value;
+
+                case 2 : //barne billet
+                    barnePris = value;
+
+                case 3 : //studenter billet
+                    studenterPris = value;
+
+                case 4 : //cykel billet
+                    cykelPris = value;
+
+                default:
+                    break;
+            }
         }
     }
     
@@ -172,24 +174,26 @@ public class Billet {
     }
     
     static void setBilletPrisPerZone(int type, int value){
-        switch (type){
-            case 0 : //voksen billet
-                voksenPrisPrZone = value;
-                
-            case 1 ://ungdoms billet
-                ungdomsPrisPrZone = value;
-            
-            case 2 : //barne billet
-                barnePrisPrZone = value;
-            
-            case 3 : //studenter billet
-                studenterPrisPrZone = value;
-                                
-            case 4 : //cykel billet
-                cykelPrisPrZone = value;
-               
-            default:
-                break;
+        if (value > 0){
+            switch (type){
+                case 0 : //voksen billet
+                    voksenPrisPrZone = value;
+
+                case 1 ://ungdoms billet
+                    ungdomsPrisPrZone = value;
+
+                case 2 : //barne billet
+                    barnePrisPrZone = value;
+
+                case 3 : //studenter billet
+                    studenterPrisPrZone = value;
+
+                case 4 : //cykel billet
+                    cykelPrisPrZone = value;
+
+                default:
+                    break;
+            }
         }
     }
 
