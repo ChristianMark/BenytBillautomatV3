@@ -1,14 +1,13 @@
 package automat;
 
 
-
 public class BenytBilletautomat
 {
 	public static void main(String[] arg)
 	{
-		Billetautomat automat = new Billetautomat();
+		Billetautomatv2 automat = new Billetautomatv2();
 		java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered
-
+                
 		System.out.println("BenytBilletautomat version 3");
 		System.out.println();
 		
@@ -86,7 +85,7 @@ public class BenytBilletautomat
                                     System.out.println("0 for at soege på paremetre. ");
                                 }
                                     System.out.println("1 for at soege efter succesfulde handlinger.");
-                                    System.out.println("2 for at soege efter fejlede handlinger. \n3 for alle handlinger.");
+                                    System.out.println("2 for at soege efter fejlede handlinger.\n3 for at søge efter dato. \n4 for alle handlinger.");
                                     int valg3 = tastatur.nextInt();
                                     tastatur.nextLine();
                                 
@@ -102,7 +101,17 @@ public class BenytBilletautomat
                                             break;
                                     case 2: automat.udskriver(valg2, 0);
                                             break;
-                                    case 3: automat.udskriver(valg2, 2);
+                                    case 3: System.out.println("\nTast et tal fra listen:");
+                                            System.out.println("0: for at søge indenfor den sidste time");
+                                            System.out.println("1: for at søge indenfor den sidste dag");
+                                            System.out.println("2: for at søge indenfor den sidste uge");
+                                            System.out.println("3: for at søge indenfor de sidste 30 dage");
+                                            int valg4 = tastatur.nextInt();
+                                            tastatur.nextLine();
+                                            System.out.println();
+                                            automat.datoudskriver(valg4,valg2);
+                                            break;
+                                    case 4: automat.udskriver(valg2, 2);
                                             break;
                                     default: System.out.println("Du valgte et ugyldigt svar: "+valg3);
                                             break;

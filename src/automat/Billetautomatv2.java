@@ -28,10 +28,7 @@ public class Billetautomatv2 {
                 Billetter = new ArrayList<Billet>();
                 
                 netopNu = new Date();
-                event_liste.add(new Log_event(1,erMontoer())); // Tilføj "Log_event" objekt til event_listen
-
-                
-                
+                event_liste.add(new Log_event(1,erMontoer())); // Tilføj "Log_event" objekt til event_listen                
 	}
 
 	/**
@@ -291,4 +288,59 @@ public class Billetautomatv2 {
             }
             return tal;
         }
+
+    void datoudskriver(int valg4, int ID) {
+        Date sammenligningsdato = new Date();
+        int tal = 0;
+        switch(valg4){
+            case 0: 
+                    sammenligningsdato = new Date(sammenligningsdato.getTime() - (60*60*1000)); // 1 time
+                    for (Log_event element : event_liste){
+                        if (element.getId_nr() == ID) {
+                            if(sammenligningsdato.before(element.getTidspunkt())){
+                                System.out.println(element);
+                                tal++;
+                            }
+                        }
+                    }
+                    break;
+            case 1:
+                    sammenligningsdato = new Date(sammenligningsdato.getTime() - (60*60*1000*24)); // 1 dag
+                    for (Log_event element : event_liste){
+                        if (element.getId_nr() == ID) {
+                            if(sammenligningsdato.before(element.getTidspunkt())){
+                                System.out.println(element);
+                                tal++;
+                            }
+                        }
+                    }                
+                    break;
+            case 2:
+                    sammenligningsdato = new Date(sammenligningsdato.getTime() - (60*60*1000*24*7)); // Uge
+                    for (Log_event element : event_liste){
+                        if (element.getId_nr() == ID) {
+                            if(sammenligningsdato.before(element.getTidspunkt())){
+                                System.out.println(element);
+                                tal++;
+                            }
+                        }
+                    }                
+                    break;
+            case 3:
+                    sammenligningsdato = new Date(sammenligningsdato.getTime() - (60*60*1000*24*14)); // 14 dage
+                    for (Log_event element : event_liste){
+                        if (element.getId_nr() == ID) {
+                            if(sammenligningsdato.before(element.getTidspunkt())){
+                                System.out.println(element);
+                                tal++;
+                            }
+                        }
+                    }                   
+                    break;
+            default: System.err.println("Datoudskriver metoden modtog ugyldigt input: "+valg4);                    
+        }
+        if(tal == 0){
+            System.out.println("Der blev ikke fundet nogle log-elementer der skete før den angivede dato.");
+        }
+    }
 }

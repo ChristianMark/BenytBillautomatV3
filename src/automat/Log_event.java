@@ -44,6 +44,14 @@ class Log_event {
         this.montoer_tilstand = erMontoer;
         antal_events++;
         
+        
+        // This testning af søgekriterier efter dato
+        //Date test = new Date();
+        //this.tidspunkt = new Date(test.getTime() - (60*60*1000)); // Time
+        //this.tidspunkt = new Date(test.getTime() - (60*60*1000*24)); // Dag
+        //this.tidspunkt = new Date(test.getTime() - (60*60*1000*24*7)); // Uge
+        //this.tidspunkt = new Date(test.getTime() - (60*60*1000*24*14)); // 14 dage      
+        
         //switch statement som giver handlingen sin beskrivelse ud fra id_nr og sucess boolean
         switch(id_nr){
            case 1 : 

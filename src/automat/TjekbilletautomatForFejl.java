@@ -67,8 +67,7 @@ public class TjekbilletautomatForFejl {
         System.out.println("--------------------------\n\n\n");
         // Udskrivning af Log_event listen
         automat.montoerLogin("1234");
-        automat.udskriver( 4, 1);
-        //automat.udskrivLog_event_liste();
+        automat.udskrivLog_event_liste();
         //Thread.sleep(10000);
 
         
