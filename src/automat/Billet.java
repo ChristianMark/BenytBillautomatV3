@@ -86,10 +86,10 @@ public class Billet {
     
     
     int getTotalPris(){
-        if (zoner < 2){
+        if (zoner <= 2){
             return pris;
         } else {
-            return pris + prisPrZone * zoner;
+            return pris + prisPrZone * (zoner-2);
         }
     }
     
