@@ -51,7 +51,7 @@ public class Billet {
                 this.navn = "Voksen Billet";
                 this.prisPrZone = voksenPrisPrZone;
                 break;
-            case 1 :
+            case 1 : //ungdoms billet
                 this.pris = ungdomsPris;
                 this.navn = "Ungdoms Billet";
                 this.prisPrZone = ungdomsPrisPrZone;
@@ -103,6 +103,98 @@ public class Billet {
             udløb = new Date(udløb.getTime() + 1 * HOUR);
         }
         return udløb;
+    }
+    
+    static int getBilletPris(int type){
+        switch (type){
+            case 0 : //voksen billet
+                return voksenPris;
+                
+            case 1 ://ungdoms billet
+                return ungdomsPris;
+            
+            case 2 : //barne billet
+                return barnePris;
+            
+            case 3 : //studenter billet
+                return studenterPris;
+                                
+            case 4 : //cykel billet
+                return cykelPris;
+               
+            default:
+                return -1;
+        }
+    }
+    
+    static void setBilletPris(int type, int value){
+        if (value > 0){
+            switch (type){
+                case 0 : //voksen billet
+                    voksenPris = value;
+
+                case 1 ://ungdoms billet
+                    ungdomsPris = value;
+
+                case 2 : //barne billet
+                    barnePris = value;
+
+                case 3 : //studenter billet
+                    studenterPris = value;
+
+                case 4 : //cykel billet
+                    cykelPris = value;
+
+                default:
+                    break;
+            }
+        }
+    }
+    
+    static int getBilletPrisPerZone(int type){
+        switch (type){
+            case 0 : //voksen billet
+                return voksenPrisPrZone;
+                
+            case 1 ://ungdoms billet
+                return ungdomsPrisPrZone;
+            
+            case 2 : //barne billet
+                return barnePrisPrZone;
+            
+            case 3 : //studenter billet
+                return studenterPrisPrZone;
+                                
+            case 4 : //cykel billet
+                return cykelPrisPrZone;
+               
+            default:
+                return -1;
+        }
+    }
+    
+    static void setBilletPrisPerZone(int type, int value){
+        if (value > 0){
+            switch (type){
+                case 0 : //voksen billet
+                    voksenPrisPrZone = value;
+
+                case 1 ://ungdoms billet
+                    ungdomsPrisPrZone = value;
+
+                case 2 : //barne billet
+                    barnePrisPrZone = value;
+
+                case 3 : //studenter billet
+                    studenterPrisPrZone = value;
+
+                case 4 : //cykel billet
+                    cykelPrisPrZone = value;
+
+                default:
+                    break;
+            }
+        }
     }
 
     public int getZoner() {
