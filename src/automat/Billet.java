@@ -17,7 +17,6 @@ public class Billet {
     private int zoner;
     private int prisPrZone;
     private int type;
-    private Date dato;
     
     
     //class variables
@@ -83,7 +82,6 @@ public class Billet {
 
         this.type = type;
         this.zoner = z;
-        this.dato = new Date();
     }
     
     
@@ -96,13 +94,13 @@ public class Billet {
     }
     
     Date getUdløbstidspunkt(){
-        Date udløb;
+        Date udløb = new Date();
         if (zoner > 5){
-            udløb = new Date(dato.getTime() + 3 * HOUR);
+            udløb = new Date(udløb.getTime() + 3 * HOUR);
         } else if (zoner > 2){
-            udløb = new Date(dato.getTime() + 2 * HOUR);
+            udløb = new Date(udløb.getTime() + 2 * HOUR);
         } else {
-            udløb = new Date(dato.getTime() + 1 * HOUR);
+            udløb = new Date(udløb.getTime() + 1 * HOUR);
         }
         return udløb;
     }
