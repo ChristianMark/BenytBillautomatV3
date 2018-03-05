@@ -64,9 +64,6 @@ public class Billet {
                 
         }
 
-
-
-
         this.type = type;
         this.zoner = z;
         this.dato = new Date();
@@ -97,8 +94,8 @@ public class Billet {
         return zoner;
     }
 
-    public void setZoner(int zoner) {
-        this.zoner = zoner;
+    public void setZoner(int z) {
+        this.zoner = z;
     }
 
     public int getPris() {
