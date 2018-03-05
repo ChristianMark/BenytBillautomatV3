@@ -19,6 +19,23 @@ public class Billet {
     private int type;
     private Date dato;
     
+    
+    //class variables
+    private static int voksenPris = 12;
+    private static int voksenPrisPrZone = 7;
+    
+    private static int ungdomsPris = 10;
+    private static int ungdomsPrisPrZone = 5;
+    
+    private static int barnePris = 7;
+    private static int barnePrisPrZone = 4;
+    
+    private static int studenterPris = 10;
+    private static int studenterPrisPrZone = 5;
+    
+    private static int cykelPris = 15;
+    private static int cykelPrisPrZone = 9;
+    
     //calculating variable
     public static final long HOUR = 3600*1000;
     
@@ -31,32 +48,32 @@ public class Billet {
         
         switch (type){
             case 0 : //voksen billet
-                this.pris = 12;
+                this.pris = voksenPris;
                 this.navn = "Voksen Billet";
-                this.prisPrZone = 7;
+                this.prisPrZone = voksenPrisPrZone;
                 break;
             case 1 :
-                this.pris = 10;
+                this.pris = ungdomsPris;
                 this.navn = "Ungdoms Billet";
-                this.prisPrZone = 5;
+                this.prisPrZone = ungdomsPrisPrZone;
                 break;
             
             case 2 : //barne billet
-                this.pris = 7;
+                this.pris = barnePris;
                 this.navn = "Barne Billet";
-                this.prisPrZone = 4;
+                this.prisPrZone = barnePrisPrZone;
                 break;
             
             case 3 : //studenter billet
-                this.pris = 10;
+                this.pris = studenterPris;
                 this.navn = "Studenter Billet";
-                this.prisPrZone = 5;
+                this.prisPrZone = studenterPrisPrZone;
                 break;
                 
             case 4 : //cykel billet
-                this.pris = 15;
+                this.pris = cykelPris;
                 this.navn = "Cykel Billet";
-                this.prisPrZone = 9;
+                this.prisPrZone = cykelPrisPrZone;
                 break;
             default:
                 break;
@@ -110,6 +127,84 @@ public class Billet {
         return prisPrZone;
     }
     
-    
+    public static int getVoksenPris() {
+        return voksenPris;
+    }
+
+    public static void setVoksenPris(int voksenPris) {
+        Billet.voksenPris = voksenPris;
+    }
+
+    public static int getVoksenPrisPrZone() {
+        return voksenPrisPrZone;
+    }
+
+    public static void setVoksenPrisPrZone(int voksenPrisPrZone) {
+        Billet.voksenPrisPrZone = voksenPrisPrZone;
+    }
+
+    public static int getUngdomsPris() {
+        return ungdomsPris;
+    }
+
+    public static void setUngdomsPris(int ungdomsPris) {
+        Billet.ungdomsPris = ungdomsPris;
+    }
+
+    public static int getUngdomsPrisPrZone() {
+        return ungdomsPrisPrZone;
+    }
+
+    public static void setUngdomsPrisPrZone(int ungdomsPrisPrZone) {
+        Billet.ungdomsPrisPrZone = ungdomsPrisPrZone;
+    }
+
+    public static int getBarnePris() {
+        return barnePris;
+    }
+
+    public static void setBarnePris(int barnePris) {
+        Billet.barnePris = barnePris;
+    }
+
+    public static int getBarnePrisPrZone() {
+        return barnePrisPrZone;
+    }
+
+    public static void setBarnePrisPrZone(int barnePrisPrZone) {
+        Billet.barnePrisPrZone = barnePrisPrZone;
+    }
+
+    public static int getStudenterPris() {
+        return studenterPris;
+    }
+
+    public static void setStudenterPris(int studenterPris) {
+        Billet.studenterPris = studenterPris;
+    }
+
+    public static int getStudenterPrisPrZone() {
+        return studenterPrisPrZone;
+    }
+
+    public static void setStudenterPrisPrZone(int studenterPrisPrZone) {
+        Billet.studenterPrisPrZone = studenterPrisPrZone;
+    }
+
+    public static int getCykelPris() {
+        return cykelPris;
+    }
+
+    public static void setCykelPris(int cykelPris) {
+        Billet.cykelPris = cykelPris;
+    }
+
+    public static int getCykelPrisPrZone() {
+        return cykelPrisPrZone;
+    }
+
+    public static void setCykelPrisPrZone(int cykelPrisPrZone) {
+        Billet.cykelPrisPrZone = cykelPrisPrZone;
+    }
     
 }
