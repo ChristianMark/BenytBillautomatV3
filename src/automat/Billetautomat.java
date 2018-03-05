@@ -15,7 +15,7 @@ public class Billetautomat {
         private ArrayList<Log_event> event_liste;         // opret liste-variabel
         private Date netopNu; // dato variabel
         private boolean debug = false;
-	
+	private ArrayList<Billet> Billetter; 
         
            
 	/**
@@ -27,6 +27,7 @@ public class Billetautomat {
 		antalBilletterSolgt = 0;
                 Log_liste = new ArrayList<String>(); // opret liste-objekt
                 event_liste = new ArrayList<Log_event>(); // opret liste-array af "Log_event" objekter
+                Billetter = new ArrayList<Billet>();
                 
                 netopNu = new Date();
                 
