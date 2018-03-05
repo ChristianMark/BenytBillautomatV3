@@ -7,21 +7,25 @@ import java.util.Date;
  * @author chris & mads
  */
 public class Billetautomatv2 {
-	private int billetpris;    // Prisen for én billet.
-	private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
-	private int antalBilletterSolgt; // Antal billetter automaten i alt har solgt
-	private boolean montoertilstand;
-        private ArrayList<Log_event> event_liste;         // opret liste-variabel
-        private Date netopNu; // dato variabel
-        private boolean debug = false;
-	private ArrayList<Billet> Billetter; 
+    private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
+    private int antalBilletterSolgtType0; // Antal billetter automaten i alt har solgt
+    private int antalBilletterSolgtType1;
+    private int antalBilletterSolgtType2;
+    private int antalBilletterSolgtType3;
+    private int antalBilletterSolgtType4; 
+    private boolean montoertilstand;
+    private ArrayList<Log_event> event_liste;         // opret liste-variabel
+    private Date netopNu; // dato variabel
+    private boolean debug = false;
+    private ArrayList<Billet> Billetter;  //indkøbskurv
+    private int totalIndtjeaning;
         
            
 	/**
 	 * Opret en billetautomat der saelger billetter til 10 kr.
 	 */
 	public Billetautomatv2() {
-		billetpris = 10;
+
 		balance = 0;
 		antalBilletterSolgt = 0;
                 event_liste = new ArrayList<Log_event>(); // opret liste-array af "Log_event" objekter
@@ -35,13 +39,19 @@ public class Billetautomatv2 {
 	}
 
 	/**
-	 * Giver prisen for en billet. 
+	 * Giver basis prisen for en bestemt type billet. 
 	 */
-	public int getBilletpris() {
-		int resultat = billetpris;
-		return resultat;
+	public int getBilletpris(int type) {
+		return Billet.getBilletPris(type);
 	}
-
+        
+        /**
+	 * Giver prisen pr zone for en bestemt type billet. 
+	 */
+	public int getBilletprisPerZone(int type) {
+		return Billet.getBilletPrisPerZone(type);
+	}
+        
 	/**
 	 * Modtag nogle penge (i kroner) fra en kunde.
 	 */
@@ -133,7 +143,7 @@ public class Billetautomatv2 {
 
 	public int getTotal() {
 		if (montoertilstand) {
-			return billetpris * antalBilletterSolgt;
+			return totalIndtjeaning;
 		} else {
 			System.out.println("Afvist - log ind foerst");
 			return -1;
@@ -149,16 +159,20 @@ public class Billetautomatv2 {
 		}
 	}
 
-	public void setBilletpris(int billetpris) {
+	public void setBilletpris(int type, int billetpris) {
             netopNu = new Date(); // Hent et nyt Date objekt
-            int billetpris_old = this.billetpris;
+            int billetpris_old = Billet.getBilletPris(type);
             if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
                 if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
-                    this.billetpris = billetpris;
+                    Billet.setBilletPris(type, billetpris);
                     // Timestamp på hvornår billetprisen er blevet ændret og til hvad
+                    
+                    //Billet klasse ikke implimenteret i log
                     event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 }else{
                     System.out.println("Billetprisen kan ikke vaere negativ.");
+                    
+                    //Billet klasse ikke implimenteret i log
                     event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
                 }
             }else {
@@ -167,11 +181,39 @@ public class Billetautomatv2 {
             }
 		
 	}
+        
+        public void setBilletprisPerZone(int type, int billetpris) {
+            netopNu = new Date(); // Hent et nyt Date objekt
+            int billetpris_old = Billet.getBilletPrisPerZone(type);
+            
+            if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
+                if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
+                    Billet.setBilletPrisPerZone(type, billetpris);
+                    // Timestamp på hvornår billetprisen er blevet ændret og til hvad
+                    
+                    //Billet klasse ikke implimenteret i log
+                    event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                }else{
+                    System.out.println("Billetprisen kan ikke vaere negativ.");
+                    
+                    //Billet klasse ikke implimenteret i log
+                    //event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
+                }
+            }else {
+                    System.out.println("Afvist - log ind foerst");
+                    //event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            }
+		
+	}
 
 	public void nulstil() {
             netopNu = new Date(); // Hent et nyt Date objekt
             if (montoertilstand) {
-                antalBilletterSolgt = 0;
+                antalBilletterSolgtType0 = 0;
+                antalBilletterSolgtType1 = 0;
+                antalBilletterSolgtType2 = 0;
+                antalBilletterSolgtType3 = 0;
+                antalBilletterSolgtType4 = 0;
                 event_liste.add(new Log_event(9, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen                       
             } else {
                     System.out.println("Afvist - log ind foerst");
@@ -179,10 +221,30 @@ public class Billetautomatv2 {
             }
 	}
 
-	public void setAntalBilletterSolgt(int antalBilletterSolgt) {
+	public void setAntalBilletterSolgt(int type, int antalBilletterSolgt) {
 		if (montoertilstand) {
-			this.antalBilletterSolgt = antalBilletterSolgt;
-                        event_liste.add(new Log_event(7,antalBilletterSolgt,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen                        
+                    switch (type){
+                        case 0 : //voksen billet
+                            antalBilletterSolgtType0 = antalBilletterSolgt;
+
+                        case 1 ://ungdoms billet
+                            antalBilletterSolgtType1 = antalBilletterSolgt;
+
+                        case 2 : //barne billet
+                            antalBilletterSolgtType2 = antalBilletterSolgt;
+
+                        case 3 : //studenter billet
+                            antalBilletterSolgtType3 = antalBilletterSolgt;
+
+                        case 4 : //cykel billet
+                            antalBilletterSolgtType4 = antalBilletterSolgt;
+
+                        default:
+                            break;
+                    }
+                    
+                    //Billet klassen ikke implementeret i log
+                    event_liste.add(new Log_event(7,antalBilletterSolgt,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen                        
 		} else {
 			System.out.println("Afvist - log ind foerst");
                         event_liste.add(new Log_event(7,antalBilletterSolgt,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
