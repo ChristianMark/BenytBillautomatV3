@@ -67,7 +67,7 @@ public class BenytBilletautomat
                                 automat.udskrivLog_event_liste(); // Bruger den nye log
 			}
                         else if (valg==15) {
-				System.out.println("Tast et tal fra listen:");
+				System.out.println("\nTast et tal fra listen:");
 				System.out.println("1: Opsaettelse af maskinen");
 				System.out.println("2: Penge indsættelse");
                                 System.out.println("3: Udskrevne billetter");
@@ -79,13 +79,20 @@ public class BenytBilletautomat
                                 System.out.println("9: Nulstilling af automaten");
                                 int valg2 = tastatur.nextInt();
                                 tastatur.nextLine();
-                                System.out.println("Skriv 0 for at soege på paremetre.\n1 for, at soege efter succesfulde handlinger.");
-                                System.out.println("2 for at soege efter fejlede handlinger. \n3 for alle handlinger.");
-                                int valg3 = tastatur.nextInt();
-                                tastatur.nextLine();
                                 
-                                if(valg3 == 0){
-                                    System.out.println("Indtast paremetre du vil soege over.");
+                                System.out.println("\nTast et tal fra listen:");
+                                // Man skal ikke kunne søge efter paremetre ved alle events.
+                                if(valg2 != 1 && valg2 != 3 && valg2 != 8 && valg2 != 9){
+                                    System.out.println("0 for at soege på paremetre. ");
+                                }
+                                    System.out.println("1 for at soege efter succesfulde handlinger.");
+                                    System.out.println("2 for at soege efter fejlede handlinger. \n3 for alle handlinger.");
+                                    int valg3 = tastatur.nextInt();
+                                    tastatur.nextLine();
+                                
+                                
+                                if(valg3 == 0 && (valg2 != 1 && valg2 != 3 && valg2 != 8 && valg2 != 9)){
+                                    System.out.println("\nIndtast paremetre du vil soege over.");
                                     int valg4 = tastatur.nextInt();
                                     tastatur.nextLine();
                                     automat.find_trans_over(valg2, valg4);
@@ -97,7 +104,7 @@ public class BenytBilletautomat
                                             break;
                                     case 3: automat.udskriver(valg2, 2);
                                             break;
-                                    default: System.out.println("Du valgte et ugyldt svar: "+valg3);
+                                    default: System.out.println("Du valgte et ugyldigt svar: "+valg3);
                                             break;
                                     }                                    
                                 }
