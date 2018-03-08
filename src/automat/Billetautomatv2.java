@@ -426,6 +426,8 @@ public class Billetautomatv2 {
          * 1 for indenfor den sidste dag.
          * 2 for indenfor den sidste uge.
          * 3 for indenfor de sidste 30 dage. 
+         * @param valg4
+         * @param ID
 	 */
     void datoudskriver(int valg4, int ID) {
         Date sammenligningsdato = new Date();
@@ -504,6 +506,10 @@ public class Billetautomatv2 {
         }        
     }
     
+    /**
+     * Giver totalprisen på indeholdet af Biletter listen.
+     * @return 
+     */
     public int getTotalPrice(){
         int total = 0;
         for (Billet element : Billetter){
@@ -512,7 +518,9 @@ public class Billetautomatv2 {
         return total;
     }
     
-    
+    /**
+     * Udfører det endeligt køb af biletter hvis balancen er høj nok.
+     */
     public void endeligtKoeb(){
         if (balance < getTotalPrice()){
             System.out.printf("Indsæt penge for at købe %d biletter.", Billetter.size());
