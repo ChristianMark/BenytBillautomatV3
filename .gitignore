@@ -2,6 +2,5 @@
 *.properties
 *.xml
 *.properties~
-build.xml
+
 /build/
-/nbproject/
