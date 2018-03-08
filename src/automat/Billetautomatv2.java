@@ -182,10 +182,25 @@ public class Billetautomatv2 {
         if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
             if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
                 Billet.setBilletPris(type, billetpris);
+                switch (type){
+                    case 0 :
+                        event_liste.add(new Log_event(20, billetpris, true, erMontoer()));
+                        break;
+                    case 1 :
+                        event_liste.add(new Log_event(21, billetpris, true, erMontoer()));
+                        break;
+                    case 2 :
+                        event_liste.add(new Log_event(22, billetpris, true, erMontoer()));
+                        break;
+                    case 3 :
+                        event_liste.add(new Log_event(23, billetpris, true, erMontoer()));
+                        break;
+                    case 4 :
+                        event_liste.add(new Log_event(24, billetpris, true, erMontoer()));
+                        break;
+                }
                 // Timestamp på hvornår billetprisen er blevet ændret og til hvad
 
-                //Billet klasse ikke implimenteret i log
-                event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
             }else{
                 System.out.println("Billetprisen kan ikke vaere negativ.");
 
@@ -213,7 +228,23 @@ public class Billetautomatv2 {
             if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
                 Billet.setBilletPrisPerZone(type, billetpris);
                 // Timestamp på hvornår billetprisen er blevet ændret og til hvad
-
+                switch (type){
+                    case 0 :
+                        event_liste.add(new Log_event(25, billetpris, true, erMontoer()));
+                        break;
+                    case 1 :
+                        event_liste.add(new Log_event(26, billetpris, true, erMontoer()));
+                        break;
+                    case 2 :
+                        event_liste.add(new Log_event(27, billetpris, true, erMontoer()));
+                        break;
+                    case 3 :
+                        event_liste.add(new Log_event(28, billetpris, true, erMontoer()));
+                        break;
+                    case 4 :
+                        event_liste.add(new Log_event(29, billetpris, true, erMontoer()));
+                        break;
+                }
                 //Billet klasse ikke implimenteret i log
                 event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
             }else{
