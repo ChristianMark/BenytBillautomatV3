@@ -274,29 +274,32 @@ public class Billetautomatv2 {
                 switch (type){
                     case 0 : //voksen billet
                         antalBilletterSolgtType0 = antalBilletterSolgt;
+                        event_liste.add(new Log_event(15,antalBilletterSolgt,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen                        
                         break;
 
                     case 1 ://ungdoms billet
                         antalBilletterSolgtType1 = antalBilletterSolgt;
+                        event_liste.add(new Log_event(16,antalBilletterSolgt,true, erMontoer())); 
                         break;
 
                     case 2 : //barne billet
                         antalBilletterSolgtType2 = antalBilletterSolgt;
+                        event_liste.add(new Log_event(17,antalBilletterSolgt,true, erMontoer())); 
                         break;
 
                     case 3 : //studenter billet
                         antalBilletterSolgtType3 = antalBilletterSolgt;
+                        event_liste.add(new Log_event(18,antalBilletterSolgt,true, erMontoer())); 
                         break;
 
                     case 4 : //cykel billet
                         antalBilletterSolgtType4 = antalBilletterSolgt;
+                        event_liste.add(new Log_event(19,antalBilletterSolgt,true, erMontoer())); 
                         break;
                     default:
                         break;
                 }
 
-                //Billet klassen ikke implementeret i log
-                event_liste.add(new Log_event(7,antalBilletterSolgt,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen                        
             } else {
                     System.out.println("Afvist - log ind foerst");
                     event_liste.add(new Log_event(7,antalBilletterSolgt,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
