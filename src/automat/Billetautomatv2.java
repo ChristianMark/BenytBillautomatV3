@@ -227,19 +227,23 @@ public class Billetautomatv2 {
                     switch (type){
                         case 0 : //voksen billet
                             antalBilletterSolgtType0 = antalBilletterSolgt;
+                            break;
 
                         case 1 ://ungdoms billet
                             antalBilletterSolgtType1 = antalBilletterSolgt;
+                            break;
 
                         case 2 : //barne billet
                             antalBilletterSolgtType2 = antalBilletterSolgt;
+                            break;
 
                         case 3 : //studenter billet
                             antalBilletterSolgtType3 = antalBilletterSolgt;
+                            break;
 
                         case 4 : //cykel billet
                             antalBilletterSolgtType4 = antalBilletterSolgt;
-
+                            break;
                         default:
                             break;
                     }
