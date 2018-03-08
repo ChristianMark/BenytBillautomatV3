@@ -40,7 +40,7 @@ public class Billet {
     
     Billet(int type, int z){
         if (type < 0 || z < 0 || type > 4){
-            System.err.println("Forkert billet kald, en int parameter er under 0");
+            System.err.println("Forkert billet kald, en int parameter er under 0 eller over 4");
             System.out.println("Grundet fejl oprettes der en standard billet til 2 zoner");
             type = 0;       
         }
@@ -57,9 +57,9 @@ public class Billet {
                 this.prisPrZone = ungdomsPrisPrZone;
                 break;
             
-            case 2 : //barne billet
+            case 2 : //børn billet
                 this.pris = barnePris;
-                this.navn = "Barne Billet";
+                this.navn = "Børne Billet";
                 this.prisPrZone = barnePrisPrZone;
                 break;
             
@@ -123,6 +123,7 @@ public class Billet {
                 return cykelPris;
                
             default:
+                System.out.println("Ugyldig billettype.");
                 return -1;
         }
     }
@@ -132,20 +133,26 @@ public class Billet {
             switch (type){
                 case 0 : //voksen billet
                     voksenPris = value;
+                    break;
 
                 case 1 ://ungdoms billet
                     ungdomsPris = value;
+                    break;
 
                 case 2 : //barne billet
                     barnePris = value;
+                    break;
 
                 case 3 : //studenter billet
                     studenterPris = value;
+                    break;
 
                 case 4 : //cykel billet
                     cykelPris = value;
+                    break;
 
                 default:
+                    System.out.println("Ugyldig billettype.");
                     break;
             }
         }
@@ -169,6 +176,7 @@ public class Billet {
                 return cykelPrisPrZone;
                
             default:
+                System.out.println("Ugyldig billettype.");
                 return -1;
         }
     }
@@ -178,20 +186,26 @@ public class Billet {
             switch (type){
                 case 0 : //voksen billet
                     voksenPrisPrZone = value;
+                    break;
 
                 case 1 ://ungdoms billet
                     ungdomsPrisPrZone = value;
+                    break;
 
                 case 2 : //barne billet
                     barnePrisPrZone = value;
+                    break;
 
                 case 3 : //studenter billet
                     studenterPrisPrZone = value;
+                    break;
 
                 case 4 : //cykel billet
                     cykelPrisPrZone = value;
+                    break;
 
                 default:
+                    System.out.println("Ugyldig billettype.");
                     break;
             }
         }

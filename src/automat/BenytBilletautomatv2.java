@@ -25,7 +25,7 @@ public class BenytBilletautomatv2 {
 			System.out.println("Balancen er paa " + automat.getBalance() + " kroner");
 			System.out.println();
 			System.out.println("Tast 1 for at indbetale penge");
-			System.out.println("Tast 2 for at udskrive din billet");
+			System.out.println("Tast 2 for at købe billet(ter)");
 			System.out.println("Tast 3 for at faa returpengene");
 			System.out.println();
 			System.out.println("Tast 10 for at logge ind som montoer");
@@ -46,7 +46,18 @@ public class BenytBilletautomatv2 {
 				automat.indsaetPenge(beloeb);
 			}
 			else if (valg==2) {
-				automat.udskrivBillet();
+				//automat.udskrivBillet();
+                                System.out.println("Tast 0 for at købe en Voksen Billet");
+                                System.out.println("Tast 1 for at købe en Ungdoms Billet");
+                                System.out.println("Tast 2 for at købe en Børne Billet");
+                                System.out.println("Tast 3 for at købe en Studenter Billet");
+                                System.out.println("Tast 4 for at købe en Cykel Billet");
+                                int valg_billet = tastatur.nextInt();
+                                tastatur.nextLine();
+                                System.out.println("Tast antal zoner fra 2-8");
+                                int valg_zone = tastatur.nextInt();
+                                tastatur.nextLine();
+                                automat.koebBilletter(valg_billet,valg_zone);
 			}
 			else if (valg==3) {
 				int beloeb = automat.returpenge();

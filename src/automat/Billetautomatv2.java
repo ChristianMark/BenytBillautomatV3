@@ -27,7 +27,11 @@ public class Billetautomatv2 {
 	public Billetautomatv2() {
 
 		balance = 0;
-		antalBilletterSolgt = 0;
+		antalBilletterSolgtType0 = 0;
+                antalBilletterSolgtType1 = 0;
+                antalBilletterSolgtType2 = 0;
+                antalBilletterSolgtType3 = 0;
+                antalBilletterSolgtType4 = 0;
                 event_liste = new ArrayList<Log_event>(); // opret liste-array af "Log_event" objekter
                 Billetter = new ArrayList<Billet>();
                 
@@ -404,5 +408,12 @@ public class Billetautomatv2 {
         if(tal == 0){
             System.out.println("Der blev ikke fundet nogle log-elementer der skete før den angivede dato.");
         }
+    }
+
+    void koebBilletter(int valg_billet, int valg_zone) {
+        if(){
+            Billetter.add(new Billet(valg_billet, valg_zone));
+        }
+        
     }
 }
