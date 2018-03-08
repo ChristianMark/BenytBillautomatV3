@@ -234,6 +234,97 @@ class Log_event {
                }
                break;
             
+           case 20:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen på Voksen Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 21:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen på Ungdoms Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 22:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen på Barne Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 23:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen på Studenter Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 24:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen på Cykel Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 25:
+               //Per zone for voksen billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Voksen Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 26:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Ungdoms Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 27:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Barne Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 28:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Studenter Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 29:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Cykel Billetter er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+            
+               
            default : 
                this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument;
                
