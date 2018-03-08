@@ -21,17 +21,17 @@ public class Billetautomatv2 {
     private int totalIndtjeaning;
         
            
-    /**
-     * Opret en billetautomat der saelger billetter til 10 kr.
-     */
-    public Billetautomatv2() {
+	/**
+	 * Opret en billetautomat der saelger billetter til 10 kr.
+	 */
+	public Billetautomatv2() {
 
-            balance = 0;
-            antalBilletterSolgtType0 = 0;
-            antalBilletterSolgtType1 = 0;
-            antalBilletterSolgtType2 = 0;
-            antalBilletterSolgtType3 = 0;
-            antalBilletterSolgtType4 = 0;
+		balance = 0;
+		antalBilletterSolgtType0 = 0;
+                antalBilletterSolgtType1 = 0;
+                antalBilletterSolgtType2 = 0;
+                antalBilletterSolgtType3 = 0;
+                antalBilletterSolgtType4 = 0;
             event_liste = new ArrayList<Log_event>(); // opret liste-array af "Log_event" objekter
             Billetter = new ArrayList<Billet>();
 
@@ -315,36 +315,39 @@ public class Billetautomatv2 {
         }
     }
         
-    /**
-     * Søger i eventloggen efter bestemt id med success parameter. 
-     * Success parameter 0 for fail.
-     * Success parameter 1 for sucess.
-     * Success parameter 2 for alle.
-     *  
-     */
-    public int udskriver(int ID, int success_parameter){
-        int tal = 0; // Antal udskrifter
-        if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
-            System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
-            return -1;
-        }
-
-        for (Log_event element : event_liste) {
-            if (ID != 0 && element.getId_nr() == ID) {
-                switch (success_parameter) {
-                    case 0: // False
-                        if(!element.isSucess()){
+        /**
+	 * Søger i eventloggen efter bestemt id med success parameter. 
+         * Success parameter 0 for fail.
+         * Success parameter 1 for sucess.
+         * Success parameter 2 for alle.
+         *  
+         * @param ID
+         * @param success_parameter
+         * @return 
+	 */
+        public int udskriver(int ID, int success_parameter){
+            int tal = 0; // Antal udskrifter
+            if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
+                System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
+                return -1;
+            }
+            
+            for (Log_event element : event_liste) {
+                if (ID != 0 && element.getId_nr() == ID) {
+                    switch (success_parameter) {
+                        case 0: // False
+                            if(!element.isSucess()){
+                                System.out.println(element);
+                                tal++;
+                            }   break;
+                        case 1: // True
+                            if(element.isSucess()){
+                                System.out.println(element);
+                                tal++;
+                            }   break;
+                        case 2: // Udskriv alt
                             System.out.println(element);
                             tal++;
-                        }   break;
-                    case 1: // True
-                        if(element.isSucess()){
-                            System.out.println(element);
-                            tal++;
-                        }   break;
-                    case 2: // Udskriv alt
-                        System.out.println(element);
-                        tal++;
                         break;
                     default:
                         System.out.println("Fejl i udskriver med ID: "+ ID+ " og success_parameter: "+ success_parameter);
@@ -411,11 +414,15 @@ public class Billetautomatv2 {
         return tal;
     }
     
-    /**
-     * Udskriver eventloggen ud fra valg4.
-     * 
-     * 
-     */
+        /**
+	 * Udskriver eventloggen ud fra valg4.
+         * 0 for indenfor den sidste time.
+         * 1 for indenfor den sidste dag.
+         * 2 for indenfor den sidste uge.
+         * 3 for indenfor de sidste 30 dage. 
+         * @param valg4
+         * @param ID
+	 */
     void datoudskriver(int valg4, int ID) {
         Date sammenligningsdato = new Date();
         int tal = 0;
@@ -480,7 +487,6 @@ public class Billetautomatv2 {
     void koebBilletter(int valg_billet, int valg_zone) {
 
         Billetter.add(new Billet(valg_billet, valg_zone));
-        return;
     }
 
     /**
@@ -499,6 +505,10 @@ public class Billetautomatv2 {
         }        
     }
     
+    /**
+     * Giver totalprisen på indeholdet af Biletter listen.
+     * @return 
+     */
     public int getTotalPrice(){
         int total = 0;
         for (Billet element : Billetter){
@@ -507,7 +517,9 @@ public class Billetautomatv2 {
         return total;
     }
     
-    
+    /**
+     * Udfører det endeligt køb af biletter hvis balancen er høj nok.
+     */
     public void endeligtKoeb(){
         if (balance < getTotalPrice()){
             System.out.printf("Indsæt penge for at købe %d biletter.", Billetter.size());
@@ -520,9 +532,9 @@ public class Billetautomatv2 {
             System.out.println("Dine biletter udskrives nu:");
             System.out.println("-----------------------------------");
             System.out.println("");
-            for (Billet element : Billetter){
+            Billetter.forEach((element) -> {
                 udskrivBillet(element);
-            }
+            });
             System.out.println("");
             System.out.println("-----------------------------------");
             returpenge();
