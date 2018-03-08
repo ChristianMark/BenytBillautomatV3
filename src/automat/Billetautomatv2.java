@@ -77,14 +77,10 @@ public class Billetautomatv2 {
 
 	/**
 	 * Udskriv en billet.
-	 * Opdater total og nedskriv balancen med billetprisen
+         * @param billet
 	 */
-	public void udskrivBillet() {
-		if (balance<billetpris) {
-			System.out.println("Du mangler at indbetale nogle penge");
-                        event_liste.add(new Log_event(3, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
-                        return;
-		}
+	private void udskrivBillet(Billet billet) {
+		
                 netopNu = new Date(); // Hent et nyt Date objekt
                 event_liste.add(new Log_event(3, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 
@@ -92,15 +88,13 @@ public class Billetautomatv2 {
 		System.out.println("##########B##T#########");
 		System.out.println("# BlueJ Trafikselskab #");
 		System.out.println("#                     #");
-		System.out.println("#        Billet       #");
-		System.out.println("#        " + billetpris + " kr.       #");
+		System.out.printf("#        %s       #\n", billet.getNavn());
+                System.out.printf("#        %d zoner    #\n", billet.getZoner());
+		System.out.println("#        " + billet.getPris() + " kr.       #");
 		System.out.println("#                     #");
 		System.out.println("##########B##T#########");
-		System.out.println("# Du har " + (balance) + " kr til gode#");
-		System.out.println("##########B##T#########");
 		System.out.println();
-
-		antalBilletterSolgt = antalBilletterSolgt + 1;
+                System.out.println();
 		
 	}
 
@@ -228,15 +222,19 @@ public class Billetautomatv2 {
                         case 0 : //voksen billet
                             antalBilletterSolgtType0 = antalBilletterSolgt;
                             break;
+
                         case 1 ://ungdoms billet
                             antalBilletterSolgtType1 = antalBilletterSolgt;
                             break;
+
                         case 2 : //barne billet
                             antalBilletterSolgtType2 = antalBilletterSolgt;
                             break;
+
                         case 3 : //studenter billet
                             antalBilletterSolgtType3 = antalBilletterSolgt;
                             break;
+
                         case 4 : //cykel billet
                             antalBilletterSolgtType4 = antalBilletterSolgt;
                             break;
@@ -431,4 +429,37 @@ public class Billetautomatv2 {
             }
         }        
     }
+    
+    public int getTotalPrice(){
+        int total = 0;
+        for (Billet element : Billetter){
+            total += element.getPris();
+        }
+        return total;
+    }
+    
+    
+    public void endeligtKoeb(){
+        if (balance < getTotalPrice()){
+            System.out.printf("Indsæt penge for at købe %d biletter.", Billetter.size());
+            
+        } else if ( Billetter.size() < 1){
+            System.out.println("Der er ingen biletter i indkøbskurven");
+            
+        } else {
+            balance -= getTotalPrice();
+            System.out.println("Dine biletter udskrives nu:");
+            System.out.println("-----------------------------------");
+            System.out.println("");
+            for (Billet element : Billetter){
+                udskrivBillet(element);
+            }
+            System.out.println("");
+            System.out.println("-----------------------------------");
+            returpenge();
+        }
+    }
+    
+    
+    
 }
