@@ -90,7 +90,7 @@ public class Billetautomatv2 {
                 netopNu = new Date(); // Hent et nyt Date objekt
                 event_liste.add(new Log_event(3, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
                 
-                balance = balance - billetpris; // Udregner den nye balance EN gang
+                
 		System.out.println("##########B##T#########");
 		System.out.println("# BlueJ Trafikselskab #");
 		System.out.println("#                     #");
@@ -106,6 +106,7 @@ public class Billetautomatv2 {
 
         /**
 	 * Giver penge retur, og udskriver besked herom.
+         * @return 
 	 */
 	public int returpenge() {
             int returbeloeb;
@@ -318,9 +319,10 @@ public class Billetautomatv2 {
             if (montoertilstand) {
                 netopNu = new Date(); // Hent et nyt Date objekt
                 System.out.println("============ Transaktioner pr. "+netopNu.toString()+"============"); // Udskrivning af log
-		for (Log_event element : event_liste) {  // gennemloeb alle elementerne i loggen
-                       System.out.println(element); 
-		}      
+                event_liste.forEach((element) -> {
+                    // gennemloeb alle elementerne i loggen
+                    System.out.println(element);      
+                });
                 event_liste.add(new Log_event(8, true, erMontoer()));
                                
             }else {
@@ -335,6 +337,9 @@ public class Billetautomatv2 {
          * Success parameter 1 for sucess.
          * Success parameter 2 for alle.
          *  
+         * @param ID
+         * @param success_parameter
+         * @return 
 	 */
         public int udskriver(int ID, int success_parameter){
             int tal = 0; // Antal udskrifter
@@ -495,7 +500,6 @@ public class Billetautomatv2 {
     void koebBilletter(int valg_billet, int valg_zone) {
 
         Billetter.add(new Billet(valg_billet, valg_zone));
-        return;
     }
 
     /**
@@ -538,9 +542,9 @@ public class Billetautomatv2 {
             System.out.println("Dine biletter udskrives nu:");
             System.out.println("-----------------------------------");
             System.out.println("");
-            for (Billet element : Billetter){
+            Billetter.forEach((element) -> {
                 udskrivBillet(element);
-            }
+            });
             System.out.println("");
             System.out.println("-----------------------------------");
             returpenge();
