@@ -83,7 +83,23 @@ public class Billetautomatv2 {
     private void udskrivBillet(Billet billet) {
 
             netopNu = new Date(); // Hent et nyt Date objekt
-            event_liste.add(new Log_event(3, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            switch(billet.getType()){
+                case 0 :
+                    event_liste.add(new Log_event(10, billet.getZoner(), true, erMontoer()));
+                    break;
+                case 1 :
+                    event_liste.add(new Log_event(11, billet.getZoner(), true, erMontoer()));
+                    break;
+                case 2 :
+                    event_liste.add(new Log_event(12, billet.getZoner(), true, erMontoer()));
+                    break;
+                case 3 :
+                    event_liste.add(new Log_event(13, billet.getZoner(), true, erMontoer()));
+                    break;
+                case 4 :
+                    event_liste.add(new Log_event(14, billet.getZoner(), true, erMontoer()));
+                    break;
+            }
 
             System.out.println("##########B##T#########");
             System.out.println("# BlueJ Trafikselskab #");
