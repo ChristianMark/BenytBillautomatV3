@@ -28,7 +28,7 @@ class Log_event {
     public static int antal_events;
     private final boolean sucess;
     private final int id_nr;
-    public static int hojestID = 14;
+    public static int hojestID = 19;
     
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
@@ -188,7 +188,52 @@ class Log_event {
                    this.handling = "Der er sket en fejl";
                }
                break;
+           
+           case 15:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Antallet af Voksen Billetter solgt er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 16:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Antallet af Ungdoms Billetter solgt er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
                
+           case 17:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Antallet af Børne Billetter solgt er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 18:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Antallet af Studenter Billetter solgt er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 19:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Antallet af Cykel Billetter solgt er ændret til: " + this.argument;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+            
            default : 
                this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument;
                
