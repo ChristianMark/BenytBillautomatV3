@@ -32,8 +32,8 @@ public class Billetautomatv2 {
                 antalBilletterSolgtType2 = 0;
                 antalBilletterSolgtType3 = 0;
                 antalBilletterSolgtType4 = 0;
-                event_liste = new ArrayList<Log_event>(); // opret liste-array af "Log_event" objekter
-                Billetter = new ArrayList<Billet>();
+                event_liste = new ArrayList<>(); // opret liste-array af "Log_event" objekter
+                Billetter = new ArrayList<>();
                 
                 netopNu = new Date();
                 event_liste.add(new Log_event(1,erMontoer())); // Tilføj "Log_event" objekt til event_listen                
@@ -41,6 +41,8 @@ public class Billetautomatv2 {
 
 	/**
 	 * Giver basis prisen for en bestemt type billet. 
+         * @param type Billet typen
+         * @return 
 	 */
 	public int getBilletpris(int type) {
 		return Billet.getBilletPris(type);
@@ -48,6 +50,8 @@ public class Billetautomatv2 {
         
         /**
 	 * Giver prisen pr zone for en bestemt type billet. 
+     * @param type Billet typen
+     * @return 
 	 */
 	public int getBilletprisPerZone(int type) {
 		return Billet.getBilletPrisPerZone(type);
@@ -55,6 +59,7 @@ public class Billetautomatv2 {
         
 	/**
 	 * Modtag nogle penge (i kroner) fra en kunde.
+         * @param beloeb Pengebeloebet
 	 */
 	public void indsaetPenge(int beloeb) {
             netopNu = new Date(); // Hent et nyt Date objekt
