@@ -479,12 +479,27 @@ public class Billetautomatv2 {
             System.out.println("Der blev ikke fundet nogle log-elementer der skete før den angivede dato.");
         }
     }
+    
+    /**
+     * Køber en billet og tilføjer den til listen "Billetter".
+     */
+    void koebBilletter(int valg_billet, int valg_zone) {
 
-    public void koebBilletter(int valg_billet, int valg_zone) {
-        if(){
-            Billetter.add(new Billet(valg_billet, valg_zone));
-        }
-        
+        Billetter.add(new Billet(valg_billet, valg_zone));
+        return;
+    }
+
+    /**
+     * Sletter billetter fra listen "Billetter".
+     */
+    void sletBilletter(int valg_billet, int valg_zone, int valg_antal) {
+        int tæller = 1;
+        for (Billet element : Billetter){
+            if(valg_billet == element.getType() && valg_zone == element.getZoner() && tæller <= valg_antal){
+                Billetter.remove(element);
+                tæller++; // Holder styr på, hvor mange elementer der skal slettes
+            }
+        }        
     }
     
     public int getTotalPrice(){

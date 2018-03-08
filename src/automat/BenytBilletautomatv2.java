@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package automat;
 
 /**
  *
- * @author chris
+ * @author Chris && Mads
  */
 public class BenytBilletautomatv2 {
-{
 	public static void main(String[] arg)
 	{
 		Billetautomatv2 automat = new Billetautomatv2();
@@ -21,12 +15,12 @@ public class BenytBilletautomatv2 {
 		
 		while (true) {
 			System.out.println("-----------------------------------------------");
-			System.out.println("En billet koster " + automat.getBilletpris() + " kroner");
 			System.out.println("Balancen er paa " + automat.getBalance() + " kroner");
 			System.out.println();
 			System.out.println("Tast 1 for at indbetale penge");
 			System.out.println("Tast 2 for at købe billet(ter)");
 			System.out.println("Tast 3 for at faa returpengene");
+                        System.out.println("Tast 6 for at slette billetter fra indkøbskurven");
 			System.out.println();
 			System.out.println("Tast 10 for at logge ind som montoer");
 			if (automat.erMontoer()) {
@@ -47,22 +41,38 @@ public class BenytBilletautomatv2 {
 			}
 			else if (valg==2) {
 				//automat.udskrivBillet();
-                                System.out.println("Tast 0 for at købe en Voksen Billet");
-                                System.out.println("Tast 1 for at købe en Ungdoms Billet");
-                                System.out.println("Tast 2 for at købe en Børne Billet");
-                                System.out.println("Tast 3 for at købe en Studenter Billet");
-                                System.out.println("Tast 4 for at købe en Cykel Billet");
+                                System.out.println("Tast 0 for at købe en Voksen Billet til: "+Billet.getVoksenPris());
+                                System.out.println("Tast 1 for at købe en Ungdoms Billet til: "+Billet.getUngdomsPris());
+                                System.out.println("Tast 2 for at købe en Børne Billet til: "+Billet.getBarnePris());
+                                System.out.println("Tast 3 for at købe en Studenter Billet til: "+Billet.getStudenterPris());
+                                System.out.println("Tast 4 for at købe en Cykel Billet til: "+Billet.getCykelPris());
                                 int valg_billet = tastatur.nextInt();
                                 tastatur.nextLine();
                                 System.out.println("Tast antal zoner fra 2-8");
+                                System.out.println("Prisen per zone "+Billet.getBilletPrisPerZone(valg_billet));
                                 int valg_zone = tastatur.nextInt();
                                 tastatur.nextLine();
                                 automat.koebBilletter(valg_billet,valg_zone);
 			}
 			else if (valg==3) {
 				int beloeb = automat.returpenge();
-				System.out.println("Du fik "+beloeb+" retur retur");
 			}
+                        else if(valg==6){
+                                System.out.println("Tast 0 for at slette en Voksen Billet");
+                                System.out.println("Tast 1 for at slette en Ungdoms Billet");
+                                System.out.println("Tast 2 for at slette en Børne Billet");
+                                System.out.println("Tast 3 for at slette en Studenter Billet");
+                                System.out.println("Tast 4 for at slette en Cykel Billet");       
+                                int valg_billet = tastatur.nextInt();
+                                tastatur.nextLine();
+                                System.out.println("Tast antal zoner fra 2-8");
+                                int valg_zone = tastatur.nextInt();
+                                tastatur.nextLine();
+                                System.out.println("Tast antal ønskede billetter slettede");
+                                int valg_antal = tastatur.nextInt();
+                                tastatur.nextLine();
+                                automat.sletBilletter(valg_billet,valg_zone,valg_antal);
+                        }
 			else if (valg==10) {
 				System.out.print("Skriv kode: ");
 				String kode = tastatur.next();
@@ -76,9 +86,16 @@ public class BenytBilletautomatv2 {
 				automat.nulstil();
 			}
 			else if (valg==13) {
-				System.out.print("Skriv beloeb: ");
+                                System.out.println("Tast 0 for at ændre prisen på en Voksen Billet");
+                                System.out.println("Tast 1 for at ændre prisen på en Ungdoms Billet");
+                                System.out.println("Tast 2 for at ændre prisen på en Børne Billet");
+                                System.out.println("Tast 3 for at ændre prisen på en Studenter Billet");
+                                System.out.println("Tast 4 for at ændre prisen på en Cykel Billet");       
+                                int valg_billet = tastatur.nextInt();
+                                tastatur.nextLine();
+                                System.out.print("Skriv den nye pris: ");
 				int beloeb = tastatur.nextInt();
-				automat.setBilletpris(beloeb);
+				Billet.setBilletPris(valg_billet, beloeb);
 			}
 			else if (valg==14) {
 				//automat.udskrivLog();

@@ -310,5 +310,10 @@ public class Billet {
     public static void setCykelPrisPrZone(int cykelPrisPrZone) {
         Billet.cykelPrisPrZone = cykelPrisPrZone;
     }
+
+    public int getType() {
+        return type;
+    }
+    
     
 }
