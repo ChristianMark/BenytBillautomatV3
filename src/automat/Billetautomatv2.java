@@ -100,6 +100,7 @@ public class Billetautomatv2 {
 
     /**
      * Giver penge retur, og udskriver besked herom.
+     * @return 
      */
     public int returpenge() {
         int returbeloeb;
@@ -304,9 +305,10 @@ public class Billetautomatv2 {
         if (montoertilstand) {
             netopNu = new Date(); // Hent et nyt Date objekt
             System.out.println("============ Transaktioner pr. "+netopNu.toString()+"============"); // Udskrivning af log
-            for (Log_event element : event_liste) {  // gennemloeb alle elementerne i loggen
-                   System.out.println(element); 
-            }      
+            event_liste.forEach((element) -> {
+                // gennemloeb alle elementerne i loggen
+                System.out.println(element);      
+            });
             event_liste.add(new Log_event(8, true, erMontoer()));
 
         }else {
