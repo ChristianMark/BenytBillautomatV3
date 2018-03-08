@@ -422,8 +422,10 @@ public class Billetautomatv2 {
     
         /**
 	 * Udskriver eventloggen ud fra valg4.
-         * 
-         * 
+         * 0 for indenfor den sidste time.
+         * 1 for indenfor den sidste dag.
+         * 2 for indenfor den sidste uge.
+         * 3 for indenfor de sidste 30 dage. 
 	 */
     void datoudskriver(int valg4, int ID) {
         Date sammenligningsdato = new Date();
