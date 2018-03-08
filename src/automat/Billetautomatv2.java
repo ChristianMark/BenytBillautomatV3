@@ -70,6 +70,7 @@ public class Billetautomatv2 {
 
 	/**
 	 * Giver balancen (beloebet maskinen har modtaget til den naeste billet).
+         * @return 
 	 */
 	public int getBalance() {
 		return balance;
@@ -98,7 +99,9 @@ public class Billetautomatv2 {
 		
 	}
 
-
+        /**
+	 * Giver penge retur, og udskriver besked herom.
+	 */
 	public int returpenge() {
             int returbeloeb;
             netopNu = new Date(); // Hent et nyt Date objekt
@@ -115,7 +118,10 @@ public class Billetautomatv2 {
             return returbeloeb;
 	}
 
-	
+	/**
+	 * Forsøger at logge ind som montør. Hvis montørtilstanden er true logges der ud.
+         * @param String
+	 */
 	void montoerLogin(String adgangskode) {
             netopNu = new Date(); // Hent et nyt Date objekt
             if ("1234".equals(adgangskode)) {
@@ -135,7 +141,10 @@ public class Billetautomatv2 {
                 
 	}
 
-
+        /**
+	 * Retunerer totalprisen for Billetter listen.
+         * @return 
+	 */
 	public int getTotal() {
 		if (montoertilstand) {
 			return totalIndtjeaning;
@@ -144,7 +153,11 @@ public class Billetautomatv2 {
 			return -1;
 		}
 	}
-
+        
+        /**
+	 * Retuner antal biletter solgt.
+         * @deprecated 
+	 */
 	public int getAntalBilletterSolgt() {
 		if (montoertilstand) {
 			return antalBilletterSolgt;
@@ -153,10 +166,16 @@ public class Billetautomatv2 {
 			return -1;
 		}
 	}
-
+        
+        /**
+	 * Set billet prisen for bestemt billet-type.
+         * @param type
+         * @param billetpris
+	 */
 	public void setBilletpris(int type, int billetpris) {
             netopNu = new Date(); // Hent et nyt Date objekt
             int billetpris_old = Billet.getBilletPris(type);
+            
             if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
                 if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
                     Billet.setBilletPris(type, billetpris);
@@ -177,6 +196,12 @@ public class Billetautomatv2 {
 		
 	}
         
+        
+        /**
+	 * Set prisen per zone for bestemt billet-type.
+         * @param type
+         * @param billetpris
+	 */
         public void setBilletprisPerZone(int type, int billetpris) {
             netopNu = new Date(); // Hent et nyt Date objekt
             int billetpris_old = Billet.getBilletPrisPerZone(type);
@@ -200,7 +225,8 @@ public class Billetautomatv2 {
             }
 		
 	}
-
+        
+        
 	public void nulstil() {
             netopNu = new Date(); // Hent et nyt Date objekt
             if (montoertilstand) {
@@ -215,7 +241,26 @@ public class Billetautomatv2 {
                     event_liste.add(new Log_event(9, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
             }
 	}
-
+        
+        /**
+	 * Retuner antal biletter solgt.
+         * @deprecated 
+	 */
+	public int getAntalBilletterSolgt() {
+		if (montoertilstand) {
+			return antalBilletterSolgt;
+		} else {
+			System.out.println("Afvist - log ind foerst");
+			return -1;
+		}
+	}
+        
+        /**
+	 * Setter antal biletter solgt for en bestemt billet type.
+         * 
+         * @param type
+         * @param antalBilletterSolgt
+	 */
 	public void setAntalBilletterSolgt(int type, int antalBilletterSolgt) {
 		if (montoertilstand) {
                     switch (type){
@@ -250,12 +295,20 @@ public class Billetautomatv2 {
                         
 		}
 	}
-
+        
+        /**
+	 * Retuner montørtilstanden.
+         * @return 
+	 */
 	public boolean erMontoer() {
 		return montoertilstand;
                 // nice meme
 	}
         
+        /**
+	 * Udskriver hele eventloggen
+         * 
+	 */
         public void udskrivLog_event_liste() {
             if (montoertilstand) {
                 netopNu = new Date(); // Hent et nyt Date objekt
@@ -271,6 +324,13 @@ public class Billetautomatv2 {
             }
 	}
         
+        /**
+	 * Søger i eventloggen efter bestemt id med success parameter. 
+         * Success parameter 0 for fail.
+         * Success parameter 1 for sucess.
+         * Success parameter 2 for alle.
+         *  
+	 */
         public int udskriver(int ID, int success_parameter){
             int tal = 0; // Antal udskrifter
             if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
@@ -327,6 +387,13 @@ public class Billetautomatv2 {
             return tal;
         }
         
+        /**
+	 * Finder transaktion for ID med pameter over belob
+         * 
+         * @param ID
+         * @param belob
+         * @return 
+	 */
         public int find_trans_over(int ID, int belob){
             int tal = 0;
             if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
@@ -352,7 +419,12 @@ public class Billetautomatv2 {
             }
             return tal;
         }
-
+    
+        /**
+	 * Udskriver eventloggen ud fra valg4.
+         * 
+         * 
+	 */
     void datoudskriver(int valg4, int ID) {
         Date sammenligningsdato = new Date();
         int tal = 0;
