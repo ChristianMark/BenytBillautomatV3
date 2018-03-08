@@ -4,3 +4,4 @@
 *.properties~
 build.xml
 /build/
+/nbproject/
