@@ -28,7 +28,7 @@ class Log_event {
     public static int antal_events;
     private final boolean sucess;
     private final int id_nr;
-    public static int hojestID = 9;
+    public static int hojestID = 14;
     
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
@@ -143,10 +143,54 @@ class Log_event {
                    this.handling = "Automaten er blevet forsoegt nulstillet af kunden";
                }
                break;
+           
+           case 10:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Der er blevet udskrevet en Voksen billet på:" + this.argument + "zoner";
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 11:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Der er blevet udskrevet en Ungdoms Billet på:" + this.argument + "zoner";
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 12:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Der er blevet udskrevet en Børne Billet på:" + this.argument + "zoner";
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 13:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Der er blevet udskrevet en Studenter Billet på:" + this.argument + "zoner";
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 14:
+               //Udskrevet voksen billet
+               if (this.sucess){
+                   this.handling = "Der er blevet udskrevet en Cykel Billet på:" + this.argument + "zoner";
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
                
            default : 
                this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument;
-               break;
                
        }
     }
