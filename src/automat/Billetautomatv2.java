@@ -101,15 +101,16 @@ public class Billetautomatv2 {
                     break;
             }
 
-            System.out.println("##########B##T#########");
-            System.out.println("# BlueJ Trafikselskab #");
-            System.out.println("#                     #");
-            System.out.printf("#        %s       #\n", billet.getNavn());
-            System.out.printf("#        %d zoner    #\n", billet.getZoner());
-            System.out.println("#        " + billet.getPris() + " kr.       #");
-            System.out.println("#                     #");
-            System.out.println("##########B##T#########");
+            System.out.println("###########B##T##########");
+            System.out.println("#  BlueJ Trafikselskab  #");
+            System.out.println("#                       #");
+            System.out.println("#    " + Billetautomatv2.center(billet.getNavn(), 16) + "\t#");
+            System.out.printf("#        %d zoner        #\n", billet.getZoner());
+            System.out.printf("#         %2d kr.        #\n", billet.getTotalPris());
+            System.out.println("#                       #");
+            System.out.println("###########B##T##########");
             System.out.println();
+            System.out.println("--------------------------");
             System.out.println();
 
     }
@@ -587,12 +588,23 @@ public class Billetautomatv2 {
             Billetter.forEach((element) -> {
                 udskrivBillet(element);
             });
-            System.out.println("");
-            System.out.println("-----------------------------------");
             returpenge();
+            System.out.println("");
+            System.out.println("");
         }
     }
-    
-    
+    /*
+     * Centers a string with leading and preceding zeros.
+     * 
+     * made by Mertuarez on Stackoverflow
+     * https://stackoverflow.com/questions/8154366/how-to-center-a-string-using-string-format
+     */
+    public static String center(String text, int len){
+        String out = String.format("%"+len+"s%s%"+len+"s", "",text,"");
+        float mid = (out.length()/2);
+        float start = mid - (len/2);
+        float end = start + len; 
+        return out.substring((int)start, (int)end);
+    }
     
 }
