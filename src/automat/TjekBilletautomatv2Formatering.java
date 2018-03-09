@@ -12,7 +12,7 @@ public class TjekBilletautomatv2Formatering
 		
 		automat.indsaetPenge(100);
                 for (int i = 0; i < 5; i++){
-                    automat.koebBilletter(i, 5);
+                    automat.koebBilletter(i, 8);
                 }
                 automat.endeligtKoeb();
         }
