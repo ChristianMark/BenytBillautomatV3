@@ -50,7 +50,7 @@ public class BenytBilletautomatv2 {
                                 int valg_billet = tastatur.nextInt();
                                 tastatur.nextLine();
                                 System.out.println("Tast antal zoner fra 2-8");
-                                System.out.println("Prisen per zone "+Billet.getBilletPrisPerZone(valg_billet));
+                                System.out.println("Prisen per zone er: "+Billet.getBilletPrisPerZone(valg_billet));
                                 int valg_zone = tastatur.nextInt();
                                 tastatur.nextLine();
                                 automat.koebBilletter(valg_billet,valg_zone);
