@@ -100,13 +100,17 @@ public class Billetautomatv2 {
                     event_liste.add(new Log_event(14, billet.getZoner(), true, erMontoer()));
                     break;
             }
-
+            
+            String zoner = String.format("%d zoner", billet.getZoner());
+            String totalpris = String.format("%2d kr.", billet.getTotalPris());
+            
             System.out.println("###########B##T##########");
             System.out.println("#  BlueJ Trafikselskab  #");
             System.out.println("#                       #");
-            System.out.println("#    " + Billetautomatv2.center(billet.getNavn(), 16) + "\t#");
-            System.out.printf("#        %d zoner        #\n", billet.getZoner());
-            System.out.printf("#         %2d kr.        #\n", billet.getTotalPris());
+            System.out.println("#" + Billetautomatv2.center(billet.getNavn(), 23) + "#");
+            System.out.println("#                       #");
+            System.out.println("#" + Billetautomatv2.center(zoner, 23) + "#");
+            System.out.println("#" + Billetautomatv2.center(totalpris, 23) + "#");
             System.out.println("#                       #");
             System.out.println("###########B##T##########");
             System.out.println();
