@@ -35,6 +35,7 @@ public class BenytBilletautomatv2 {
                                 System.out.println("Tast 14 for at faa udskrevet en log");
                                 System.out.println("Tast 15 for at udskrive log med soegekriterier");
 				System.out.println("Tast 16 for at logge ud af montoertilstand");
+                                System.out.println("Tast 17 for at tømme maskinen");
 			}
                         int valg = læsINTtastatur();
                         
@@ -167,6 +168,9 @@ public class BenytBilletautomatv2 {
                             break;
                         case 16:
                             automat.montoerLogin("111111111"); // Log ud
+                            break;
+                        case 17:
+                            automat.toemAutomat();
                             break;
                         default:
                             System.out.println("Ugyldigt valg, proev igen");

@@ -27,14 +27,14 @@ class Log_event {
     public static int antal_events;
     private final boolean sucess;
     private final int id_nr;
-    public static int hojestID = 29;
+    public static int hojestID = 30;
     
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
      */
     public Log_event(int id, int argument, boolean sucess, boolean erMontoer) {
         if(0 > id || id > hojestID){
-            System.err.println("Ugyldigt id: Mangler at blive talt med i hojestID");
+            System.err.println("Ugyldigt id: "+ id);
         }
         this.tidspunkt = new Date();
         this.id_nr = id;
@@ -333,7 +333,7 @@ class Log_event {
     
     public Log_event (int id, double argument_double ,boolean sucess, boolean erMontoer){
         if(0 > id || id > hojestID){
-            System.err.println("Ugyldigt id: Mangler at blive talt med i hojestID");
+            System.err.println("Ugyldigt id: "+ id);
         }
         this.tidspunkt = new Date();
         this.id_nr = id;
@@ -453,6 +453,14 @@ class Log_event {
                }
                break;
             
+           case 30:
+               //Tøm maskinen
+               if (this.sucess){
+                   this.handling = "Maskinen er blevet tømt for: " + this.argument_double + "kr.";
+               } else {
+                   this.handling = "Maskinen er forsøgt tømt for: " + this.argument_double + "kr.";
+               }
+               break;
                
            default : 
                this.handling = "Ukendt id_nr."+id_nr +" Dette er en fejl; se parameterher: "+this.argument_double;
