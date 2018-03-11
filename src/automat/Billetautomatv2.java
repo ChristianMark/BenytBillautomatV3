@@ -391,7 +391,11 @@ public class Billetautomatv2 {
                 // gennemloeb alle elementerne i loggen
                 System.out.println(element);
             });
-            event_liste.add(new Log_event(8, true, erMontoer()));
+            System.out.println("============ Transaktioner slut ============"); // Udskrivning af log
+            event_liste.removeAll(event_liste); // Fjern alle elementer fra loggen
+            System.out.println("Loggen er blevet clearet.");
+            event_liste.add(new Log_event(8, true, erMontoer())); 
+            
 
         } else {
             System.out.println("Afvist - log ind foerst");
