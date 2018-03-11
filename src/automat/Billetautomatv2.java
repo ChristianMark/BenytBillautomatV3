@@ -25,10 +25,11 @@ public class Billetautomatv2 {
 
     /**
      * Opret en billetautomat der saelger billetter til 10 kr.
+     * @param start_balance
      */
-    public Billetautomatv2() {
+    public Billetautomatv2(int start_balance) {
 
-        balance = 0;
+        balance = start_balance;
         antalBilletterSolgtType0 = 0;
         antalBilletterSolgtType1 = 0;
         antalBilletterSolgtType2 = 0;
@@ -39,6 +40,10 @@ public class Billetautomatv2 {
 
         netopNu = new Date();
         event_liste.add(new Log_event(1, erMontoer())); // Tilføj "Log_event" objekt til event_listen                
+    }
+    
+    public Billetautomatv2(){
+        this(0);
     }
 
     /**
