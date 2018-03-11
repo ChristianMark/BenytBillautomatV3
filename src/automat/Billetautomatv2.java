@@ -1,13 +1,14 @@
 package automat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
  * @author chris & mads
  */
 public class Billetautomatv2 {
-    private int balance; // Hvor mange penge kunden p.t. har puttet i automaten
+    private double balance; // Hvor mange penge kunden p.t. har puttet i automaten
     private int antalBilletterSolgtType0; // Antal billetter automaten i alt har solgt
     private int antalBilletterSolgtType1;
     private int antalBilletterSolgtType2;
@@ -42,29 +43,29 @@ public class Billetautomatv2 {
     /**
      * Giver basis prisen for en bestemt type billet. 
      */
-    public int getBilletpris(int type) {
+    public double getBilletpris(int type) {
             return Billet.getBilletPris(type);
     }
 
     /**
      * Giver prisen pr zone for en bestemt type billet. 
      */
-    public int getBilletprisPerZone(int type) {
+    public double getBilletprisPerZone(int type) {
             return Billet.getBilletPrisPerZone(type);
     }
 
     /**
      * Modtag nogle penge (i kroner) fra en kunde.
      */
-    public void indsaetPenge(int beloeb) {
+    public void indsaetPenge(double beloeb) {
         netopNu = new Date(); // Hent et nyt Date objekt
         if(beloeb > 0){ // Tjek om der bliver indbetalt et gyldigt beloeb
             balance = balance + beloeb;
-            event_liste.add(new Log_event(2, beloeb, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(2,0, beloeb, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }else{
-            System.out.println("Det indsatte beloeb er ugyldigt.");
+            System.out.println("Det indsatte beloeb er ugyldigt. "+beloeb);
             // Timestamp på hvornår et ugyldigt beløb er forsøgt indkastet
-            event_liste.add(new Log_event(2, beloeb, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(2,0, beloeb, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
     }
 
@@ -72,7 +73,7 @@ public class Billetautomatv2 {
      * Giver balancen (beloebet maskinen har modtaget til den naeste billet).
      * @return 
      */
-    public int getBalance() {
+    public double getBalance() {
             return balance;
     }
 
@@ -102,7 +103,7 @@ public class Billetautomatv2 {
             }
             
             String zoner = String.format("%d zoner", billet.getZoner());
-            String totalpris = String.format("%2d kr.", billet.getTotalPris());
+            String totalpris = String.format("%.2f kr.", billet.getTotalPris());
             
             System.out.println("###########B##T##########");
             System.out.println("#  BlueJ Trafikselskab  #");
@@ -123,16 +124,16 @@ public class Billetautomatv2 {
      * Giver penge retur, og udskriver besked herom.
      * @return 
      */
-    public int returpenge() {
-        int returbeloeb;
+    public double returpenge() {
+        double returbeloeb;
         netopNu = new Date(); // Hent et nyt Date objekt
 
         if(balance < 0){ // Hvis balancen er negativ
             returbeloeb = 0;
-            event_liste.add(new Log_event(4,balance,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(4,0,balance,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }else{ // Hvis balancen er positiv eller 0
             returbeloeb = balance;
-            event_liste.add(new Log_event(4,returbeloeb,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(4,0,returbeloeb,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
         balance = 0;
         System.out.println("Du faar "+returbeloeb+" kr retur");
@@ -180,28 +181,28 @@ public class Billetautomatv2 {
      * @param type
      * @param billetpris
      */
-    public void setBilletpris(int type, int billetpris) {
+    public void setBilletpris(int type, double billetpris) {
         netopNu = new Date(); // Hent et nyt Date objekt
-        int billetpris_old = Billet.getBilletPris(type);
+        double billetpris_old = Billet.getBilletPris(type);
 
         if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
             if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
                 Billet.setBilletPris(type, billetpris);
                 switch (type){
                     case 0 :
-                        event_liste.add(new Log_event(20, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(20,0, billetpris, true, erMontoer()));
                         break;
                     case 1 :
-                        event_liste.add(new Log_event(21, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(21,0, billetpris, true, erMontoer()));
                         break;
                     case 2 :
-                        event_liste.add(new Log_event(22, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(22,0, billetpris, true, erMontoer()));
                         break;
                     case 3 :
-                        event_liste.add(new Log_event(23, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(23,0, billetpris, true, erMontoer()));
                         break;
                     case 4 :
-                        event_liste.add(new Log_event(24, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(24,0, billetpris, true, erMontoer()));
                         break;
                 }
                 // Timestamp på hvornår billetprisen er blevet ændret og til hvad
@@ -210,11 +211,11 @@ public class Billetautomatv2 {
                 System.out.println("Billetprisen kan ikke vaere negativ.");
 
                 //Billet klasse ikke implimenteret i log
-                event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
+                event_liste.add(new Log_event(6,0, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
             }
         }else {
                 System.out.println("Afvist - log ind foerst");
-                event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(6,0, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
 
     }
@@ -225,9 +226,9 @@ public class Billetautomatv2 {
      * @param type
      * @param billetpris
      */
-    public void setBilletprisPerZone(int type, int billetpris) {
+    public void setBilletprisPerZone(int type, double billetpris) {
         netopNu = new Date(); // Hent et nyt Date objekt
-        int billetpris_old = Billet.getBilletPrisPerZone(type);
+        double billetpris_old = Billet.getBilletPrisPerZone(type);
 
         if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
             if(billetpris >= 0){ // Billetprisen kan ikke vaere negativ
@@ -235,23 +236,23 @@ public class Billetautomatv2 {
                 // Timestamp på hvornår billetprisen er blevet ændret og til hvad
                 switch (type){
                     case 0 :
-                        event_liste.add(new Log_event(25, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(25,0, billetpris, true, erMontoer()));
                         break;
                     case 1 :
-                        event_liste.add(new Log_event(26, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(26,0, billetpris, true, erMontoer()));
                         break;
                     case 2 :
-                        event_liste.add(new Log_event(27, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(27,0, billetpris, true, erMontoer()));
                         break;
                     case 3 :
-                        event_liste.add(new Log_event(28, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(28,0, billetpris, true, erMontoer()));
                         break;
                     case 4 :
-                        event_liste.add(new Log_event(29, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(29,0, billetpris, true, erMontoer()));
                         break;
                 }
                 //Billet klasse ikke implimenteret i log
-                event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(6,0, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
             }else{
                 System.out.println("Billetprisen kan ikke vaere negativ.");
 
@@ -445,7 +446,7 @@ public class Billetautomatv2 {
      * @param belob
      * @return 
      */
-    public int find_trans_over(int ID, int belob){
+    public int find_trans_over(int ID, double belob){
         int tal = 0;
         if(ID <0 || ID > Log_event.hojestID){ // Tjek om gyldigt ID
             System.out.println("Fejl i udskriver med ugyldigt ID: "+ ID);
@@ -542,8 +543,13 @@ public class Billetautomatv2 {
      * @param valg_zone
      */
     void koebBilletter(int valg_billet, int valg_zone) {
-
-        Billetter.add(new Billet(valg_billet, valg_zone));
+            if(valg_zone > 1 && valg_zone <9){
+                Billet Koebt_billet = new Billet(valg_billet, valg_zone);
+                Billetter.add(Koebt_billet);
+                System.out.println("En "+Koebt_billet.getNavn()+" er købt, med "+Koebt_billet.getZoner()+" zoner.");
+            }else{
+                System.out.println("Ugyldigt antal zoner ");
+            }        
     }
 
     /**
@@ -554,20 +560,27 @@ public class Billetautomatv2 {
      */
     void sletBilletter(int valg_billet, int valg_zone, int valg_antal) {
         int tæller = 1;
-        for (Billet element : Billetter){
-            if(valg_billet == element.getType() && valg_zone == element.getZoner() && tæller <= valg_antal){
-                Billetter.remove(element);
+        for (Iterator<Billet> itr = Billetter.iterator(); itr.hasNext();) {
+            Billet test = itr.next();
+            if(valg_billet == test.getType() && valg_zone == test.getZoner()){
+                itr.remove();
                 tæller++; // Holder styr på, hvor mange elementer der skal slettes
             }
-        }        
+        }
+        
+        if(tæller < 2){
+            System.out.println("Intet blev slettet, da intet passede til kriterierne!!!");
+        }else{
+            System.out.println((tæller-1)+" antal billetter efter dine kriterier blev slettet.");
+        }
     }
     
     /**
      * Giver totalprisen på indeholdet af Biletter listen.
      * @return 
      */
-    public int getTotalPrice(){
-        int total = 0;
+    public double getTotalPrice(){
+        double total = 0;
         for (Billet element : Billetter){
             total += element.getPris();
         }
@@ -592,6 +605,7 @@ public class Billetautomatv2 {
             Billetter.forEach((element) -> {
                 udskrivBillet(element);
             });
+            Billetter.clear();
             returpenge();
             System.out.println("");
             System.out.println("");

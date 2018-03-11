@@ -5,10 +5,11 @@ package automat;
  * @author Chris && Mads
  */
 public class BenytBilletautomatv2 {
+    	static java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered Scanner klassen
+        
 	public static void main(String[] arg)
 	{
 		Billetautomatv2 automat = new Billetautomatv2();
-		java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered
                 
 		System.out.println("BenytBilletautomat version 3");
 		System.out.println();
@@ -32,12 +33,11 @@ public class BenytBilletautomatv2 {
                                 System.out.println("Tast 15 for at udskrive log med soegekriterier");
 				System.out.println("Tast 16 for at logge ud af montoertilstand");
 			}
-                        int valg = tastatur.nextInt();
-			tastatur.nextLine();
+                        int valg = læsINTtastatur();
                         
 			if (valg==1) {
 				System.out.print("Skriv beloeb: ");
-				int beloeb = tastatur.nextInt();
+				double beloeb = læsDOUBLEtastatur();
 				automat.indsaetPenge(beloeb);
 			}
 			else if (valg==2) {
@@ -47,16 +47,19 @@ public class BenytBilletautomatv2 {
                                 System.out.println("Tast 2 for at købe en Børne Billet til: "+Billet.getBarnePris());
                                 System.out.println("Tast 3 for at købe en Studenter Billet til: "+Billet.getStudenterPris());
                                 System.out.println("Tast 4 for at købe en Cykel Billet til: "+Billet.getCykelPris());
-                                int valg_billet = tastatur.nextInt();
-                                tastatur.nextLine();
+                                
+                                int valg_billet;
+                                do {
+                                valg_billet = læsINTtastatur();
+                                } while (valg_billet < 0 || valg_billet >4);
+                                
                                 System.out.println("Tast antal zoner fra 2-8");
                                 System.out.println("Prisen per zone er: "+Billet.getBilletPrisPerZone(valg_billet));
-                                int valg_zone = tastatur.nextInt();
-                                tastatur.nextLine();
+                                int valg_zone = læsINTtastatur();
                                 automat.koebBilletter(valg_billet,valg_zone);
 			}
 			else if (valg==3) {
-				int beloeb = automat.returpenge();
+				automat.returpenge();
 			}
                         else if(valg==4){
                                 automat.endeligtKoeb();
@@ -67,14 +70,11 @@ public class BenytBilletautomatv2 {
                                 System.out.println("Tast 2 for at slette en Børne Billet");
                                 System.out.println("Tast 3 for at slette en Studenter Billet");
                                 System.out.println("Tast 4 for at slette en Cykel Billet");       
-                                int valg_billet = tastatur.nextInt();
-                                tastatur.nextLine();
+                                int valg_billet = læsINTtastatur();
                                 System.out.println("Tast antal zoner fra 2-8");
-                                int valg_zone = tastatur.nextInt();
-                                tastatur.nextLine();
+                                int valg_zone = læsINTtastatur();
                                 System.out.println("Tast antal ønskede billetter slettede");
-                                int valg_antal = tastatur.nextInt();
-                                tastatur.nextLine();
+                                int valg_antal = læsINTtastatur();
                                 automat.sletBilletter(valg_billet,valg_zone,valg_antal);
                         }
 			else if (valg==10) {
@@ -95,10 +95,9 @@ public class BenytBilletautomatv2 {
                                 System.out.println("Tast 2 for at ændre prisen på en Børne Billet");
                                 System.out.println("Tast 3 for at ændre prisen på en Studenter Billet");
                                 System.out.println("Tast 4 for at ændre prisen på en Cykel Billet");       
-                                int valg_billet = tastatur.nextInt();
-                                tastatur.nextLine();
+                                int valg_billet = læsINTtastatur();
                                 System.out.print("Skriv den nye pris: ");
-				int beloeb = tastatur.nextInt();
+				double beloeb = læsDOUBLEtastatur();
 				Billet.setBilletPris(valg_billet, beloeb);
 			}
 			else if (valg==14) {
@@ -116,8 +115,7 @@ public class BenytBilletautomatv2 {
                                 System.out.println("7: Aerndring i antal solgte billetter");
                                 System.out.println("8: Log udskrifter");
                                 System.out.println("9: Nulstilling af automaten");
-                                int valg2 = tastatur.nextInt();
-                                tastatur.nextLine();
+                                int valg2 = læsINTtastatur();
                                 
                                 System.out.println("\nTast et tal fra listen:");
                                 // Man skal ikke kunne søge efter paremetre ved alle events.
@@ -126,14 +124,12 @@ public class BenytBilletautomatv2 {
                                 }
                                     System.out.println("1 for at soege efter succesfulde handlinger.");
                                     System.out.println("2 for at soege efter fejlede handlinger.\n3 for at søge efter dato. \n4 for alle handlinger.");
-                                    int valg3 = tastatur.nextInt();
-                                    tastatur.nextLine();
+                                    int valg3 = læsINTtastatur();
                                 
                                 
                                 if(valg3 == 0 && (valg2 != 1 && valg2 != 3 && valg2 != 8 && valg2 != 9)){
                                     System.out.println("\nIndtast paremetre du vil soege over.");
-                                    int valg4 = tastatur.nextInt();
-                                    tastatur.nextLine();
+                                    int valg4 = læsINTtastatur();
                                     automat.find_trans_over(valg2, valg4);
                                 }else{
                                     switch(valg3){
@@ -146,8 +142,7 @@ public class BenytBilletautomatv2 {
                                             System.out.println("1: for at søge indenfor den sidste dag");
                                             System.out.println("2: for at søge indenfor den sidste uge");
                                             System.out.println("3: for at søge indenfor de sidste 30 dage");
-                                            int valg4 = tastatur.nextInt();
-                                            tastatur.nextLine();
+                                            int valg4 = læsINTtastatur();
                                             System.out.println();
                                             automat.datoudskriver(valg4,valg2);
                                             break;
@@ -166,4 +161,32 @@ public class BenytBilletautomatv2 {
 			}
 		}
 	}
+
+    private static int læsINTtastatur() {
+        int læstint = 0;
+
+        try{
+            læstint= tastatur.nextInt();
+        }catch (Exception e) {
+            tastatur.nextLine(); // Læs linjeskift
+            return -1; // Returner et ugyldt menu valg
+        }
+        
+        tastatur.nextLine(); // Læs linjeskift
+        return læstint;
+    }
+    
+    private static double læsDOUBLEtastatur() {
+        double læstdouble = 0;
+
+        try{
+            læstdouble= tastatur.nextDouble();
+        }catch (Exception e) {
+            tastatur.nextLine(); // Læs linjeskift
+            return -1; // Returner et ugyldt menu valg
+        }
+        
+        tastatur.nextLine(); // Læs linjeskift
+        return læstdouble;
+    }
 }

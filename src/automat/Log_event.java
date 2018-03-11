@@ -22,6 +22,7 @@ class Log_event {
     private final Date tidspunkt;
     private final String handling;
     private final int argument;
+    private final double argument_double;
     private final boolean montoer_tilstand;
     public static int antal_events;
     private final boolean sucess;
@@ -38,6 +39,7 @@ class Log_event {
         this.tidspunkt = new Date();
         this.id_nr = id;
         this.argument = argument;
+        this.argument_double = 0;
         this.sucess = sucess;
         this.montoer_tilstand = erMontoer;
         antal_events++;
@@ -62,7 +64,7 @@ class Log_event {
                 break;
                 
            case 2 :
-               //insæt penge
+               //insæt penge (Outdated)
                if (this.sucess){
                    this.handling = "Der blev indsat beloebet: " +this.argument;
                }else{
@@ -327,6 +329,33 @@ class Log_event {
                this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument;
                
        }
+    }
+    
+    public Log_event (int id,int argument, double argument_double ,boolean sucess, boolean erMontoer){
+        if(0 > id || id > hojestID){
+            System.err.println("Ugyldigt id: Mangler at blive talt med i hojestID");
+        }
+        this.tidspunkt = new Date();
+        this.id_nr = id;
+        this.argument = argument;
+        this.argument_double = argument_double;
+        this.sucess = sucess;
+        this.montoer_tilstand = erMontoer;
+        antal_events++;
+        
+       switch(id){
+               case 3:
+                    //insæt penge
+                   if (this.sucess){
+                       this.handling = "Der blev indsat beloebet: " +this.argument_double;
+                   }else{
+                       this.handling = "Der blev forsøgt indsat det ugyldige beloeb: " +this.argument_double;
+                   }
+                   break;
+               default:
+                   this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument_double;
+       }           
+
     }
     
     /**

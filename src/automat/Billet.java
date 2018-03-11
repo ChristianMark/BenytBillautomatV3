@@ -12,28 +12,28 @@ import java.util.Date;
  * @author john
  */
 public class Billet {
-    private int pris;
+    private double pris;
     private String navn;
     private int zoner;
-    private int prisPrZone;
+    private double prisPrZone;
     private int type;
     
     
     //class variables
-    private static int voksenPris = 12;
-    private static int voksenPrisPrZone = 7;
+    private static double voksenPris = 12;
+    private static double voksenPrisPrZone = 7;
     
-    private static int ungdomsPris = 10;
-    private static int ungdomsPrisPrZone = 5;
+    private static double ungdomsPris = 10;
+    private static double ungdomsPrisPrZone = 5;
     
-    private static int barnePris = 7;
-    private static int barnePrisPrZone = 4;
+    private static double barnePris = 7;
+    private static double barnePrisPrZone = 4;
     
-    private static int studenterPris = 10;
-    private static int studenterPrisPrZone = 5;
+    private static double studenterPris = 10;
+    private static double studenterPrisPrZone = 5;
     
-    private static int cykelPris = 15;
-    private static int cykelPrisPrZone = 9;
+    private static double cykelPris = 15;
+    private static double cykelPrisPrZone = 9;
     
     //calculating variable
     public static final long HOUR = 3600*1000;
@@ -85,7 +85,7 @@ public class Billet {
     }
     
     
-    int getTotalPris(){
+    double getTotalPris(){
         if (zoner <= 2){
             return pris;
         } else {
@@ -105,7 +105,7 @@ public class Billet {
         return udløb;
     }
     
-    static int getBilletPris(int type){
+    static double getBilletPris(int type){
         switch (type){
             case 0 : //voksen billet
                 return voksenPris;
@@ -128,7 +128,7 @@ public class Billet {
         }
     }
     
-    static void setBilletPris(int type, int value){
+    static void setBilletPris(int type, double value){
         if (value > 0){
             switch (type){
                 case 0 : //voksen billet
@@ -158,7 +158,7 @@ public class Billet {
         }
     }
     
-    static int getBilletPrisPerZone(int type){
+    static double getBilletPrisPerZone(int type){
         switch (type){
             case 0 : //voksen billet
                 return voksenPrisPrZone;
@@ -181,7 +181,7 @@ public class Billet {
         }
     }
     
-    static void setBilletPrisPerZone(int type, int value){
+    static void setBilletPrisPerZone(int type, double value){
         if (value > 0){
             switch (type){
                 case 0 : //voksen billet
@@ -219,7 +219,7 @@ public class Billet {
         this.zoner = z;
     }
 
-    public int getPris() {
+    public double getPris() {
         return pris;
     }
 
@@ -227,75 +227,75 @@ public class Billet {
         return navn;
     }
 
-    public int getPrisPrZone() {
+    public double getPrisPrZone() {
         return prisPrZone;
     }
     
-    public static int getVoksenPris() {
+    public static double getVoksenPris() {
         return voksenPris;
     }
 
-    public static void setVoksenPris(int voksenPris) {
+    public static void setVoksenPris(double voksenPris) {
         Billet.voksenPris = voksenPris;
     }
 
-    public static int getVoksenPrisPrZone() {
+    public static double getVoksenPrisPrZone() {
         return voksenPrisPrZone;
     }
 
-    public static void setVoksenPrisPrZone(int voksenPrisPrZone) {
+    public static void setVoksenPrisPrZone(double voksenPrisPrZone) {
         Billet.voksenPrisPrZone = voksenPrisPrZone;
     }
 
-    public static int getUngdomsPris() {
+    public static double getUngdomsPris() {
         return ungdomsPris;
     }
 
-    public static void setUngdomsPris(int ungdomsPris) {
+    public static void setUngdomsPris(double ungdomsPris) {
         Billet.ungdomsPris = ungdomsPris;
     }
 
-    public static int getUngdomsPrisPrZone() {
+    public static double getUngdomsPrisPrZone() {
         return ungdomsPrisPrZone;
     }
 
-    public static void setUngdomsPrisPrZone(int ungdomsPrisPrZone) {
+    public static void setUngdomsPrisPrZone(double ungdomsPrisPrZone) {
         Billet.ungdomsPrisPrZone = ungdomsPrisPrZone;
     }
 
-    public static int getBarnePris() {
+    public static double getBarnePris() {
         return barnePris;
     }
 
-    public static void setBarnePris(int barnePris) {
+    public static void setBarnePris(double barnePris) {
         Billet.barnePris = barnePris;
     }
 
-    public static int getBarnePrisPrZone() {
+    public static double getBarnePrisPrZone() {
         return barnePrisPrZone;
     }
 
-    public static void setBarnePrisPrZone(int barnePrisPrZone) {
+    public static void setBarnePrisPrZone(double barnePrisPrZone) {
         Billet.barnePrisPrZone = barnePrisPrZone;
     }
 
-    public static int getStudenterPris() {
+    public static double getStudenterPris() {
         return studenterPris;
     }
 
-    public static void setStudenterPris(int studenterPris) {
+    public static void setStudenterPris(double studenterPris) {
         Billet.studenterPris = studenterPris;
     }
 
-    public static int getStudenterPrisPrZone() {
+    public static double getStudenterPrisPrZone() {
         return studenterPrisPrZone;
     }
 
-    public static void setStudenterPrisPrZone(int studenterPrisPrZone) {
+    public static void setStudenterPrisPrZone(double studenterPrisPrZone) {
         Billet.studenterPrisPrZone = studenterPrisPrZone;
     }
 
-    public static int getCykelPris() {
+    public static double getCykelPris() {
         return cykelPris;
     }
 
@@ -303,7 +303,7 @@ public class Billet {
         Billet.cykelPris = cykelPris;
     }
 
-    public static int getCykelPrisPrZone() {
+    public static double getCykelPrisPrZone() {
         return cykelPrisPrZone;
     }
 
