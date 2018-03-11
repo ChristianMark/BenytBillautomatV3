@@ -19,7 +19,7 @@ public class Billetautomatv2 {
     private Date netopNu; // dato variabel
     private boolean debug = false;
     private ArrayList<Billet> Billetter;  //indkøbskurv
-    private int totalIndtjeaning;
+    private double totalIndtjeaning;
         
            
 	/**
@@ -42,6 +42,8 @@ public class Billetautomatv2 {
 
     /**
      * Giver basis prisen for en bestemt type billet. 
+     * @param type
+     * @return 
      */
     public double getBilletpris(int type) {
             return Billet.getBilletPris(type);
@@ -49,6 +51,8 @@ public class Billetautomatv2 {
 
     /**
      * Giver prisen pr zone for en bestemt type billet. 
+     * @param type
+     * @return 
      */
     public double getBilletprisPerZone(int type) {
             return Billet.getBilletPrisPerZone(type);
@@ -56,6 +60,7 @@ public class Billetautomatv2 {
 
     /**
      * Modtag nogle penge (i kroner) fra en kunde.
+     * @param beloeb
      */
     public void indsaetPenge(double beloeb) {
         netopNu = new Date(); // Hent et nyt Date objekt
@@ -117,7 +122,8 @@ public class Billetautomatv2 {
             System.out.println();
             System.out.println("--------------------------");
             System.out.println();
-
+            
+            totalIndtjeaning += billet.getTotalPris();
     }
 
     /**
@@ -167,7 +173,7 @@ public class Billetautomatv2 {
      * Retunerer totalprisen for Billetter listen.
      * @return 
      */
-    public int getTotal() {
+    public double getTotal() {
             if (montoertilstand) {
                     return totalIndtjeaning;
             } else {
