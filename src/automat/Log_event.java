@@ -346,7 +346,7 @@ class Log_event {
         
        switch(id_nr){
            case 2 :
-               //insæt penge (Outdated)
+               //insæt penge 
                if (this.sucess){
                    this.handling = "Der blev indsat beloebet: " +this.argument_double;
                }else{
