@@ -1,5 +1,8 @@
 package automat;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
+
 /**
  *
  * @author Chris && Mads
@@ -86,8 +89,7 @@ public class BenytBilletautomatv2 {
                             
                         case 10: //log ind som montør
                             System.out.print("Skriv kode: ");
-                            String kode = tastatur.next();
-                            automat.montoerLogin(kode);
+                            automat.montoerLogin(læsLinje());
                             break;
                             
                         case 11://get totalt antal billetter solgt
@@ -205,4 +207,17 @@ public class BenytBilletautomatv2 {
         tastatur.nextLine(); // Læs linjeskift
         return læstdouble;
     }
+    
+    public static String læsLinje()
+    {
+        String linje;
+            try {  
+                linje = tastatur.next();
+                return linje;
+            }catch(Exception e){
+                e.printStackTrace();
+                return "1111";
+            }
+    }
+
 }

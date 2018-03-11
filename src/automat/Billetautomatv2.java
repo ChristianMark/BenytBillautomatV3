@@ -152,19 +152,24 @@ public class Billetautomatv2 {
      */
     void montoerLogin(String adgangskode) {
         netopNu = new Date(); // Hent et nyt Date objekt
-        if ("1234".equals(adgangskode)) {
-                event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
-                montoertilstand = true;
-                System.out.println("Montoertilstand aktiveret");
-        } else {
-                if(montoertilstand == true){ // Hvis montoeren bare logger ud
-                    System.out.println("Montoertilstand deaktiveret");
-                    event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                          
-                }else{
-                    System.out.println("Montoertilstand deaktiveret");
-                    event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
-                }
-                montoertilstand = false;
+        try{
+            if ("1234".equals(adgangskode)) {
+                    event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                    montoertilstand = true;
+                    System.out.println("Montoertilstand aktiveret");
+            } else {
+                    if(montoertilstand == true){ // Hvis montoeren bare logger ud
+                        System.out.println("Montoertilstand deaktiveret");
+                        event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                          
+                    }else{
+                        System.out.println("Montoertilstand deaktiveret");
+                        event_liste.add(new Log_event(5, Integer.parseInt(adgangskode), false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                    }
+                    montoertilstand = false;
+            }
+        }catch(Exception e){
+            //e.printStackTrace();
+            event_liste.add(new Log_event(5, 0000 , false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
 
     }
