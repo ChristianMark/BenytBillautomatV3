@@ -170,6 +170,7 @@ public class Billetautomatv2 {
         }catch(Exception e){
             //e.printStackTrace();
             event_liste.add(new Log_event(5, 0000 , false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            montoertilstand = false;
         }
 
     }
@@ -466,12 +467,12 @@ public class Billetautomatv2 {
 
         for (Log_event element : event_liste) {
             if (ID != 0 && element.getId_nr() == ID) {
-                if (element.getArgument() >= belob){
+                if (element.getArgument_double() >= belob){
                     System.out.println(element);
                     tal++;
                 }
             } else if (ID == 0) {
-                if (element.getArgument() >= belob){
+                if (element.getArgument_double() >= belob){
                     System.out.println(element);
                     tal++;
                 }

@@ -108,11 +108,10 @@ public class BenytBilletautomatv2 {
                             System.out.println("Tast 2 for at ændre prisen på en Børne Billet");
                             System.out.println("Tast 3 for at ændre prisen på en Studenter Billet");
                             System.out.println("Tast 4 for at ændre prisen på en Cykel Billet");       
-                            int valg_billet_pris = tastatur.nextInt();
-                            tastatur.nextLine();
+                            int valg_billet_pris = læsINTtastatur();
                             System.out.print("Skriv den nye pris: ");
-                            int beloeb_pris = tastatur.nextInt();
-                            Billet.setBilletPris(valg_billet_pris, beloeb_pris);
+                            double beloeb_pris = læsDOUBLEtastatur();
+                            automat.setBilletpris(valg_billet_pris, beloeb_pris);
                             break;
                             
                         case 14://udskriv hele loggen
@@ -131,8 +130,7 @@ public class BenytBilletautomatv2 {
                             System.out.println("7: Aerndring i antal solgte billetter");
                             System.out.println("8: Log udskrifter");
                             System.out.println("9: Nulstilling af automaten");
-                            int valg2 = tastatur.nextInt();
-                            tastatur.nextLine();
+                            int valg2 = læsINTtastatur();
                             System.out.println("\nTast et tal fra listen:");
                             // Man skal ikke kunne søge efter paremetre ved alle events.
                             if(valg2 != 1 && valg2 != 3 && valg2 != 8 && valg2 != 9){
@@ -140,12 +138,10 @@ public class BenytBilletautomatv2 {
                             }
                             System.out.println("1 for at soege efter succesfulde handlinger.");
                             System.out.println("2 for at soege efter fejlede handlinger.\n3 for at søge efter dato. \n4 for alle handlinger.");
-                            int valg3 = tastatur.nextInt();
-                            tastatur.nextLine();
+                            int valg3 = læsINTtastatur();
                             if(valg3 == 0 && (valg2 != 1 && valg2 != 3 && valg2 != 8 && valg2 != 9)){
                                 System.out.println("\nIndtast paremetre du vil soege over.");
-                                int valg4 = tastatur.nextInt();
-                                tastatur.nextLine();
+                                double valg4 = læsDOUBLEtastatur();
                                 automat.find_trans_over(valg2, valg4);
                             }else{
                                 switch(valg3){
@@ -158,8 +154,7 @@ public class BenytBilletautomatv2 {
                                     System.out.println("1: for at søge indenfor den sidste dag");
                                     System.out.println("2: for at søge indenfor den sidste uge");
                                     System.out.println("3: for at søge indenfor de sidste 30 dage");
-                                    int valg4 = tastatur.nextInt();
-                                    tastatur.nextLine();
+                                    int valg4 = læsINTtastatur();
                                     System.out.println();
                                     automat.datoudskriver(valg4,valg2);
                                     break;
@@ -171,7 +166,7 @@ public class BenytBilletautomatv2 {
                             }
                             break;
                         case 16:
-                            automat.montoerLogin("");
+                            automat.montoerLogin("111111111"); // Log ud
                             break;
                         default:
                             System.out.println("Ugyldigt valg, proev igen");

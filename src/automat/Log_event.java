@@ -326,7 +326,7 @@ class Log_event {
             
                
            default : 
-               this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument;
+               this.handling = "Ukendt id_nr."+id_nr +"Dette er en fejl; se parameter her: "+this.argument;
                
        }
     }
@@ -455,7 +455,7 @@ class Log_event {
             
                
            default : 
-               this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument_double;
+               this.handling = "Ukendt id_nr."+id_nr +" Dette er en fejl; se parameterher: "+this.argument_double;
                
        }
     }
@@ -481,7 +481,11 @@ class Log_event {
     public int getArgument() {
         return argument;
     }
-
+    
+    public double getArgument_double() {
+        return argument_double;
+    }
+    
     public boolean isMontoer_tilstand() {
         return montoer_tilstand;
     }
