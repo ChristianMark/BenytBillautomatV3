@@ -559,19 +559,24 @@ public class Billetautomatv2 {
      * @param valg_antal  "Antal billet der ønskes slettet"
      */
     void sletBilletter(int valg_billet, int valg_zone, int valg_antal) {
-        int tæller = 1;
+        int tæller = 0;
+        // Da man ikke kan fjerne elementer fra en liste man kører igennem er 
+        // følgende link blevet brugt til, at implementere følgende for loop
+        // http://www.java67.com/2015/10/how-to-solve-concurrentmodificationexception-in-java-arraylist.html
+        // Forsimplet forklaret: bruger man en iterator/kopi af elementetterne fra listen
+        // til at køre for loopet udfra som man så kan udføre remove() metoden på.
         for (Iterator<Billet> itr = Billetter.iterator(); itr.hasNext();) {
             Billet test = itr.next();
-            if(valg_billet == test.getType() && valg_zone == test.getZoner()){
+            if(valg_billet == test.getType() && valg_zone == test.getZoner() && tæller <=valg_antal){
                 itr.remove();
                 tæller++; // Holder styr på, hvor mange elementer der skal slettes
             }
         }
         
-        if(tæller < 2){
+        if(tæller < 1){
             System.out.println("Intet blev slettet, da intet passede til kriterierne!!!");
         }else{
-            System.out.println((tæller-1)+" antal billetter efter dine kriterier blev slettet.");
+            System.out.println((tæller)+" antal billetter efter dine kriterier blev slettet.");
         }
     }
     
@@ -591,7 +596,7 @@ public class Billetautomatv2 {
      * Udfører det endeligt køb af biletter hvis balancen er høj nok.
      */
     public void endeligtKoeb(){
-        if (balance < getTotalPrice()){
+        if (balance < getTotalPrice()){ 
             System.out.printf("Indsæt penge for at købe %d biletter.", Billetter.size());
             
         } else if ( Billetter.size() < 1){
