@@ -98,18 +98,23 @@ public class Billetautomatv2 {
         switch (billet.getType()) {
             case 0:
                 event_liste.add(new Log_event(10, billet.getZoner(), true, erMontoer()));
+                antalBilletterSolgtType0++;
                 break;
             case 1:
                 event_liste.add(new Log_event(11, billet.getZoner(), true, erMontoer()));
+                antalBilletterSolgtType1++;
                 break;
             case 2:
                 event_liste.add(new Log_event(12, billet.getZoner(), true, erMontoer()));
+                antalBilletterSolgtType2++;
                 break;
             case 3:
                 event_liste.add(new Log_event(13, billet.getZoner(), true, erMontoer()));
+                antalBilletterSolgtType3++;
                 break;
             case 4:
                 event_liste.add(new Log_event(14, billet.getZoner(), true, erMontoer()));
+                antalBilletterSolgtType4++;
                 break;
         }
 
