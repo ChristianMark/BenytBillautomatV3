@@ -66,11 +66,11 @@ public class Billetautomatv2 {
         netopNu = new Date(); // Hent et nyt Date objekt
         if(beloeb > 0){ // Tjek om der bliver indbetalt et gyldigt beloeb
             balance = balance + beloeb;
-            event_liste.add(new Log_event(2,0, beloeb, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(2, beloeb, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }else{
             System.out.println("Det indsatte beloeb er ugyldigt. "+beloeb);
             // Timestamp på hvornår et ugyldigt beløb er forsøgt indkastet
-            event_liste.add(new Log_event(2,0, beloeb, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(2, beloeb, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
     }
 
@@ -136,10 +136,10 @@ public class Billetautomatv2 {
 
         if(balance < 0){ // Hvis balancen er negativ
             returbeloeb = 0;
-            event_liste.add(new Log_event(4,0,balance,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(4,balance,false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }else{ // Hvis balancen er positiv eller 0
             returbeloeb = balance;
-            event_liste.add(new Log_event(4,0,returbeloeb,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+            event_liste.add(new Log_event(4,returbeloeb,true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
         balance = 0;
         System.out.println("Du faar "+returbeloeb+" kr retur");
@@ -196,19 +196,19 @@ public class Billetautomatv2 {
                 Billet.setBilletPris(type, billetpris);
                 switch (type){
                     case 0 :
-                        event_liste.add(new Log_event(20,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(20, billetpris, true, erMontoer()));
                         break;
                     case 1 :
-                        event_liste.add(new Log_event(21,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(21, billetpris, true, erMontoer()));
                         break;
                     case 2 :
-                        event_liste.add(new Log_event(22,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(22, billetpris, true, erMontoer()));
                         break;
                     case 3 :
-                        event_liste.add(new Log_event(23,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(23, billetpris, true, erMontoer()));
                         break;
                     case 4 :
-                        event_liste.add(new Log_event(24,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(24, billetpris, true, erMontoer()));
                         break;
                 }
                 // Timestamp på hvornår billetprisen er blevet ændret og til hvad
@@ -217,11 +217,11 @@ public class Billetautomatv2 {
                 System.out.println("Billetprisen kan ikke vaere negativ.");
 
                 //Billet klasse ikke implimenteret i log
-                event_liste.add(new Log_event(6,0, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
+                event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen                    
             }
         }else {
                 System.out.println("Afvist - log ind foerst");
-                event_liste.add(new Log_event(6,0, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(6, billetpris, false, erMontoer())); // Tilføj "Log_event" objekt til event_listen
         }
 
     }
@@ -242,23 +242,23 @@ public class Billetautomatv2 {
                 // Timestamp på hvornår billetprisen er blevet ændret og til hvad
                 switch (type){
                     case 0 :
-                        event_liste.add(new Log_event(25,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(25, billetpris, true, erMontoer()));
                         break;
                     case 1 :
-                        event_liste.add(new Log_event(26,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(26, billetpris, true, erMontoer()));
                         break;
                     case 2 :
-                        event_liste.add(new Log_event(27,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(27, billetpris, true, erMontoer()));
                         break;
                     case 3 :
-                        event_liste.add(new Log_event(28,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(28, billetpris, true, erMontoer()));
                         break;
                     case 4 :
-                        event_liste.add(new Log_event(29,0, billetpris, true, erMontoer()));
+                        event_liste.add(new Log_event(29, billetpris, true, erMontoer()));
                         break;
                 }
                 //Billet klasse ikke implimenteret i log
-                event_liste.add(new Log_event(6,0, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
+                event_liste.add(new Log_event(6, billetpris, true, erMontoer())); // Tilføj "Log_event" objekt til event_listen
             }else{
                 System.out.println("Billetprisen kan ikke vaere negativ.");
 
