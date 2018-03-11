@@ -17,8 +17,6 @@ class Log_event {
     public String toString() {
         // returner string af handling i tekst
         return tidspunkt+ "; "+ handling + "; Montoertilstand: "+montoer_tilstand;
-       
-       
     }
     
     private final Date tidspunkt;
@@ -73,7 +71,7 @@ class Log_event {
                break;
                
            case 3 :
-               //udskrivning af billet
+               //Udskrivning af billet (OUTDATED)
                if (this.sucess){
                    this.handling = "Der blev udskrevet en billet";
                }else{
@@ -154,7 +152,7 @@ class Log_event {
                break;
                
            case 11:
-               //Udskrevet voksen billet
+               //Udskrevet Ungdoms billet
                if (this.sucess){
                    this.handling = "Der er blevet udskrevet en Ungdoms Billet på:" + this.argument + "zoner";
                } else {
@@ -163,7 +161,7 @@ class Log_event {
                break;
                
            case 12:
-               //Udskrevet voksen billet
+               //Udskrevet Børne billet
                if (this.sucess){
                    this.handling = "Der er blevet udskrevet en Børne Billet på:" + this.argument + "zoner";
                } else {
@@ -172,7 +170,7 @@ class Log_event {
                break;
                
            case 13:
-               //Udskrevet voksen billet
+               //Udskrevet Studenter billet
                if (this.sucess){
                    this.handling = "Der er blevet udskrevet en Studenter Billet på:" + this.argument + "zoner";
                } else {
@@ -181,7 +179,7 @@ class Log_event {
                break;
                
            case 14:
-               //Udskrevet voksen billet
+               //Udskrevet Cykel billet
                if (this.sucess){
                    this.handling = "Der er blevet udskrevet en Cykel Billet på:" + this.argument + "zoner";
                } else {
@@ -190,7 +188,7 @@ class Log_event {
                break;
            
            case 15:
-               //Udskrevet voksen billet
+               //Antal voksen billet solgte ændret
                if (this.sucess){
                    this.handling = "Antallet af Voksen Billetter solgt er ændret til: " + this.argument;
                } else {
@@ -199,7 +197,7 @@ class Log_event {
                break;
            
            case 16:
-               //Udskrevet voksen billet
+               //Antal Ungdoms billet solgte ændret
                if (this.sucess){
                    this.handling = "Antallet af Ungdoms Billetter solgt er ændret til: " + this.argument;
                } else {
@@ -208,7 +206,7 @@ class Log_event {
                break;
                
            case 17:
-               //Udskrevet voksen billet
+               //Antal Børne billet solgte ændret
                if (this.sucess){
                    this.handling = "Antallet af Børne Billetter solgt er ændret til: " + this.argument;
                } else {
@@ -217,7 +215,7 @@ class Log_event {
                break;
            
            case 18:
-               //Udskrevet voksen billet
+               //Antal Studenter billet solgte ændret
                if (this.sucess){
                    this.handling = "Antallet af Studenter Billetter solgt er ændret til: " + this.argument;
                } else {
@@ -226,7 +224,7 @@ class Log_event {
                break;
                
            case 19:
-               //Udskrevet voksen billet
+               //Antal Cykel billet solgte ændret
                if (this.sucess){
                    this.handling = "Antallet af Cykel Billetter solgt er ændret til: " + this.argument;
                } else {
@@ -235,7 +233,7 @@ class Log_event {
                break;
             
            case 20:
-               //Udskrevet voksen billet
+               //Prisen på voksen billet ændret
                if (this.sucess){
                    this.handling = "Prisen på Voksen Billetter er ændret til: " + this.argument;
                } else {
@@ -244,7 +242,7 @@ class Log_event {
                break;
            
            case 21:
-               //Udskrevet voksen billet
+               //Prisen på Ungdoms billet ændret
                if (this.sucess){
                    this.handling = "Prisen på Ungdoms Billetter er ændret til: " + this.argument;
                } else {
@@ -253,7 +251,7 @@ class Log_event {
                break;
                
            case 22:
-               //Udskrevet voksen billet
+               //Prisen på Barne billet ændret
                if (this.sucess){
                    this.handling = "Prisen på Barne Billetter er ændret til: " + this.argument;
                } else {
@@ -262,7 +260,7 @@ class Log_event {
                break;
            
            case 23:
-               //Udskrevet voksen billet
+               //Prisen på Studenter billet ændret
                if (this.sucess){
                    this.handling = "Prisen på Studenter Billetter er ændret til: " + this.argument;
                } else {
@@ -271,7 +269,7 @@ class Log_event {
                break;
                
            case 24:
-               //Udskrevet voksen billet
+               //Prisen på Cykel billet er ændret
                if (this.sucess){
                    this.handling = "Prisen på Cykel Billetter er ændret til: " + this.argument;
                } else {
@@ -289,7 +287,7 @@ class Log_event {
                break;
            
            case 26:
-               //Udskrevet voksen billet
+               //Per zone for Ungdoms billet er ændret
                if (this.sucess){
                    this.handling = "Prisen per zone for Ungdoms Billetter er ændret til: " + this.argument;
                } else {
@@ -298,7 +296,7 @@ class Log_event {
                break;
                
            case 27:
-               //Udskrevet voksen billet
+               //Per zone for Barne billet er ændret
                if (this.sucess){
                    this.handling = "Prisen per zone for Barne Billetter er ændret til: " + this.argument;
                } else {
@@ -307,7 +305,7 @@ class Log_event {
                break;
            
            case 28:
-               //Udskrevet voksen billet
+               //Per zone for Studenter billet er ændret
                if (this.sucess){
                    this.handling = "Prisen per zone for Studenter Billetter er ændret til: " + this.argument;
                } else {
@@ -316,7 +314,7 @@ class Log_event {
                break;
                
            case 29:
-               //Udskrevet voksen billet
+               //Per zone for Cykel billet er ændret
                if (this.sucess){
                    this.handling = "Prisen per zone for Cykel Billetter er ændret til: " + this.argument;
                } else {
