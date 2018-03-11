@@ -421,63 +421,68 @@ public class Billetautomatv2 {
      * @return
      */
     public int udskriver(int ID, int success_parameter) {
-        int tal = 0; // Antal udskrifter
-        if (ID < 0 || ID > Log_event.hojestID) { // Tjek om gyldigt ID
-            System.out.println("Fejl i udskriver med ugyldigt ID: " + ID);
+        if (montoertilstand){
+            int tal = 0; // Antal udskrifter
+            if (ID < 0 || ID > Log_event.hojestID) { // Tjek om gyldigt ID
+                System.out.println("Fejl i udskriver med ugyldigt ID: " + ID);
+                return -1;
+            }
+
+            for (Log_event element : event_liste) {
+                if (ID != 0 && element.getId_nr() == ID) {
+                    switch (success_parameter) {
+                        case 0: // False
+                            if (!element.isSucess()) {
+                                System.out.println(element);
+                                tal++;
+                            }
+                            break;
+                        case 1: // True
+                            if (element.isSucess()) {
+                                System.out.println(element);
+                                tal++;
+                            }
+                            break;
+                        case 2: // Udskriv alt
+                            System.out.println(element);
+                            tal++;
+                            break;
+                        default:
+                            System.out.println("Fejl i udskriver med ID: " + ID + " og success_parameter: " + success_parameter);
+                            return -1;
+                    }
+                } else if (ID == 0) {
+                    switch (success_parameter) {
+                        case 0: // False
+                            if (!element.isSucess()) {
+                                System.out.println(element);
+                                tal++;
+                            }
+                            break;
+                        case 1: // True
+                            if (element.isSucess()) {
+                                System.out.println(element);
+                                tal++;
+                            }
+                            break;
+                        case 2: // Udskriv alt
+                            System.out.println(element);
+                            tal++;
+                            break;
+                        default:
+                            System.out.println("Fejl i udskriver med ID: " + ID + " og success_parameter: " + success_parameter);
+                            return -1;
+                    }//end switch
+                } //end else if
+            }//end for-loop
+            if (tal == 0) {
+                System.out.println("Der blev ikke fundet nogle log-elementer der svarede til søge kriteriet.");
+            }
+            return tal;
+        } else {
+            System.out.println("Afvist - log ind forest");
             return -1;
         }
-
-        for (Log_event element : event_liste) {
-            if (ID != 0 && element.getId_nr() == ID) {
-                switch (success_parameter) {
-                    case 0: // False
-                        if (!element.isSucess()) {
-                            System.out.println(element);
-                            tal++;
-                        }
-                        break;
-                    case 1: // True
-                        if (element.isSucess()) {
-                            System.out.println(element);
-                            tal++;
-                        }
-                        break;
-                    case 2: // Udskriv alt
-                        System.out.println(element);
-                        tal++;
-                        break;
-                    default:
-                        System.out.println("Fejl i udskriver med ID: " + ID + " og success_parameter: " + success_parameter);
-                        return -1;
-                }
-            } else if (ID == 0) {
-                switch (success_parameter) {
-                    case 0: // False
-                        if (!element.isSucess()) {
-                            System.out.println(element);
-                            tal++;
-                        }
-                        break;
-                    case 1: // True
-                        if (element.isSucess()) {
-                            System.out.println(element);
-                            tal++;
-                        }
-                        break;
-                    case 2: // Udskriv alt
-                        System.out.println(element);
-                        tal++;
-                        break;
-                    default:
-                        System.out.println("Fejl i udskriver med ID: " + ID + " og success_parameter: " + success_parameter);
-                        return -1;
-                }//end switch
-            } //end else if
-        }//end for-loop
-        if (tal == 0) {
-            System.out.println("Der blev ikke fundet nogle log-elementer der svarede til søge kriteriet.");
-        }
-        return tal;
     }
 
     /**
