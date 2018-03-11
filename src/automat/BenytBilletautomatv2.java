@@ -22,7 +22,7 @@ public class BenytBilletautomatv2 {
 			System.out.println("Tast 2 for at købe billet(ter)");
 			System.out.println("Tast 3 for at faa returpengene");
                         System.out.println("Tast 4 for at udskrive alle billetter i indkøbskurven");
-                        System.out.println("Tast 6 for at slette billetter fra indkøbskurven");
+                        System.out.println("Tast 5 for at slette billetter fra indkøbskurven");
 			System.out.println();
 			System.out.println("Tast 10 for at logge ind som montoer");
 			if (automat.erMontoer()) {
@@ -70,7 +70,7 @@ public class BenytBilletautomatv2 {
                             automat.endeligtKoeb();
                             break;
                             
-                        case 6://slet biletter fra indkøbslisten
+                        case 5://slet biletter fra indkøbslisten
                             System.out.println("Tast 0 for at slette en Voksen Billet");
                             System.out.println("Tast 1 for at slette en Ungdoms Billet");
                             System.out.println("Tast 2 for at slette en Børne Billet");

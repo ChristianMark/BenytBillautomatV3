@@ -27,7 +27,7 @@ class Log_event {
     public static int antal_events;
     private final boolean sucess;
     private final int id_nr;
-    public static int hojestID = 19;
+    public static int hojestID = 29;
     
     /**
      * Konstruktør med 3 paremetre der opretter et objekt
@@ -331,31 +331,133 @@ class Log_event {
        }
     }
     
-    public Log_event (int id,int argument, double argument_double ,boolean sucess, boolean erMontoer){
+    public Log_event (int id, double argument_double ,boolean sucess, boolean erMontoer){
         if(0 > id || id > hojestID){
             System.err.println("Ugyldigt id: Mangler at blive talt med i hojestID");
         }
         this.tidspunkt = new Date();
         this.id_nr = id;
-        this.argument = argument;
+        this.argument = -1;
         this.argument_double = argument_double;
         this.sucess = sucess;
         this.montoer_tilstand = erMontoer;
         antal_events++;
         
-       switch(id){
-               case 3:
-                    //insæt penge
-                   if (this.sucess){
-                       this.handling = "Der blev indsat beloebet: " +this.argument_double;
-                   }else{
-                       this.handling = "Der blev forsøgt indsat det ugyldige beloeb: " +this.argument_double;
-                   }
-                   break;
-               default:
-                   this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument_double;
-       }           
-
+        
+       switch(id_nr){
+           case 2 :
+               //insæt penge (Outdated)
+               if (this.sucess){
+                   this.handling = "Der blev indsat beloebet: " +this.argument_double;
+               }else{
+                   this.handling = "Der blev forsøgt indsat det ugyldige beloeb: " +this.argument_double;
+               }
+               break;
+               
+           case 4 :
+               //retunerer penge
+               if (this.sucess){
+                   this.handling = "Der blev tilbagebetalt beloebet: "+ this.argument_double;
+               }else {
+                   this.handling = "Der blev forsøgt retuneret beløbet: "+this.argument_double;
+               }
+               break;
+            
+           case 20:
+               //Prisen på voksen billet ændret
+               if (this.sucess){
+                   this.handling = "Prisen på Voksen Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 21:
+               //Prisen på Ungdoms billet ændret
+               if (this.sucess){
+                   this.handling = "Prisen på Ungdoms Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 22:
+               //Prisen på Barne billet ændret
+               if (this.sucess){
+                   this.handling = "Prisen på Barne Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 23:
+               //Prisen på Studenter billet ændret
+               if (this.sucess){
+                   this.handling = "Prisen på Studenter Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 24:
+               //Prisen på Cykel billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen på Cykel Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 25:
+               //Per zone for voksen billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Voksen Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 26:
+               //Per zone for Ungdoms billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Ungdoms Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 27:
+               //Per zone for Barne billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Barne Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+           
+           case 28:
+               //Per zone for Studenter billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Studenter Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+               
+           case 29:
+               //Per zone for Cykel billet er ændret
+               if (this.sucess){
+                   this.handling = "Prisen per zone for Cykel Billetter er ændret til: " + this.argument_double;
+               } else {
+                   this.handling = "Der er sket en fejl";
+               }
+               break;
+            
+               
+           default : 
+               this.handling = "Ukendt id_nr. Dette er en fejl; se parameterher: "+this.argument_double;
+               
+       }
     }
     
     /**
