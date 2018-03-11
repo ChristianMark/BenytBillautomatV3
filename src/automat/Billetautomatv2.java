@@ -207,7 +207,7 @@ public class Billetautomatv2 {
         netopNu = new Date(); // Hent et nyt Date objekt
         double billetpris_old = Billet.getBilletPris(type);
 
-        if (montoertilstand) { // Billetprisen kan kun saettes som montoer
+        if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
             if (billetpris >= 0) { // Billetprisen kan ikke vaere negativ
                 Billet.setBilletPris(type, billetpris);
                 switch (type) {
@@ -411,10 +411,6 @@ public class Billetautomatv2 {
      * @return
      */
     public int udskriver(int ID, int success_parameter) {
-        if (!montoertilstand) {
-            System.out.println("Afvist - log ind foerst");
-            return -1;
-        }
         int tal = 0; // Antal udskrifter
         if (ID < 0 || ID > Log_event.hojestID) { // Tjek om gyldigt ID
             System.out.println("Fejl i udskriver med ugyldigt ID: " + ID);
@@ -482,10 +478,6 @@ public class Billetautomatv2 {
      * @return
      */
     public int find_trans_over(int ID, double belob) {
-        if (!montoertilstand) {
-            System.out.println("Afvist - log ind foerst");
-            return -1;
-        }
         int tal = 0;
         if (ID < 0 || ID > Log_event.hojestID) { // Tjek om gyldigt ID
             System.out.println("Fejl i udskriver med ugyldigt ID: " + ID);
@@ -518,10 +510,6 @@ public class Billetautomatv2 {
      * @param ID
      */
     void datoudskriver(int valg4, int ID) {
-        if (!montoertilstand) {
-            System.out.println("Afvist - log ind foerst");
-            return;
-        }
         Date sammenligningsdato = new Date();
         int tal = 0;
         switch (valg4) {
