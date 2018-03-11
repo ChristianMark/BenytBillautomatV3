@@ -623,6 +623,30 @@ public class Billetautomatv2 {
         }
     }
     /*
+     * Giver pengene ud til montøren. 
+     */
+    public void toemAutomat(){
+        if (montoertilstand){
+            double returbeloeb;
+            netopNu = new Date(); // Hent et nyt Date objekt
+
+            if(totalIndtjeaning > 0){ // Hvis balancen er negativ
+                returbeloeb = totalIndtjeaning;
+                totalIndtjeaning = 0;
+                System.out.println("Maskinen tømmes for "+returbeloeb+" kr.");
+                event_liste.add(new Log_event(30, returbeloeb, true, erMontoer()));
+            } else {
+                returbeloeb = 0;
+                System.out.println("Maskinen er allerede tom.");
+                event_liste.add(new Log_event(30, returbeloeb, false, erMontoer()));
+            }
+        } else {
+            System.out.println("Afvist - log ind foerst");
+            event_liste.add(new Log_event(30, 0, false, erMontoer()));
+        }
+    }
+    
+    /*
      * Centers a string with leading and preceding zeros.
      * 
      * made by Mertuarez on Stackoverflow
@@ -635,5 +659,4 @@ public class Billetautomatv2 {
         float end = start + len; 
         return out.substring((int)start, (int)end);
     }
-    
 }
