@@ -5,6 +5,8 @@
  */
 package automat;
 
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 import junit.framework.TestCase;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -114,6 +116,41 @@ public class Billetautomatv2Test extends TestCase {
         assertEquals(10 + 5, instance.getTotal(), 0.001);
         // Ungdomspris+1 zone
 
+    }
+    
+        public void testGUI() throws InterruptedException {
+        System.out.println("test GUI testes----------");
+        Billetautomatv2 instance = new Billetautomatv2();
+        JTabbedPane faneblade = new JTabbedPane();
+        
+        BA_Jpannel BApanel = new BA_Jpannel();
+        Indkøbskurv_Ba_Jpanel BA_kurv = new Indkøbskurv_Ba_Jpanel();
+        BApanel.setLogik(instance); 
+        BA_kurv.setLogik(instance);
+        faneblade.add("HovedSkærm", BApanel);
+        faneblade.add("Indkøbskurv", BA_kurv);
+        
+        JFrame vindue = new JFrame("Faneblade");
+        vindue.add( faneblade );
+        vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // reagér på luk
+        vindue.pack();                  // lad vinduet selv bestemme sin størrelse
+        vindue.setVisible(true);  
+        
+        
+        
+        instance.koebBilletter(0, 2);
+        instance.koebBilletter(1, 3);
+        instance.koebBilletter(2, 4);
+        instance.koebBilletter(3, 5);
+        instance.koebBilletter(4, 6);
+        instance.koebBilletter(0, 7);
+        instance.koebBilletter(0, 8);
+        instance.koebBilletter(0, 10);
+        
+        
+        // Så man kan nå at teste GUI'et
+        //Thread.sleep(2000000);
+        Thread.sleep(10000);
     }
 
 }

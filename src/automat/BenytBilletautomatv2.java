@@ -2,6 +2,8 @@ package automat;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -13,6 +15,22 @@ public class BenytBilletautomatv2 {
 
     public static void main(String[] arg) {
         Billetautomatv2 automat = new Billetautomatv2();
+        
+        
+        JTabbedPane faneblade = new JTabbedPane();
+        
+        BA_Jpannel BApanel = new BA_Jpannel();
+        Indkøbskurv_Ba_Jpanel BA_kurv = new Indkøbskurv_Ba_Jpanel();
+        BApanel.setLogik(automat); 
+        BA_kurv.setLogik(automat);
+        faneblade.add("HovedSkærm", BApanel);
+        faneblade.add("Indkøbskurv", BA_kurv);
+        
+        JFrame vindue = new JFrame("Faneblade");
+        vindue.add( faneblade );
+        vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // reagér på luk
+        vindue.pack();                  // lad vinduet selv bestemme sin størrelse
+        vindue.setVisible(true);  
 
         System.out.println("BenytBilletautomat version 2");
         System.out.println();

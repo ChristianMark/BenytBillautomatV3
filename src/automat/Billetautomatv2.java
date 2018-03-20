@@ -216,7 +216,11 @@ public class Billetautomatv2 {
     public void setBilletpris(int type, double billetpris) {
         netopNu = new Date(); // Hent et nyt Date objekt
         double billetpris_old = Billet.getBilletPris(type);
-
+        if (!this.montoertilstand) {
+            throw new IllegalArgumentException("Du skal være montør.");
+            
+            
+        }
         if (this.montoertilstand) { // Billetprisen kan kun saettes som montoer
             if (billetpris >= 0) { // Billetprisen kan ikke vaere negativ
                 Billet.setBilletPris(type, billetpris);
@@ -564,6 +568,7 @@ public class Billetautomatv2 {
             case 3:
                 sammenligningsdato = new Date(sammenligningsdato.getTime() - (60 * 60 * 1000 * 24 * 14)); // 14 dage
                 for (Log_event element : event_liste) {
+                    event_liste.remove(element);
                     if (element.getId_nr() == ID) {
                         if (sammenligningsdato.before(element.getTidspunkt())) {
                             System.out.println(element);
@@ -590,7 +595,7 @@ public class Billetautomatv2 {
         if (valg_zone > 1 && valg_zone < 9) {
             Billet Koebt_billet = new Billet(valg_billet, valg_zone);
             Billetter.add(Koebt_billet);
-            System.out.println("En " + Koebt_billet.getNavn() + " er købt, med " + Koebt_billet.getZoner() + " zoner.");
+            System.out.println("En " + Koebt_billet.getNavn() + " er tilføjet til indkøbskurven, med " + Koebt_billet.getZoner() + " zoner.");
         } else {
             System.out.println("Ugyldigt antal zoner ");
         }
@@ -633,7 +638,7 @@ public class Billetautomatv2 {
     public double getTotalPrice() {
         double total = 0;
         for (Billet element : Billetter) {
-            total += element.getPris();
+            total += element.getTotalPris();
         }
         return total;
     }
@@ -657,10 +662,21 @@ public class Billetautomatv2 {
                 udskrivBillet(element);
             });
             Billetter.clear();
-            returpenge();
+            //returpenge();
             System.out.println("");
             System.out.println("");
         }
+    }
+    
+    public String[] get_Billetlisten(){
+        String[] str = new String[Billetter.size()];
+        int i = 0;
+
+        for (Billet billet : Billetter) {
+            str[i] = billet.getNavn()+" - Antal zoner: "+billet.getZoner();
+            i++;
+        }             
+        return str;
     }
 
     /*
@@ -699,5 +715,14 @@ public class Billetautomatv2 {
         float start = mid - (len / 2);
         float end = start + len;
         return out.substring((int) start, (int) end);
+    }
+
+    void sletBillet(int selectedIndex) {
+        if(selectedIndex != -1){
+          System.out.println("En \""+Billetter.get(selectedIndex).getNavn()+
+          " med "+Billetter.get(selectedIndex).getZoner() +" zoner\" blev slettet fra indkøbskurven.");
+          Billetter.remove(selectedIndex);
+        }
+        
     }
 }
