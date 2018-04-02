@@ -356,6 +356,7 @@ public class AdminPanel extends javax.swing.JPanel {
         } catch (Exception e){
             //Popup here comming
         }
+        jTextField_BiletterSolgt0.setText(""+ ba.getAntalBilletterSolgt(0));
     }//GEN-LAST:event_jButton_setBilletterSolgt0ActionPerformed
 
     private void jTextField_BiletterSolgt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt1ActionPerformed
@@ -369,6 +370,7 @@ public class AdminPanel extends javax.swing.JPanel {
         } catch (Exception e){
             //Popup here comming
         }
+        jTextField_BiletterSolgt1.setText(""+ ba.getAntalBilletterSolgt(1));
     }//GEN-LAST:event_jButton_setBilletterSolgt1ActionPerformed
 
     private void jTextField_BiletterSolgt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt2ActionPerformed
@@ -382,6 +384,7 @@ public class AdminPanel extends javax.swing.JPanel {
         } catch (Exception e){
             //Popup here comming
         }
+        jTextField_BiletterSolgt2.setText(""+ ba.getAntalBilletterSolgt(2));
     }//GEN-LAST:event_jButton_setBilletterSolgt2ActionPerformed
 
     private void jTextField_BiletterSolgt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt3ActionPerformed
@@ -395,6 +398,7 @@ public class AdminPanel extends javax.swing.JPanel {
         } catch (Exception e){
             //Popup here comming
         }
+        jTextField_BiletterSolgt3.setText(""+ ba.getAntalBilletterSolgt(3));
     }//GEN-LAST:event_jButton_setBilletterSolgt3ActionPerformed
 
     private void jTextField_BiletterSolgt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt4ActionPerformed
@@ -408,12 +412,13 @@ public class AdminPanel extends javax.swing.JPanel {
         } catch (Exception e){
             //Popup here comming
         }
+        jTextField_BiletterSolgt4.setText(""+ ba.getAntalBilletterSolgt(4));
     }//GEN-LAST:event_jButton_setBilletterSolgt4ActionPerformed
 
     private void jButton_toemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_toemActionPerformed
         // TODO add your handling code here:
-        //MADS
         ba.toemAutomat();
+        jTextField_TotalInd.setText(ba.getTotal()+ " kr.");
     }//GEN-LAST:event_jButton_toemActionPerformed
 
 
