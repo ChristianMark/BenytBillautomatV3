@@ -166,7 +166,7 @@ public class Billetautomatv2 {
     /**
      * Forsøger at logge ind som montør. Hvis montørtilstanden er true logges der ud.
      *
-     * @param String
+     * @param adgangskode
      */
     public void montoerLogin(String adgangskode) {
         netopNu = new Date(); // Hent et nyt Date objekt
