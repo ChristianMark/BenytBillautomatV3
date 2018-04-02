@@ -21,13 +21,17 @@ public class BenytBilletautomatv2_AdminGUI {
         
         AdminPanel Apanel = new AdminPanel();
         BA_Jpannel BApanel = new BA_Jpannel();
+        //Nyt//
         Indkøbskurv_Ba_Jpanel BA_kurv = new Indkøbskurv_Ba_Jpanel();
         Apanel.setLogik(automat);
+        ///////
         BApanel.setLogik(automat); 
         BA_kurv.setLogik(automat);
         faneblade.add("HovedSkærm", BApanel);
         faneblade.add("Indkøbskurv", BA_kurv);
+        //Nyt//
         faneblade.add("Admin panel", Apanel);
+        ///////
         JFrame vindue = new JFrame("Faneblade");
         vindue.add( faneblade );
         vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // reagér på luk
@@ -37,7 +41,9 @@ public class BenytBilletautomatv2_AdminGUI {
         System.out.println("BenytBilletautomat GUI");
         System.out.println();
         
+        //Nyt//
         
+        //Forsøg på forsvindende faneblade
         
         /*boolean tidligereMontørtilstand = automat.erMontoer();
         while(true){
@@ -60,7 +66,7 @@ public class BenytBilletautomatv2_AdminGUI {
         
         
         
-        
+        //Udkommenteret da dette gør at programmet lukker når gui,en gør det.
         /*
         while (true) {// Menu loop
             System.out.println("-----------------------------------------------");
