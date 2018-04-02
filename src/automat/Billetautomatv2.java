@@ -338,6 +338,35 @@ public class Billetautomatv2 {
             return -1;
         }
     }
+    
+    public int getAntalBilletterSolgt(int type) {
+        if (montoertilstand) {
+            switch (type) {
+                case 0: //voksen billet
+                    return antalBilletterSolgtType0;
+
+                case 1://ungdoms billet
+                    return antalBilletterSolgtType1;
+
+                case 2: //barne billet
+                    return antalBilletterSolgtType2;
+
+                case 3: //studenter billet
+                    return antalBilletterSolgtType3;
+
+                case 4: //cykel billet
+                    return antalBilletterSolgtType4;
+                default:
+                    return 0;
+            }
+
+        } else {
+            System.out.println("Afvist - log ind foerst");
+            return -1;
+        }
+    }
+    
+    
 
     /**
      * Setter antal biletter solgt for en bestemt billet type.
