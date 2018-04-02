@@ -47,9 +47,9 @@ public class BenytBilletautomatv2 {
             System.out.println();
             System.out.println("Tast 10 for at logge ind som montoer");
             if (automat.erMontoer()) {
-                System.out.println("Tast 11 for at se status (montoer)");
-                System.out.println("Tast 12 for at nulstille (montoer)");
-                System.out.println("Tast 13 for at saette billetpris (montoer)");
+                System.out.println("Tast 11 for at se status");
+                System.out.println("Tast 12 for at nulstille");
+                System.out.println("Tast 13 for at saette billetpris");
                 System.out.println("Tast 14 for at faa udskrevet en log");
                 System.out.println("Tast 15 for at udskrive log med soegekriterier");
                 System.out.println("Tast 16 for at logge ud af montoertilstand");
