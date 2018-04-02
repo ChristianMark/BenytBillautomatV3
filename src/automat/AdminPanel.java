@@ -14,16 +14,16 @@ import java.awt.Color;
 public class AdminPanel extends javax.swing.JPanel {
 
     private Billetautomatv2 ba;
-    
+
     /**
-     * Creates new form AdminPanel
+     * Creates new form AdminPanel2
      */
     void setLogik(Billetautomatv2 automat) {
         ba = automat;
     }
     
     void loginLogik(boolean login){
-        jPanel1_AdminDesk.setVisible(login);
+        jPanel_AdminDesk.setVisible(login);
         if (login == true){ //opdater værdier i AdminDesk'en:
             jTextField_BiletterSolgt0.setText(""+ ba.getAntalBilletterSolgt(0));
             jTextField_BiletterSolgt1.setText(""+ ba.getAntalBilletterSolgt(1));
@@ -49,9 +49,8 @@ public class AdminPanel extends javax.swing.JPanel {
     
     public AdminPanel() {
         initComponents();
-        jPanel1_AdminDesk.setVisible(false);
+        jPanel_AdminDesk.setVisible(false);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,41 +64,40 @@ public class AdminPanel extends javax.swing.JPanel {
         jPasswordField_Login = new javax.swing.JPasswordField();
         jLabel_Montør_status = new javax.swing.JLabel();
         jButton_Login = new javax.swing.JButton();
-        jPanel1_AdminDesk = new javax.swing.JPanel();
-        jLabel_TotalInd = new javax.swing.JLabel();
-        jTextField_BiletterSolgt0 = new javax.swing.JTextField();
-        jTextField_TotalInd = new javax.swing.JTextField();
-        jButton_setBilletterSolgt0 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField_BiletterSolgt1 = new javax.swing.JTextField();
-        jButton_setBilletterSolgt1 = new javax.swing.JButton();
-        jTextField_BiletterSolgt2 = new javax.swing.JTextField();
-        jButton_setBilletterSolgt2 = new javax.swing.JButton();
-        jTextField_BiletterSolgt3 = new javax.swing.JTextField();
-        jButton_setBilletterSolgt3 = new javax.swing.JButton();
-        jTextField_BiletterSolgt4 = new javax.swing.JTextField();
-        jButton_setBilletterSolgt4 = new javax.swing.JButton();
-        jButton_toem = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        jTextField_PrisPZ0 = new javax.swing.JTextField();
-        jTextField_PrisPZ1 = new javax.swing.JTextField();
-        jTextField_PrisPZ2 = new javax.swing.JTextField();
-        jTextField_PrisPZ3 = new javax.swing.JTextField();
-        jTextField_PrisPZ4 = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel_AdminDesk = new javax.swing.JPanel();
         jTextField_BasisPris0 = new javax.swing.JTextField();
         jTextField_BasisPris1 = new javax.swing.JTextField();
         jTextField_BasisPris2 = new javax.swing.JTextField();
         jTextField_BasisPris3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jTextField_BasisPris4 = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_BiletterSolgt1 = new javax.swing.JTextField();
+        jButton_setBilletterSolgt1 = new javax.swing.JButton();
+        jTextField_BiletterSolgt2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jButton_setBilletterSolgt2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField_BiletterSolgt3 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jButton_setBilletterSolgt3 = new javax.swing.JButton();
+        jTextField_BiletterSolgt4 = new javax.swing.JTextField();
+        jLabel_TotalInd = new javax.swing.JLabel();
+        jButton_setBilletterSolgt4 = new javax.swing.JButton();
+        jTextField_PrisPZ0 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField_PrisPZ1 = new javax.swing.JTextField();
+        jTextField_BiletterSolgt0 = new javax.swing.JTextField();
+        jButton_toem = new javax.swing.JButton();
+        jTextField_PrisPZ2 = new javax.swing.JTextField();
+        jTextField_PrisPZ3 = new javax.swing.JTextField();
+        jTextField_TotalInd = new javax.swing.JTextField();
+        jTextField_PrisPZ4 = new javax.swing.JTextField();
+        jButton_setBilletterSolgt0 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel_MontørLogin.setText("Montør Login");
 
@@ -122,32 +120,27 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel_TotalInd.setText("Total indtjening: ");
+        jTextField_BasisPris0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField_BasisPris0.setText("0 kr.");
 
-        jTextField_BiletterSolgt0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField_BiletterSolgt0.setText("0");
-        jTextField_BiletterSolgt0.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_BasisPris1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField_BasisPris1.setText("0 kr.");
+
+        jTextField_BasisPris2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField_BasisPris2.setText("0 kr.");
+
+        jTextField_BasisPris3.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField_BasisPris3.setText("0 kr.");
+        jTextField_BasisPris3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_BiletterSolgt0ActionPerformed(evt);
+                jTextField_BasisPris3ActionPerformed(evt);
             }
         });
-
-        jTextField_TotalInd.setText("0 kr.");
-
-        jButton_setBilletterSolgt0.setText("Set");
-        jButton_setBilletterSolgt0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_setBilletterSolgt0ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Voksen biletter:");
-
-        jLabel2.setText("Ungdoms biletter:");
-
-        jLabel3.setText("Børne biletter:");
 
         jLabel4.setText("Studenter biletter:");
+
+        jTextField_BasisPris4.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField_BasisPris4.setText("0 kr.");
 
         jLabel5.setText("Cykel biletter:");
 
@@ -176,6 +169,8 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel6.setText("Antal solgt:");
+
         jButton_setBilletterSolgt2.setText("Set");
         jButton_setBilletterSolgt2.setMaximumSize(new java.awt.Dimension(39, 32));
         jButton_setBilletterSolgt2.setMinimumSize(new java.awt.Dimension(39, 32));
@@ -185,6 +180,8 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setText("Basis pris:");
+
         jTextField_BiletterSolgt3.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextField_BiletterSolgt3.setText("0");
         jTextField_BiletterSolgt3.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +189,8 @@ public class AdminPanel extends javax.swing.JPanel {
                 jTextField_BiletterSolgt3ActionPerformed(evt);
             }
         });
+
+        jLabel8.setText("Pris pr. zone:");
 
         jButton_setBilletterSolgt3.setText("Set");
         jButton_setBilletterSolgt3.setMaximumSize(new java.awt.Dimension(39, 32));
@@ -210,29 +209,14 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel_TotalInd.setText("Total indtjening: ");
+
         jButton_setBilletterSolgt4.setText("Set");
         jButton_setBilletterSolgt4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_setBilletterSolgt4ActionPerformed(evt);
             }
         });
-
-        jButton_toem.setText("Tøm automat");
-        jButton_toem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_toemActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Antal solgt:");
-
-        jLabel7.setText("Basis pris:");
-
-        jLabel8.setText("Pris pr. zone:");
-
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         jTextField_PrisPZ0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextField_PrisPZ0.setText("0 kr.");
@@ -242,11 +226,30 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 24)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Admin Desk");
+
         jTextField_PrisPZ1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextField_PrisPZ1.setText("0 kr.");
         jTextField_PrisPZ1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField_PrisPZ1ActionPerformed(evt);
+            }
+        });
+
+        jTextField_BiletterSolgt0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField_BiletterSolgt0.setText("0");
+        jTextField_BiletterSolgt0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_BiletterSolgt0ActionPerformed(evt);
+            }
+        });
+
+        jButton_toem.setText("Tøm automat");
+        jButton_toem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_toemActionPerformed(evt);
             }
         });
 
@@ -266,6 +269,8 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
+        jTextField_TotalInd.setText("0 kr.");
+
         jTextField_PrisPZ4.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextField_PrisPZ4.setText("0 kr.");
         jTextField_PrisPZ4.addActionListener(new java.awt.event.ActionListener() {
@@ -274,180 +279,154 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
-        jTextField_BasisPris0.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField_BasisPris0.setText("0 kr.");
-
-        jTextField_BasisPris1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField_BasisPris1.setText("0 kr.");
-
-        jTextField_BasisPris2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField_BasisPris2.setText("0 kr.");
-
-        jTextField_BasisPris3.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField_BasisPris3.setText("0 kr.");
-        jTextField_BasisPris3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_setBilletterSolgt0.setText("Set");
+        jButton_setBilletterSolgt0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_BasisPris3ActionPerformed(evt);
+                jButton_setBilletterSolgt0ActionPerformed(evt);
             }
         });
 
-        jTextField_BasisPris4.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField_BasisPris4.setText("0 kr.");
+        jLabel1.setText("Voksen biletter:");
 
-        javax.swing.GroupLayout jPanel1_AdminDeskLayout = new javax.swing.GroupLayout(jPanel1_AdminDesk);
-        jPanel1_AdminDesk.setLayout(jPanel1_AdminDeskLayout);
-        jPanel1_AdminDeskLayout.setHorizontalGroup(
-            jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addGap(1041, 1041, 1041)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(111, 111, 111)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField_BasisPris0, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jTextField_PrisPZ0, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                        .addComponent(jTextField_BasisPris1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextField_PrisPZ1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jTextField_BasisPris4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                                            .addComponent(jTextField_BasisPris2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField_BasisPris3, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField_PrisPZ2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                                            .addComponent(jTextField_PrisPZ3)
-                                            .addComponent(jTextField_PrisPZ4)))))
-                            .addComponent(jLabel5))
-                        .addGap(31, 31, 31)
-                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1_AdminDeskLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField_BiletterSolgt0)
-                                            .addComponent(jTextField_BiletterSolgt1)
-                                            .addComponent(jTextField_BiletterSolgt2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton_setBilletterSolgt0)
-                                            .addComponent(jButton_setBilletterSolgt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton_setBilletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                        .addComponent(jTextField_BiletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton_setBilletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                        .addComponent(jTextField_BiletterSolgt4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton_setBilletterSolgt4)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(57, 57, 57))
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        jLabel2.setText("Ungdoms biletter:");
+
+        jLabel3.setText("Børne biletter:");
+
+        javax.swing.GroupLayout jPanel_AdminDeskLayout = new javax.swing.GroupLayout(jPanel_AdminDesk);
+        jPanel_AdminDesk.setLayout(jPanel_AdminDeskLayout);
+        jPanel_AdminDeskLayout.setHorizontalGroup(
+            jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_AdminDeskLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4)
+                        .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3))
+                                    .addGap(34, 34, 34)
+                                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jTextField_BasisPris0, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel8)
+                                                .addComponent(jTextField_PrisPZ0, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                            .addComponent(jTextField_BasisPris1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextField_PrisPZ1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jTextField_BasisPris4, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextField_BasisPris2, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jTextField_BasisPris3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTextField_PrisPZ2)
+                                                .addComponent(jTextField_PrisPZ3)
+                                                .addComponent(jTextField_PrisPZ4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel5))
+                            .addGap(31, 31, 31)
+                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField_BiletterSolgt0)
+                                        .addComponent(jTextField_BiletterSolgt1)
+                                        .addComponent(jTextField_BiletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton_setBilletterSolgt0)
+                                        .addComponent(jButton_setBilletterSolgt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton_setBilletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                    .addComponent(jTextField_BiletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton_setBilletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                    .addComponent(jTextField_BiletterSolgt4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton_setBilletterSolgt4))))
+                        .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton_toem)
-                            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
+                            .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
                                 .addComponent(jLabel_TotalInd)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField_TotalInd, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap()))
         );
-        jPanel1_AdminDeskLayout.setVerticalGroup(
-            jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField_BasisPris0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
-                        .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField_BiletterSolgt0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton_setBilletterSolgt0, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField_PrisPZ0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField_BasisPris1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_PrisPZ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_BiletterSolgt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_setBilletterSolgt1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField_BasisPris2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_PrisPZ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_BiletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_setBilletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField_PrisPZ3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_BasisPris3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_BiletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_setBilletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField_BasisPris4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_PrisPZ4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_BiletterSolgt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_setBilletterSolgt4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_TotalInd)
-                    .addComponent(jTextField_TotalInd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton_toem)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addContainerGap())
+        jPanel_AdminDeskLayout.setVerticalGroup(
+            jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
+            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextField_BasisPris0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)))
+                        .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                    .addGap(5, 5, 5)
+                                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField_BiletterSolgt0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton_setBilletterSolgt0, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField_PrisPZ0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jTextField_BasisPris1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_PrisPZ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_BiletterSolgt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_setBilletterSolgt1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(13, 13, 13)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jTextField_BasisPris2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_PrisPZ2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_BiletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_setBilletterSolgt2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(12, 12, 12)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jTextField_PrisPZ3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_BasisPris3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_BiletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_setBilletterSolgt3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(12, 12, 12)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jTextField_BasisPris4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_PrisPZ4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_BiletterSolgt4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_setBilletterSolgt4))
+                    .addGap(18, 18, 18)
+                    .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel_TotalInd)
+                        .addComponent(jTextField_TotalInd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addComponent(jButton_toem)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -457,7 +436,7 @@ public class AdminPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1_AdminDesk, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_MontørLogin)
@@ -466,13 +445,14 @@ public class AdminPanel extends javax.swing.JPanel {
                                 .addGap(40, 40, 40)
                                 .addComponent(jLabel_Montør_status)))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_Login)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton_Login)
+                        .addGap(0, 482, Short.MAX_VALUE))))
+            .addComponent(jPanel_AdminDesk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel_MontørLogin)
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -480,7 +460,9 @@ public class AdminPanel extends javax.swing.JPanel {
                     .addComponent(jLabel_Montør_status)
                     .addComponent(jButton_Login))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1_AdminDesk, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel_AdminDesk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -513,85 +495,9 @@ public class AdminPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_BasisPris3ActionPerformed
 
-    private void jTextField_PrisPZ4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ4ActionPerformed
+    private void jTextField_BiletterSolgt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PrisPZ4ActionPerformed
-
-    private void jTextField_PrisPZ3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PrisPZ3ActionPerformed
-
-    private void jTextField_PrisPZ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PrisPZ2ActionPerformed
-
-    private void jTextField_PrisPZ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PrisPZ1ActionPerformed
-
-    private void jTextField_PrisPZ0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_PrisPZ0ActionPerformed
-
-    private void jButton_toemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_toemActionPerformed
-        // TODO add your handling code here:
-        ba.toemAutomat();
-        jTextField_TotalInd.setText(ba.getTotal()+ " kr.");
-    }//GEN-LAST:event_jButton_toemActionPerformed
-
-    private void jButton_setBilletterSolgt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt4ActionPerformed
-        // TODO add your handling code here:
-        try {
-            ba.setBilletpris(4, Double.parseDouble(jTextField_BasisPris4.getText()));
-            ba.setBilletprisPerZone(4, Double.parseDouble(jTextField_PrisPZ4.getText()));
-            ba.setAntalBilletterSolgt(4, Integer.parseInt(jTextField_BiletterSolgt4.getText()) );
-        } catch (Exception e){
-            //Popup here comming
-        }
-        jTextField_BasisPris4.setText(ba.getBilletpris(4)+" kr.");
-        jTextField_PrisPZ4.setText(ba.getBilletprisPerZone(4)+" kr.");
-        jTextField_BiletterSolgt4.setText(""+ ba.getAntalBilletterSolgt(4));
-    }//GEN-LAST:event_jButton_setBilletterSolgt4ActionPerformed
-
-    private void jTextField_BiletterSolgt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_BiletterSolgt4ActionPerformed
-
-    private void jButton_setBilletterSolgt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt3ActionPerformed
-        // TODO add your handling code here:
-        try {
-            ba.setBilletpris(3, Double.parseDouble(jTextField_BasisPris3.getText()));
-            ba.setBilletprisPerZone(3, Double.parseDouble(jTextField_PrisPZ3.getText()));
-            ba.setAntalBilletterSolgt(3, Integer.parseInt(jTextField_BiletterSolgt3.getText()) );
-        } catch (Exception e){
-            //Popup here comming
-        }
-        jTextField_BasisPris3.setText(ba.getBilletpris(3)+" kr.");
-        jTextField_PrisPZ3.setText(ba.getBilletprisPerZone(3)+" kr.");
-        jTextField_BiletterSolgt3.setText(""+ ba.getAntalBilletterSolgt(3));
-    }//GEN-LAST:event_jButton_setBilletterSolgt3ActionPerformed
-
-    private void jTextField_BiletterSolgt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_BiletterSolgt3ActionPerformed
-
-    private void jButton_setBilletterSolgt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt2ActionPerformed
-        // TODO add your handling code here:
-        try {
-            ba.setBilletpris(2, Double.parseDouble(jTextField_BasisPris2.getText()));
-            ba.setBilletprisPerZone(2, Double.parseDouble(jTextField_PrisPZ2.getText()));
-            ba.setAntalBilletterSolgt(2, Integer.parseInt(jTextField_BiletterSolgt2.getText()) );
-        } catch (Exception e){
-            //Popup here comming
-        }
-        jTextField_BasisPris2.setText(ba.getBilletpris(2)+" kr.");
-        jTextField_PrisPZ2.setText(ba.getBilletprisPerZone(2)+" kr.");
-        jTextField_BiletterSolgt2.setText(""+ ba.getAntalBilletterSolgt(2));
-    }//GEN-LAST:event_jButton_setBilletterSolgt2ActionPerformed
-
-    private void jTextField_BiletterSolgt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_BiletterSolgt2ActionPerformed
+    }//GEN-LAST:event_jTextField_BiletterSolgt1ActionPerformed
 
     private void jButton_setBilletterSolgt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt1ActionPerformed
         // TODO add your handling code here:
@@ -607,9 +513,89 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextField_BiletterSolgt1.setText(""+ ba.getAntalBilletterSolgt(1));
     }//GEN-LAST:event_jButton_setBilletterSolgt1ActionPerformed
 
-    private void jTextField_BiletterSolgt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt1ActionPerformed
+    private void jTextField_BiletterSolgt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_BiletterSolgt1ActionPerformed
+    }//GEN-LAST:event_jTextField_BiletterSolgt2ActionPerformed
+
+    private void jButton_setBilletterSolgt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            ba.setBilletpris(2, Double.parseDouble(jTextField_BasisPris2.getText()));
+            ba.setBilletprisPerZone(2, Double.parseDouble(jTextField_PrisPZ2.getText()));
+            ba.setAntalBilletterSolgt(2, Integer.parseInt(jTextField_BiletterSolgt2.getText()) );
+        } catch (Exception e){
+            //Popup here comming
+        }
+        jTextField_BasisPris2.setText(ba.getBilletpris(2)+" kr.");
+        jTextField_PrisPZ2.setText(ba.getBilletprisPerZone(2)+" kr.");
+        jTextField_BiletterSolgt2.setText(""+ ba.getAntalBilletterSolgt(2));
+    }//GEN-LAST:event_jButton_setBilletterSolgt2ActionPerformed
+
+    private void jTextField_BiletterSolgt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_BiletterSolgt3ActionPerformed
+
+    private void jButton_setBilletterSolgt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            ba.setBilletpris(3, Double.parseDouble(jTextField_BasisPris3.getText()));
+            ba.setBilletprisPerZone(3, Double.parseDouble(jTextField_PrisPZ3.getText()));
+            ba.setAntalBilletterSolgt(3, Integer.parseInt(jTextField_BiletterSolgt3.getText()) );
+        } catch (Exception e){
+            //Popup here comming
+        }
+        jTextField_BasisPris3.setText(ba.getBilletpris(3)+" kr.");
+        jTextField_PrisPZ3.setText(ba.getBilletprisPerZone(3)+" kr.");
+        jTextField_BiletterSolgt3.setText(""+ ba.getAntalBilletterSolgt(3));
+    }//GEN-LAST:event_jButton_setBilletterSolgt3ActionPerformed
+
+    private void jTextField_BiletterSolgt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_BiletterSolgt4ActionPerformed
+
+    private void jButton_setBilletterSolgt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt4ActionPerformed
+        // TODO add your handling code here:
+        try {
+            ba.setBilletpris(4, Double.parseDouble(jTextField_BasisPris4.getText()));
+            ba.setBilletprisPerZone(4, Double.parseDouble(jTextField_PrisPZ4.getText()));
+            ba.setAntalBilletterSolgt(4, Integer.parseInt(jTextField_BiletterSolgt4.getText()) );
+        } catch (Exception e){
+            //Popup here comming
+        }
+        jTextField_BasisPris4.setText(ba.getBilletpris(4)+" kr.");
+        jTextField_PrisPZ4.setText(ba.getBilletprisPerZone(4)+" kr.");
+        jTextField_BiletterSolgt4.setText(""+ ba.getAntalBilletterSolgt(4));
+    }//GEN-LAST:event_jButton_setBilletterSolgt4ActionPerformed
+
+    private void jTextField_PrisPZ0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PrisPZ0ActionPerformed
+
+    private void jTextField_PrisPZ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PrisPZ1ActionPerformed
+
+    private void jTextField_BiletterSolgt0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt0ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_BiletterSolgt0ActionPerformed
+
+    private void jButton_toemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_toemActionPerformed
+        // TODO add your handling code here:
+        ba.toemAutomat();
+        jTextField_TotalInd.setText(ba.getTotal()+ " kr.");
+    }//GEN-LAST:event_jButton_toemActionPerformed
+
+    private void jTextField_PrisPZ2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PrisPZ2ActionPerformed
+
+    private void jTextField_PrisPZ3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PrisPZ3ActionPerformed
+
+    private void jTextField_PrisPZ4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_PrisPZ4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_PrisPZ4ActionPerformed
 
     private void jButton_setBilletterSolgt0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt0ActionPerformed
         // TODO add your handling code here:
@@ -624,10 +610,6 @@ public class AdminPanel extends javax.swing.JPanel {
         jTextField_PrisPZ0.setText(ba.getBilletprisPerZone(0)+" kr.");
         jTextField_BiletterSolgt0.setText(""+ ba.getAntalBilletterSolgt(0));
     }//GEN-LAST:event_jButton_setBilletterSolgt0ActionPerformed
-
-    private void jTextField_BiletterSolgt0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_BiletterSolgt0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_BiletterSolgt0ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -646,14 +628,13 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_MontørLogin;
     private javax.swing.JLabel jLabel_Montør_status;
     private javax.swing.JLabel jLabel_TotalInd;
-    private javax.swing.JPanel jPanel1_AdminDesk;
+    private javax.swing.JPanel jPanel_AdminDesk;
     private javax.swing.JPasswordField jPasswordField_Login;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField_BasisPris0;
     private javax.swing.JTextField jTextField_BasisPris1;
     private javax.swing.JTextField jTextField_BasisPris2;
