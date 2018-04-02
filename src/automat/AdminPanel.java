@@ -72,6 +72,7 @@ public class AdminPanel extends javax.swing.JPanel {
         jButton_setBilletterSolgt3 = new javax.swing.JButton();
         jTextField_BiletterSolgt4 = new javax.swing.JTextField();
         jButton_setBilletterSolgt4 = new javax.swing.JButton();
+        jButton_toem = new javax.swing.JButton();
 
         jLabel_MontørLogin.setText("Montør Login");
 
@@ -182,6 +183,13 @@ public class AdminPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton_toem.setText("Tøm automat");
+        jButton_toem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_toemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1_AdminDeskLayout = new javax.swing.GroupLayout(jPanel1_AdminDesk);
         jPanel1_AdminDesk.setLayout(jPanel1_AdminDeskLayout);
         jPanel1_AdminDeskLayout.setHorizontalGroup(
@@ -205,11 +213,6 @@ public class AdminPanel extends javax.swing.JPanel {
                                 .addComponent(jButton_setBilletterSolgt1))))
                     .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
-                            .addComponent(jLabel_TotalInd)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField_TotalInd, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(11, 11, 11))
-                        .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
                             .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel5)
@@ -227,7 +230,15 @@ public class AdminPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
                                     .addComponent(jTextField_BiletterSolgt4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton_setBilletterSolgt4)))))
+                                    .addComponent(jButton_setBilletterSolgt4))))
+                        .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
+                            .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton_toem)
+                                .addGroup(jPanel1_AdminDeskLayout.createSequentialGroup()
+                                    .addComponent(jLabel_TotalInd)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField_TotalInd, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(11, 11, 11)))
                     .addComponent(jLabel_BilletterSolgt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(320, Short.MAX_VALUE))
         );
@@ -265,7 +276,9 @@ public class AdminPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_TotalInd)
                     .addComponent(jTextField_TotalInd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_toem)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -397,6 +410,12 @@ public class AdminPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton_setBilletterSolgt4ActionPerformed
 
+    private void jButton_toemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_toemActionPerformed
+        // TODO add your handling code here:
+        //MADS
+        ba.toemAutomat();
+    }//GEN-LAST:event_jButton_toemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Login;
@@ -405,6 +424,7 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton_setBilletterSolgt2;
     private javax.swing.JButton jButton_setBilletterSolgt3;
     private javax.swing.JButton jButton_setBilletterSolgt4;
+    private javax.swing.JButton jButton_toem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
