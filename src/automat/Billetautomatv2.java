@@ -168,7 +168,7 @@ public class Billetautomatv2 {
      *
      * @param String
      */
-    void montoerLogin(String adgangskode) {
+    public void montoerLogin(String adgangskode) {
         netopNu = new Date(); // Hent et nyt Date objekt
         try {
             if ("1234".equals(adgangskode)) {
