@@ -6,6 +6,7 @@
 package automat;
 
 import java.awt.Color;
+import java.util.Scanner;
 
 /**
  *
@@ -14,6 +15,7 @@ import java.awt.Color;
 public class AdminPanel extends javax.swing.JPanel {
 
     private Billetautomatv2 ba;
+    private Scanner sc;
 
     /**
      * Creates new form AdminPanel2
@@ -502,8 +504,11 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jButton_setBilletterSolgt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt1ActionPerformed
         // TODO add your handling code here:
         try {
-            ba.setBilletpris(1, Double.parseDouble(jTextField_BasisPris1.getText()));
-            ba.setBilletprisPerZone(1, Double.parseDouble(jTextField_PrisPZ1.getText()));
+            sc = new Scanner(jTextField_BasisPris1.getText());
+            ba.setBilletpris(1, sc.nextDouble());
+            
+            sc = new Scanner(jTextField_PrisPZ1.getText());
+            ba.setBilletprisPerZone(1, sc.nextDouble());
             ba.setAntalBilletterSolgt(1, Integer.parseInt(jTextField_BiletterSolgt1.getText()) );
         } catch (Exception e){
             //Popup here comming
@@ -520,8 +525,11 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jButton_setBilletterSolgt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt2ActionPerformed
         // TODO add your handling code here:
         try {
-            ba.setBilletpris(2, Double.parseDouble(jTextField_BasisPris2.getText()));
-            ba.setBilletprisPerZone(2, Double.parseDouble(jTextField_PrisPZ2.getText()));
+            sc = new Scanner(jTextField_BasisPris2.getText());
+            ba.setBilletpris(2, sc.nextDouble());
+            
+            sc = new Scanner(jTextField_PrisPZ2.getText());
+            ba.setBilletprisPerZone(2, sc.nextDouble());
             ba.setAntalBilletterSolgt(2, Integer.parseInt(jTextField_BiletterSolgt2.getText()) );
         } catch (Exception e){
             //Popup here comming
@@ -538,8 +546,11 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jButton_setBilletterSolgt3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt3ActionPerformed
         // TODO add your handling code here:
         try {
-            ba.setBilletpris(3, Double.parseDouble(jTextField_BasisPris3.getText()));
-            ba.setBilletprisPerZone(3, Double.parseDouble(jTextField_PrisPZ3.getText()));
+            sc = new Scanner(jTextField_BasisPris3.getText());
+            ba.setBilletpris(3, sc.nextDouble());
+            
+            sc = new Scanner(jTextField_PrisPZ3.getText());
+            ba.setBilletprisPerZone(3, sc.nextDouble());
             ba.setAntalBilletterSolgt(3, Integer.parseInt(jTextField_BiletterSolgt3.getText()) );
         } catch (Exception e){
             //Popup here comming
@@ -556,8 +567,11 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jButton_setBilletterSolgt4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt4ActionPerformed
         // TODO add your handling code here:
         try {
-            ba.setBilletpris(4, Double.parseDouble(jTextField_BasisPris4.getText()));
-            ba.setBilletprisPerZone(4, Double.parseDouble(jTextField_PrisPZ4.getText()));
+            sc = new Scanner(jTextField_BasisPris4.getText());
+            ba.setBilletpris(4, sc.nextDouble());
+            
+            sc = new Scanner(jTextField_PrisPZ4.getText());
+            ba.setBilletprisPerZone(4, sc.nextDouble());
             ba.setAntalBilletterSolgt(4, Integer.parseInt(jTextField_BiletterSolgt4.getText()) );
         } catch (Exception e){
             //Popup here comming
@@ -600,8 +614,12 @@ public class AdminPanel extends javax.swing.JPanel {
     private void jButton_setBilletterSolgt0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_setBilletterSolgt0ActionPerformed
         // TODO add your handling code here:
         try {
-            ba.setBilletpris(0, Double.parseDouble(jTextField_BasisPris0.getText()));
-            ba.setBilletprisPerZone(0, Double.parseDouble(jTextField_PrisPZ0.getText()));
+            sc = new Scanner(jTextField_BasisPris0.getText());
+            ba.setBilletpris(0, sc.nextDouble());
+            
+            sc = new Scanner(jTextField_PrisPZ0.getText());
+            ba.setBilletprisPerZone(0, sc.nextDouble());
+            
             ba.setAntalBilletterSolgt(0, Integer.parseInt(jTextField_BiletterSolgt0.getText()) );
         } catch (Exception e){
             //Popup here comming
