@@ -9,7 +9,7 @@ import javax.swing.JTabbedPane;
  *
  * @author Chris && Mads
  */
-public class BenytBilletautomatv2 {
+public class BenytBilletautomatv2_AdminGUI {
 
     static java.util.Scanner tastatur = new java.util.Scanner(System.in);  // forbered Scanner klassen
 
@@ -19,24 +19,55 @@ public class BenytBilletautomatv2 {
         
         JTabbedPane faneblade = new JTabbedPane();
         
+        AdminPanel Apanel = new AdminPanel();
         BA_Jpannel BApanel = new BA_Jpannel();
+        //Nyt//
         Indkøbskurv_Ba_Jpanel BA_kurv = new Indkøbskurv_Ba_Jpanel();
-        Montoer_tilstand_vindue Montoer_vindue = new Montoer_tilstand_vindue();
-        BApanel.setLogik(automat,Montoer_vindue); 
+        Apanel.setLogik(automat);
+        ///////
+        BApanel.setLogik(automat); 
         BA_kurv.setLogik(automat);
-        Montoer_vindue.setLogik(automat);
         faneblade.add("HovedSkærm", BApanel);
         faneblade.add("Indkøbskurv", BA_kurv);
-        
+        //Nyt//
+        faneblade.add("Admin panel", Apanel);
+        ///////
         JFrame vindue = new JFrame("Faneblade");
         vindue.add( faneblade );
         vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // reagér på luk
         vindue.pack();                  // lad vinduet selv bestemme sin størrelse
         vindue.setVisible(true);  
 
-        System.out.println("BenytBilletautomat version 2");
+        System.out.println("BenytBilletautomat GUI");
         System.out.println();
-
+        
+        //Nyt//
+        
+        //Forsøg på forsvindende faneblade
+        
+        /*boolean tidligereMontørtilstand = automat.erMontoer();
+        while(true){
+            if (automat.erMontoer()!= tidligereMontørtilstand){
+                if (automat.erMontoer() == true){
+                    faneblade.add("Admin panel", Apanel);
+                    System.out.println("panel added");
+                } else {
+                    faneblade.remove(Apanel);
+                    System.out.println("Panel removed");
+                }
+                System.out.println("Hello");
+                vindue.remove(faneblade);
+                vindue.add(faneblade);
+                vindue.repaint();
+                tidligereMontørtilstand = automat.erMontoer();
+            }//end if
+            
+        }*/
+        
+        
+        
+        //Udkommenteret da dette gør at programmet lukker når gui,en gør det.
+        /*
         while (true) {// Menu loop
             System.out.println("-----------------------------------------------");
             System.out.println("Balancen er paa " + automat.getBalance() + " kroner");
@@ -202,6 +233,8 @@ public class BenytBilletautomatv2 {
                     break;
             } // Switch slut
         } // while loop slut
+        */
+        
     } // main slut
 
     /**
