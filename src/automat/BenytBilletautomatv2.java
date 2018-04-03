@@ -21,8 +21,10 @@ public class BenytBilletautomatv2 {
         
         BA_Jpannel BApanel = new BA_Jpannel();
         Indkøbskurv_Ba_Jpanel BA_kurv = new Indkøbskurv_Ba_Jpanel();
-        BApanel.setLogik(automat); 
+        Montoer_tilstand_vindue Montoer_vindue = new Montoer_tilstand_vindue();
+        BApanel.setLogik(automat,Montoer_vindue); 
         BA_kurv.setLogik(automat);
+        Montoer_vindue.setLogik(automat);
         faneblade.add("HovedSkærm", BApanel);
         faneblade.add("Indkøbskurv", BA_kurv);
         

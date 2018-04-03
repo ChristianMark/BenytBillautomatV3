@@ -125,7 +125,8 @@ public class Billetautomatv2Test extends TestCase {
         
         BA_Jpannel BApanel = new BA_Jpannel();
         Indkøbskurv_Ba_Jpanel BA_kurv = new Indkøbskurv_Ba_Jpanel();
-        BApanel.setLogik(instance); 
+        Montoer_tilstand_vindue Montoer_vindue = new Montoer_tilstand_vindue();
+        BApanel.setLogik(instance,Montoer_vindue); 
         BA_kurv.setLogik(instance);
         faneblade.add("HovedSkærm", BApanel);
         faneblade.add("Indkøbskurv", BA_kurv);
@@ -150,7 +151,7 @@ public class Billetautomatv2Test extends TestCase {
         
         // Så man kan nå at teste GUI'et
         //Thread.sleep(2000000);
-        Thread.sleep(10000);
+        Thread.sleep(1000000);
     }
 
 }
