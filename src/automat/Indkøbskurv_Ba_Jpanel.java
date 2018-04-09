@@ -133,11 +133,6 @@ public class Indkøbskurv_Ba_Jpanel extends javax.swing.JPanel {
             }
         });
 
-        jList_af_Billetter.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList_af_Billetter);
 
         jLabel5.setText("Billetter");

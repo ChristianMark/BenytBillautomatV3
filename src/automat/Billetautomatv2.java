@@ -708,6 +708,16 @@ public class Billetautomatv2 {
         return str;
     }
 
+    public String[] get_loggen(){
+        String[] str = new String[event_liste.size()];
+        int i = 0;
+
+        for (Log_event event : event_liste) {
+            str[i] = event.toString();
+            i++;
+        }             
+        return str;
+    }
     /*
      * Giver pengene ud til montøren. 
      */
