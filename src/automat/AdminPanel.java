@@ -47,11 +47,14 @@ public class AdminPanel extends javax.swing.JPanel {
             
             jTextField_TotalInd.setText(ba.getTotal()+ " kr.");
         }
+        invalidate();
+        layout();
+        doLayout();
     }
     
     public AdminPanel() {
         initComponents();
-        jPanel_AdminDesk.setVisible(false);
+        //jPanel_AdminDesk.setVisible(false);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -368,7 +371,7 @@ public class AdminPanel extends javax.swing.JPanel {
         );
         jPanel_AdminDeskLayout.setVerticalGroup(
             jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 504, Short.MAX_VALUE)
+            .addGap(0, 421, Short.MAX_VALUE)
             .addGroup(jPanel_AdminDeskLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel_AdminDeskLayout.createSequentialGroup()
                     .addContainerGap()
@@ -464,7 +467,8 @@ public class AdminPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_AdminDesk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel_AdminDesk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -670,4 +674,26 @@ public class AdminPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField_PrisPZ4;
     private javax.swing.JTextField jTextField_TotalInd;
     // End of variables declaration//GEN-END:variables
+
+    void updateNumbers() {
+        jTextField_BiletterSolgt0.setText(""+ ba.getAntalBilletterSolgt(0));
+        jTextField_BiletterSolgt1.setText(""+ ba.getAntalBilletterSolgt(1));
+        jTextField_BiletterSolgt2.setText(""+ ba.getAntalBilletterSolgt(2));
+        jTextField_BiletterSolgt3.setText(""+ ba.getAntalBilletterSolgt(3));
+        jTextField_BiletterSolgt4.setText(""+ ba.getAntalBilletterSolgt(4));
+
+        jTextField_BasisPris0.setText(ba.getBilletpris(0)+" kr.");
+        jTextField_BasisPris1.setText(ba.getBilletpris(1)+" kr.");
+        jTextField_BasisPris2.setText(ba.getBilletpris(2)+" kr.");
+        jTextField_BasisPris3.setText(ba.getBilletpris(3)+" kr.");
+        jTextField_BasisPris4.setText(ba.getBilletpris(4)+" kr.");
+
+        jTextField_PrisPZ0.setText(ba.getBilletprisPerZone(0)+" kr.");
+        jTextField_PrisPZ1.setText(ba.getBilletprisPerZone(1)+" kr.");
+        jTextField_PrisPZ2.setText(ba.getBilletprisPerZone(2)+" kr.");
+        jTextField_PrisPZ3.setText(ba.getBilletprisPerZone(3)+" kr.");
+        jTextField_PrisPZ4.setText(ba.getBilletprisPerZone(4)+" kr.");
+
+        jTextField_TotalInd.setText(ba.getTotal()+ " kr.");
+    }
 }

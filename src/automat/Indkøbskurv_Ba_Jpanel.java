@@ -216,7 +216,7 @@ public class Indkøbskurv_Ba_Jpanel extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
@@ -294,7 +294,7 @@ public class Indkøbskurv_Ba_Jpanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -415,22 +415,26 @@ public class Indkøbskurv_Ba_Jpanel extends javax.swing.JPanel {
     // Når musen kommer ind i panellet
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
         // TODO add your handling code here:
+        /*
         jTextField_Balancen.setText(""+ba.getBalance()+" kr."); // Opdatere balancen
         if(ba.getBalance() >= ba.getTotalPrice() && ba.getBalance()> 0 && ba.getTotalPrice()> 0){
             jButton_Køb_indkøbskurv.setForeground(Color.GREEN);
         }else{
             jButton_Køb_indkøbskurv.setForeground(Color.RED);
         }
+        */
     }//GEN-LAST:event_formMouseEntered
     // Når musen kommer udfra panellet
     private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+        /*
         jTextField_Balancen.setText(""+ba.getBalance()+" kr."); // Opdatere balancen
         if(ba.getBalance() >= ba.getTotalPrice() && ba.getBalance()> 0 && ba.getTotalPrice()> 0){
             jButton_Køb_indkøbskurv.setForeground(Color.GREEN);
         }else{
             jButton_Køb_indkøbskurv.setForeground(Color.RED);
         }
+        */
     }//GEN-LAST:event_formMouseExited
 
 
@@ -461,4 +465,21 @@ public class Indkøbskurv_Ba_Jpanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField_Balancen;
     private javax.swing.JTextField jTextField_Totalbeløb;
     // End of variables declaration//GEN-END:variables
+
+    void updateNumbers() {
+        jRadioButton_Voksenbillet.setText("Voksen - "+ba.getBilletpris(0)+" kr.");
+        jRadioButton_Ungdomsbillet.setText("Ungdom - "+ba.getBilletpris(1)+" kr.");
+        jRadioButton_Børnebillet.setText("Børne - "+ba.getBilletpris(2)+" kr.");
+        jRadioButton_Studenterbillet.setText("Studenter - "+ba.getBilletpris(3)+" kr.");
+        jRadioButton_Cykelbillet.setText("Cykel - "+ba.getBilletpris(4)+" kr.");
+        jTextField_Totalbeløb.setText(ba.getTotalPrice()+" kr.");
+        
+        jTextField_Balancen.setText(""+ba.getBalance()+" kr."); // Opdatere balancen
+        jTextField_Balancen.setText(""+ba.getBalance()+" kr."); // Opdatere balancen
+        if(ba.getBalance() >= ba.getTotalPrice() && ba.getBalance()> 0 && ba.getTotalPrice()> 0){
+            jButton_Køb_indkøbskurv.setForeground(Color.GREEN);
+        }else{
+            jButton_Køb_indkøbskurv.setForeground(Color.RED);
+        }
+    }
 }

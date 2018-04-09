@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -31,11 +33,22 @@ public class BenytBilletautomatv2_AdminGUI {
         faneblade.add("Indkøbskurv", BA_kurv);
         //Nyt//
         faneblade.add("Admin panel", Apanel);
-        ///////
+        
+        faneblade.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("Updating...");
+                Apanel.updateNumbers();
+                BA_kurv.updateNumbers();
+                BApanel.updateNumbers();
+            }
+        });
+        /////// 
         JFrame vindue = new JFrame("Faneblade");
         vindue.add( faneblade );
         vindue.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // reagér på luk
         vindue.pack();                  // lad vinduet selv bestemme sin størrelse
+        Apanel.loginLogik(false); // skjul admin panaler - efter at pack() har pakket vinduet hvor de er synlige
         vindue.setVisible(true);  
 
         System.out.println("BenytBilletautomat GUI");

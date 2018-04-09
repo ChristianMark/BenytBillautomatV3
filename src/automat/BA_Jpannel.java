@@ -276,4 +276,8 @@ public class BA_Jpannel extends javax.swing.JPanel {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField_Balancen;
     // End of variables declaration//GEN-END:variables
+
+    void updateNumbers() {
+        jTextField_Balancen.setText(""+ba.getBalance()+" kr.");
+    }
 }
